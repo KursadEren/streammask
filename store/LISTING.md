@@ -65,7 +65,11 @@ Ekran paylaşan/yayın yapan kullanıcıların kişisel bilgilerinin (telefon, e
 - Ek kelime kutusu telefon/kart/IBAN/e-posta benzeri girdiyi reddeder; bu bilgiler hiçbir zaman eklentiye kaydedilmez.
 
 ## Gizlilik politikası
-store/privacy.html dosyası — herkese açık bir URL'de yayınlanmalı (ör. https://upneo.space/streammask/privacy.html) ve konsolda "Privacy policy URL" alanına girilmelidir.
+https://kursaderen.github.io/streammask/privacy.html (GitHub Pages, repo: https://github.com/KursadEren/streammask)
+
+## Ana sayfa / destek URL
+- Homepage: https://kursaderen.github.io/streammask/
+- Support: https://github.com/KursadEren/streammask/issues
 
 ## Görseller (store/out)
 - icon128.png → Store icon (128×128)
