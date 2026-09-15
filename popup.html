@@ -1,0 +1,148 @@
+<!doctype html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<title>StreamMask</title>
+<style>
+  :root{
+    --bg:#0f0e1a;--panel:#181729;--panel2:#1f1e33;--line:#2a2942;--txt:#f1f0fa;--mut:#9895b8;
+    --pri:#7B6CFF;--pri2:#4F3FE0;--red:#ff5c5c;--red2:#b3262e;--grn:#4ade80;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;width:340px;font:13px/1.45 -apple-system,BlinkMacSystemFont,"Segoe UI",Inter,Roboto,sans-serif;background:var(--bg);color:var(--txt)}
+  button{font:inherit;cursor:pointer}
+
+  /* --- üst: durum --- */
+  .hero{position:relative;padding:18px 18px 16px;background:
+    radial-gradient(420px 220px at 0% -40%,rgba(123,108,255,.55),transparent 65%),
+    radial-gradient(300px 200px at 110% 120%,rgba(79,63,224,.5),transparent 60%),var(--panel);
+    border-bottom:1px solid var(--line)}
+  .hero .top{display:flex;align-items:center;gap:10px}
+  .hero img{width:34px;height:34px;border-radius:10px;box-shadow:0 6px 18px rgba(0,0,0,.4)}
+  .hero h1{margin:0;font-size:17px;letter-spacing:-.2px}
+  .hero .tag{font-size:11px;color:var(--mut)}
+  .hero .status{margin-top:14px;display:flex;align-items:center;justify-content:space-between;gap:12px}
+  .hero .big{font-size:15px;font-weight:700}
+  .hero .big small{display:block;font-size:11px;font-weight:400;color:var(--mut);margin-top:2px}
+  .hero .big .dot{display:inline-block;width:8px;height:8px;border-radius:50%;background:var(--grn);margin-right:6px;box-shadow:0 0 10px var(--grn)}
+  .hero.off .big .dot{background:#777;box-shadow:none}
+  .hero.off{background:var(--panel)}
+
+  /* --- anahtar --- */
+  .switch{position:relative;width:46px;height:26px;flex:none}
+  .switch input{opacity:0;width:0;height:0;position:absolute}
+  .switch span{position:absolute;inset:0;background:#3a3950;border-radius:26px;transition:.18s;cursor:pointer}
+  .switch span::after{content:"";position:absolute;width:20px;height:20px;left:3px;top:3px;background:#fff;border-radius:50%;transition:.18s;box-shadow:0 2px 6px rgba(0,0,0,.4)}
+  .switch input:checked + span{background:linear-gradient(135deg,var(--pri),var(--pri2))}
+  .switch.red input:checked + span{background:linear-gradient(135deg,var(--red),var(--red2))}
+  .switch input:checked + span::after{transform:translateX(20px)}
+
+  section{padding:12px 18px;border-bottom:1px solid var(--line)}
+  .h{display:flex;align-items:center;justify-content:space-between;gap:10px}
+  .h .t{font-weight:700;font-size:13px}
+  .h .s{font-size:11px;color:var(--mut);margin-top:1px}
+
+  /* --- algılama rozetleri --- */
+  .chips{display:flex;flex-wrap:wrap;gap:6px;margin-top:10px}
+  .chip{display:inline-flex;align-items:center;gap:6px;padding:4px 9px;border-radius:999px;background:var(--panel2);border:1px solid var(--line);font-size:12px;color:var(--mut)}
+  .chip b{color:#fff;font-weight:700}
+  .chip.hit{border-color:rgba(123,108,255,.7);background:rgba(123,108,255,.14);color:#e9e6ff}
+  .chip .ic{font-size:12px}
+  .empty{font-size:11px;color:var(--mut);margin-top:8px}
+
+  /* --- ek kelimeler --- */
+  .wordbox{margin-top:10px;display:flex;flex-wrap:wrap;gap:6px;padding:8px;background:var(--panel2);border:1px solid var(--line);border-radius:12px;min-height:44px;cursor:text}
+  .wordbox:focus-within{border-color:var(--pri)}
+  .word{display:inline-flex;align-items:center;gap:6px;padding:3px 6px 3px 10px;border-radius:999px;background:linear-gradient(135deg,var(--pri),var(--pri2));color:#fff;font-size:12px;font-weight:600}
+  .word button{background:rgba(255,255,255,.2);border:0;color:#fff;width:16px;height:16px;border-radius:50%;font-size:11px;line-height:16px;padding:0}
+  .word button:hover{background:rgba(255,255,255,.4)}
+  .wordbox input{flex:1;min-width:110px;background:transparent;border:0;color:var(--txt);font:inherit;outline:0;padding:3px 4px}
+  .wordbox input::placeholder{color:#6d6b8a}
+  .hint{font-size:11px;color:var(--mut);margin-top:6px}
+
+  /* --- yayın modu --- */
+  .card{margin-top:10px;padding:10px 12px;border-radius:12px;background:var(--panel2);border:1px solid var(--line);font-size:12px;color:var(--mut)}
+  .card.on{background:linear-gradient(135deg,rgba(255,92,92,.16),rgba(179,38,46,.16));border-color:rgba(255,92,92,.45);color:#ffd6d6}
+  .card b{color:#fff}
+  .card .live{display:inline-flex;align-items:center;gap:6px;font-weight:800;color:#fff;letter-spacing:.5px}
+  .card .live i{width:8px;height:8px;border-radius:50%;background:var(--red);box-shadow:0 0 10px var(--red);animation:pulse 1.2s infinite}
+  @keyframes pulse{50%{opacity:.35}}
+  .actions{display:flex;gap:6px;margin-top:8px;flex-wrap:wrap}.actions[hidden],.site[hidden]{display:none}
+  .btn{background:var(--panel2);color:var(--txt);border:1px solid var(--line);border-radius:9px;padding:5px 10px;font-size:11.5px}
+  .btn:hover{border-color:var(--pri)}
+  .btn.ghost{background:transparent}
+
+  /* --- gelişmiş --- */
+  details{padding:0}
+  summary{list-style:none;cursor:pointer;padding:10px 18px;font-size:12px;color:var(--mut);display:flex;justify-content:space-between;align-items:center}
+  summary::-webkit-details-marker{display:none}
+  summary::after{content:"▾";transition:.15s}
+  details[open] summary::after{transform:rotate(180deg)}
+  .adv{padding:0 18px 12px}
+  .grid{display:grid;grid-template-columns:1fr 1fr;gap:6px 10px}
+  .grid label{display:flex;align-items:center;gap:7px;cursor:pointer;font-size:12px}
+  .grid input{accent-color:var(--pri)}
+  .site{display:flex;align-items:center;justify-content:space-between;gap:8px;margin-top:10px;font-size:11.5px;color:var(--mut)}
+  .site code{font-family:ui-monospace,Menlo,monospace;font-size:11px;color:#c8c5ff}
+
+  footer{padding:8px 18px 10px;font-size:10.5px;color:var(--mut);display:flex;justify-content:space-between;gap:8px}
+  .kbd{font-family:ui-monospace,Menlo,monospace;font-size:10px;background:#26253a;padding:1px 5px;border-radius:4px;color:#c8c5ff}
+  .busy{opacity:.55;pointer-events:none}
+  .msg{font-size:11px;margin-top:6px;color:#ff9c9c}
+  .msg.ok{color:#a7f3c0}
+</style>
+</head>
+<body>
+
+<div class="hero" id="hero">
+  <div class="top">
+    <img src="icons/icon48.png" alt="">
+    <div><h1>StreamMask</h1><div class="tag">Yayıncı gizlilik kalkanı</div></div>
+  </div>
+  <div class="status">
+    <div class="big"><span class="dot"></span><span id="stateText">Koruma açık</span><small id="stateSub">Bu sayfada 0 bilgi perdelendi</small></div>
+    <label class="switch"><input type="checkbox" id="enabled"><span></span></label>
+  </div>
+</div>
+
+<section>
+  <div class="h"><div><div class="t">Otomatik algılama</div><div class="s">Ayar gerekmez: kişisel bilgiye benzeyen her şey ***** olur</div></div></div>
+  <div class="chips" id="chips"></div>
+</section>
+
+<section>
+  <div class="h"><div><div class="t">Ek olarak maskele</div><div class="s">Adın, adresin, kullanıcı adın… yaz, Enter'a bas</div></div></div>
+  <div class="wordbox" id="wordbox"><input id="wordInput" placeholder="örn. ad soyad, sokak adı, kullanıcı adı"></div>
+  <div class="hint">🔒 Numara, kart, IBAN, e-posta yazma: bunlar otomatik yakalanır. Liste yalnızca bu cihazda tutulur, hiçbir yere gönderilmez.</div>
+  <div class="msg" id="wordMsg" hidden></div>
+</section>
+
+<section>
+  <div class="h">
+    <div><div class="t">Yayın Modu</div><div class="s">Adres çubuğunda geçmiş önerilerini gizler</div></div>
+    <label class="switch red"><input type="checkbox" id="stream"><span></span></label>
+  </div>
+  <div class="card" id="streamCard">Kapalı. Açınca geçmişin eklentiye yedeklenir ve önerilerden kalkar; kapatınca geri gelir. Silinmez.</div>
+  <div class="actions" id="streamActions" hidden><button class="btn" id="download">Yedeği indir (JSON)</button></div>
+  <div class="msg" id="msg" hidden></div>
+</section>
+
+<details>
+  <summary>Gelişmiş: kategoriler ve site istisnası</summary>
+  <div class="adv">
+    <div class="grid" id="cats">
+      <label><input type="checkbox" data-cat="phone"> Telefon</label>
+      <label><input type="checkbox" data-cat="email"> E-posta</label>
+      <label><input type="checkbox" data-cat="tckn"> TC Kimlik No</label>
+      <label><input type="checkbox" data-cat="iban"> IBAN</label>
+      <label><input type="checkbox" data-cat="card"> Kart numarası</label>
+      <label><input type="checkbox" data-cat="ip"> IP adresi</label>
+    </div>
+    <div class="site" id="siteRow" hidden><span>Bu site: <code id="host"></code></span><button class="btn ghost" id="exclude">Hariç tut</button></div>
+  </div>
+</details>
+
+<footer><span><span class="kbd">Alt+Shift+M</span> koruma</span><span><span class="kbd">Alt+Shift+Y</span> yayın modu</span></footer>
+<script src="popup.js"></script>
+</body>
+</html>

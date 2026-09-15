@@ -1,0 +1,20 @@
+<!doctype html>
+<html lang="tr"><head><meta charset="utf-8"><title>Yayın Kalkanı test</title>
+<style>body{font-family:sans-serif;max-width:720px;margin:30px auto;line-height:1.7}code{background:#eee;padding:2px 5px}</style>
+</head><body>
+<h2>Yayın Kalkanı test sayfası</h2>
+<p id="p1">Bana ulaşmak için 0532 123 45 67 numarasını ara veya +90 (212) 555 12 34 sabit hattı dene.</p>
+<p id="p2">E-posta: ahmet.yilmaz@example.com — iş: destek@sirket.com.tr</p>
+<p id="p3">TC Kimlik: 10000000146 (geçerli), 12345678901 (geçersiz TC ama 11 hane, telefon gibi maskelenir)</p>
+<p id="p4">IBAN: TR33 0006 1005 1978 6457 8413 26</p>
+<p id="p5">Kart: 4111 1111 1111 1111 (geçerli Luhn), 1234 5678 9012 3456 (geçersiz)</p>
+<p id="p6">Sunucu IP: 192.168.1.42 · Sürüm 2.1.0 (dokunulmamalı) · Sipariş no 2024-10 (dokunulmamalı)</p>
+<p id="p7">Adı Ahmet Yılmaz, Bağdat Caddesi'nde oturuyor.</p>
+<p><input id="in1" type="tel" value="05321234567"> <input id="in2" type="text" value="mail: ali@x.com"> <input id="in3" type="text" value="normal metin"></p>
+<textarea id="ta" rows="2" cols="40">İletişim 0555 111 22 33</textarea>
+<div id="dyn"></div>
+<button id="add">Dinamik ekle</button>
+<script>
+document.getElementById('add').onclick=()=>{const d=document.createElement('p');d.id='dynp';d.textContent='Yeni mesaj: beni 0544 987 65 43 ara, mail: yeni@ornek.com';document.getElementById('dyn').appendChild(d);};
+</script>
+</body></html>

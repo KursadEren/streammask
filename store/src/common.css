@@ -1,0 +1,20 @@
+*{box-sizing:border-box}html,body{margin:0}
+body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Inter,Roboto,sans-serif;color:#fff;background:#0f0e1a;overflow:hidden}
+.grad{background:radial-gradient(1200px 600px at 20% -10%,#4F3FE0 0%,transparent 60%),radial-gradient(900px 500px at 110% 110%,#7B6CFF 0%,transparent 55%),#12112a}
+.brand{display:flex;align-items:center;gap:18px}
+.brand img{width:96px;height:96px;border-radius:24px;box-shadow:0 12px 40px rgba(0,0,0,.45)}
+.brand h1{margin:0;font-size:56px;letter-spacing:-1px}
+.brand p{margin:4px 0 0;font-size:22px;color:#c9c5ff}
+.card{background:#1a1930;border:1px solid #2c2b4a;border-radius:16px;padding:22px 26px;box-shadow:0 20px 60px rgba(0,0,0,.45)}
+.mask{background:#4F3FE0;color:#fff;border-radius:6px;padding:0 6px;font-weight:700;letter-spacing:2px}
+.popup{width:330px;background:#14141c;border-radius:14px;border:1px solid #2c2c3c;box-shadow:0 30px 80px rgba(0,0,0,.6);overflow:hidden;font-size:13px}
+.popup header{display:flex;align-items:center;gap:10px;padding:12px 14px;border-bottom:1px solid #2c2c3c}
+.popup header img{width:28px;height:28px;border-radius:8px}.popup header h2{margin:0;font-size:15px;flex:1}
+.popup header .c{font-size:11px;color:#9a9ab3;text-align:right}.popup header .c b{color:#fff;font-size:14px;display:block}
+.popup section{padding:10px 14px;border-bottom:1px solid #2c2c3c}
+.row{display:flex;justify-content:space-between;align-items:center}.lbl{font-weight:600}.sub{font-size:11px;color:#9a9ab3;margin-top:2px}
+.sw{width:40px;height:22px;border-radius:22px;background:#3a3a4d;position:relative;flex:none}.sw::after{content:"";position:absolute;width:16px;height:16px;left:3px;top:3px;border-radius:50%;background:#fff}
+.sw.on{background:#6C63FF}.sw.on::after{left:21px}.sw.red{background:#E53935}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:6px 10px;margin-top:8px}.grid div::before{content:"☑ ";color:#8f88ff}
+.st{margin-top:8px;padding:8px 10px;border-radius:8px;background:#1d1d29;font-size:12px;color:#9a9ab3}.st.on{background:#3a1416;color:#ffb3b3;border:1px solid #6a2224}
+.pill{display:inline-block;background:#2a2a3a;color:#9a9ab3;font:10px ui-monospace,Menlo,monospace;padding:1px 5px;border-radius:4px}
