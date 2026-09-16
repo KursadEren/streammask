@@ -1,67 +1,68 @@
-<!doctype html><html lang="tr"><head><meta charset="utf-8"><title>StreamMask – mağaza alanları</title>
+<!doctype html><html lang="en"><head><meta charset="utf-8"><title>StreamMask – store fields</title>
 <style>body{font-family:-apple-system,Segoe UI,Roboto,sans-serif;background:#12112a;color:#f1f0fa;margin:0;padding:30px}main{max-width:900px;margin:0 auto}
 h1{font-size:22px}h2{font-size:15px;color:#a99cff;margin:34px 0 8px;border-bottom:1px solid #2a2942;padding-bottom:6px}
 .f{background:#181729;border:1px solid #2a2942;border-radius:12px;padding:12px 14px;margin:10px 0}.f .t{font-weight:700;margin-bottom:6px;display:flex;justify-content:space-between;align-items:center;gap:10px}
 pre{white-space:pre-wrap;font:13px/1.5 ui-monospace,Menlo,monospace;color:#d8d6ff;margin:0;max-height:260px;overflow:auto}
 button{background:linear-gradient(135deg,#7B6CFF,#4F3FE0);color:#fff;border:0;border-radius:8px;padding:6px 12px;font:600 12px inherit;cursor:pointer}button.ok{background:#2e7d32}
-.note{color:#9895b8;font-size:12px}</style></head><body><main><h1>StreamMask – Web Mağazası alanları</h1>
-<p class="note">Sırayla: "Kopyala" → konsolda ilgili alana yapıştır (⌘V). Dosya alanları için yolu Finder'da ⌘⇧G ile açabilirsin.</p>
-<h2>MAĞAZA GİRİŞİ (Store listing) sekmesi</h2>
-<div class="f"><div class="t"><span>Başlık (Title)</span><span class="note">bilgi</span></div><pre>Manifest&#x27;ten gelir, değiştirilemez: StreamMask – Hide Personal Info While Streaming</pre></div>
-<div class="f"><div class="t"><span>Özet (Summary)</span><span class="note">bilgi</span></div><pre>Manifest&#x27;ten gelir, değiştirilemez (127 karakter).</pre></div>
-<div class="f"><div class="t"><span>Ayrıntılı açıklama (Description)</span><button data-copy>Kopyala</button></div><pre>StreamMask, canlı yayın yapan ve ekranını paylaşan herkes için hazırlanmış bir gizlilik kalkanıdır. Açık olan sayfada kişisel bilgi sayılan her şeyi bulur ve ***** ile perdeler; sen yayına odaklanırsın.
+.note{color:#9895b8;font-size:12px}</style></head><body><main><h1>StreamMask – Chrome Web Store fields</h1>
+<p class="note">In order: "Copy" → paste into the matching console field (⌘V). For file fields, press ⌘⇧G in the file dialog and paste the path.</p>
+<h2>STORE LISTING tab</h2>
+<div class="f"><div class="t"><span>Title / Summary</span><span class="note">info</span></div><pre>Come from the manifest, not editable.</pre></div>
+<div class="f"><div class="t"><span>Description</span><button data-copy>Copy</button></div><pre>StreamMask is a privacy shield for anyone who streams or shares their screen. It finds everything on the open page that counts as personal information and covers it with *****, so you can focus on the stream.
 
-NE PERDELER?
-• Telefon numaraları (Türk ve uluslararası formatlar)
-• E-posta adresleri
-• TC Kimlik numaraları (sağlama doğrulamalı, yanlış alarm vermez)
-• IBAN&#x27;lar
-• Kredi/banka kartı numaraları (Luhn doğrulamalı)
-• IP adresleri
-• Senin eklediğin özel kelimeler: adın, soyadın, adresin, kullanıcı adın…
+WHAT IT MASKS
+• Phone numbers (local and international formats)
+• E-mail addresses
+• Turkish national ID numbers (checksum-validated, no false alarms)
+• IBANs
+• Credit/debit card numbers (Luhn-validated)
+• IP addresses
+• Your own custom words: name, street, username…
 
-NASIL ÇALIŞIR?
-• Sayfa açılır açılmaz tarama yapılır; bilgiler ekrana yansımadan perdelenir.
-• Sohbet, bildirim, sonsuz kaydırma gibi sonradan gelen içerikler de anında perdelenir.
-• Form alanlarında (telefon, e-posta ya da içinde özel bilgi olan kutular) metin nokta nokta görünür, yazmaya devam edebilirsin.
-• Rozet, sayfada kaç maske uygulandığını gösterir.
-• Kapatınca orijinal metin sayfa yenilemeden geri gelir.
-• Kısayollar: Alt+Shift+M maskeleme, Alt+Shift+Y Yayın Modu.
-• İstediğin siteyi tek tıkla hariç tutabilirsin.
+HOW IT WORKS
+• The page is scanned the moment it opens, so nothing flashes on screen.
+• Chat, notifications, infinite scroll and other dynamic content are masked as they appear.
+• Phone/e-mail inputs and any field containing personal info are shown as dots while you keep typing normally.
+• The badge shows how many items are masked on the page.
+• Turn it off and the original text comes back without reloading.
+• Shortcuts: Alt+Shift+M masking, Alt+Shift+Y Stream Mode.
+• Exclude any site with one click.
 
-YAYIN MODU
-Adres çubuğuna bir şey yazarken daha önce girdiğin siteler ve bağlantılar öneri olarak çıkmaz. Geçmişin silinmez: Yayın Modu açılınca geçmiş eklentinin kendi deposuna yedeklenir ve Chrome&#x27;un öneri listesinden kaldırılır; arama önerileri ile adres/kart otomatik doldurma da kapanır. Yayın bitip modu kapattığında tüm adresler geçmişe geri yüklenir, yayın sırasında gezdiğin siteler de korunur.
+STREAM MODE
+While you type in the address bar, sites and links you visited before don&#x27;t appear as suggestions. Your history is not deleted: when Stream Mode turns on, the history is backed up inside the extension and removed from Chrome&#x27;s suggestion list; search suggestions and address/card autofill are switched off too. When the stream ends and you turn the mode off, every URL is restored to history and the sites you visited during the stream are kept.
 
-GİZLİLİK
-StreamMask hiçbir veriyi dışarı göndermez, hesap istemez, analitik kullanmaz. Tüm işlem tarayıcının içinde olur; ayarların yalnızca bu cihazda saklanır, Google ile bile eşitlenmez.
+PRIVACY
+StreamMask sends nothing anywhere, needs no account and uses no analytics. Everything happens inside the browser; settings are stored only on this device and are not even synced with Google.
 
-BİLİNEN SINIRLAR
-• Geri yüklenen geçmişte ziyaret tarihleri &quot;şimdi&quot; olarak görünür (Chrome API kısıtı).
-• Yer imleri adres çubuğunda önerilmeye devam eder.
-• Adres çubuğundaki URL&#x27;nin kendisi ve tarayıcı arayüzü perdelenemez.</pre></div>
-<div class="f"><div class="t"><span>Kategori (Category)</span><button data-copy>Kopyala</button></div><pre>Productivity / Üretkenlik</pre></div>
-<div class="f"><div class="t"><span>Dil (Language)</span><button data-copy>Kopyala</button></div><pre>Türkçe</pre></div>
-<div class="f"><div class="t"><span>Mağaza ikonu (Store icon) – dosya</span><button data-copy>Kopyala</button></div><pre>/Users/kursad/ClaudeYoutube/streammask/store/out/icon128.png</pre></div>
-<div class="f"><div class="t"><span>Ekran görüntüleri (Screenshots) – dosyalar</span><button data-copy>Kopyala</button></div><pre>/Users/kursad/ClaudeYoutube/streammask/store/out/screenshot-1.png
+KNOWN LIMITS
+• Restored history entries show &quot;now&quot; as their visit time (Chrome API limitation).
+• Bookmarks are still suggested in the address bar.
+• The URL in the address bar and the browser UI itself cannot be masked.</pre></div>
+<div class="f"><div class="t"><span>Category</span><button data-copy>Copy</button></div><pre>Productivity</pre></div>
+<div class="f"><div class="t"><span>Language</span><button data-copy>Copy</button></div><pre>English</pre></div>
+<div class="f"><div class="t"><span>Store icon – file</span><button data-copy>Copy</button></div><pre>/Users/kursad/ClaudeYoutube/streammask/store/out/icon128.png</pre></div>
+<div class="f"><div class="t"><span>Screenshots – files (1280×800)</span><button data-copy>Copy</button></div><pre>/Users/kursad/ClaudeYoutube/streammask/store/out/screenshot-1.png
 /Users/kursad/ClaudeYoutube/streammask/store/out/screenshot-2.png
 /Users/kursad/ClaudeYoutube/streammask/store/out/screenshot-3.png</pre></div>
-<div class="f"><div class="t"><span>Küçük promo (Small promo tile 440×280) – dosya</span><button data-copy>Kopyala</button></div><pre>/Users/kursad/ClaudeYoutube/streammask/store/out/promo-440x280.png</pre></div>
-<div class="f"><div class="t"><span>Marquee (1400×560) – dosya</span><button data-copy>Kopyala</button></div><pre>/Users/kursad/ClaudeYoutube/streammask/store/out/marquee-1400x560.png</pre></div>
-<div class="f"><div class="t"><span>Ana sayfa URL&#x27;si (Homepage URL)</span><button data-copy>Kopyala</button></div><pre>https://kursaderen.github.io/streammask/</pre></div>
-<div class="f"><div class="t"><span>Destek URL&#x27;si (Support URL)</span><button data-copy>Kopyala</button></div><pre>https://github.com/KursadEren/streammask/issues</pre></div>
-<h2>GİZLİLİK (Privacy) sekmesi</h2>
-<div class="f"><div class="t"><span>Tek amaç (Single purpose)</span><button data-copy>Kopyala</button></div><pre>Ekran paylaşan/yayın yapan kullanıcıların kişisel bilgilerinin (telefon, e-posta, kimlik, banka ve IP bilgileri, kullanıcının eklediği kelimeler) web sayfalarında ve tarayıcı adres çubuğu önerilerinde görünmesini engellemek.</pre></div>
-<div class="f"><div class="t"><span>İzin gerekçesi: activeTab</span><button data-copy>Kopyala</button></div><pre>Popup açıldığında geçerli sekmenin alan adını göstermek ve o sekmede maskeleme durumunu (maske sayısı) sorgulamak için.</pre></div>
-<div class="f"><div class="t"><span>İzin gerekçesi: history</span><button data-copy>Kopyala</button></div><pre>Yayın Modu&#x27;nun temel işlevi: kullanıcı popup&#x27;taki anahtarla açıkça başlattığında tarama geçmişini okuyup cihaz üzerinde yedeklemek, adres çubuğu önerilerinden kaldırmak ve mod kapatıldığında geçmişi geri eklemek. Geçmiş hiçbir yere gönderilmez.</pre></div>
-<div class="f"><div class="t"><span>İzin gerekçesi: privacy</span><button data-copy>Kopyala</button></div><pre>Yayın Modu açıkken arama önerileri ile adres/kart otomatik doldurmayı geçici olarak kapatmak (kişisel bilgilerin açılır listelerde görünmesini önlemek için). Mod kapanınca önceki değerler geri yüklenir.</pre></div>
-<div class="f"><div class="t"><span>İzin gerekçesi: storage</span><button data-copy>Kopyala</button></div><pre>Kullanıcı ayarlarını (kategori seçimleri, ek kelimeler, hariç tutulan siteler) ve Yayın Modu&#x27;nun geçici geçmiş yedeğini yalnızca cihaz üzerinde (chrome.storage.local) saklamak için.</pre></div>
-<div class="f"><div class="t"><span>İzin gerekçesi: tabs</span><button data-copy>Kopyala</button></div><pre>Rozet sayacını sekme bazında güncellemek ve popup&#x27;ta aktif sekmenin alan adını göstererek &#x27;bu siteyi hariç tut&#x27; seçeneğini sunmak için.</pre></div>
-<div class="f"><div class="t"><span>İzin gerekçesi: unlimitedStorage</span><button data-copy>Kopyala</button></div><pre>Yayın Modu kullanıcının tüm tarama geçmişini geçici olarak yedekler; büyük geçmişlerde varsayılan depolama sınırı yetmez.</pre></div>
-<div class="f"><div class="t"><span>Host permissions (&lt;all_urls&gt;) gerekçesi</span><button data-copy>Kopyala</button></div><pre>Kişisel bilgiler herhangi bir sitede görünebileceği için maskeleme tüm sayfalarda çalışmalıdır. İçerik betiği yalnızca sayfa metnini yerinde ***** ile değiştirir; hiçbir içerik okunup saklanmaz veya dışarı gönderilmez.</pre></div>
-<div class="f"><div class="t"><span>Uzak kod (Remote code)</span><button data-copy>Kopyala</button></div><pre>Hayır, uzak kod kullanmıyorum. (No, I am not using remote code.)</pre></div>
-<div class="f"><div class="t"><span>Veri kullanımı (Data usage)</span><span class="note">bilgi</span></div><pre>Hiçbir kutuyu işaretleme: kişisel veri toplanmıyor.
-Üç onay kutusunu işaretle: (1) veriyi onaylanmış kullanım dışında satmıyorum/aktarmıyorum, (2) tek amaç dışında kullanmıyorum, (3) kredibilite/kredi amacıyla kullanmıyorum.</pre></div>
-<div class="f"><div class="t"><span>Gizlilik politikası URL&#x27;si (Privacy policy URL)</span><button data-copy>Kopyala</button></div><pre>https://kursaderen.github.io/streammask/privacy.html</pre></div>
-<h2>DAĞITIM (Distribution) sekmesi</h2>
-<div class="f"><div class="t"><span>Görünürlük / Bölgeler</span><span class="note">bilgi</span></div><pre>Görünürlük: Herkese açık (Public). Bölgeler: Tüm bölgeler. Ödeme: Ücretsiz.</pre></div>
-<script>document.querySelectorAll('[data-copy]').forEach(b=>b.addEventListener('click',async()=>{const t=b.closest('.f').querySelector('pre').textContent;try{await navigator.clipboard.writeText(t)}catch(e){const ta=document.createElement('textarea');ta.value=t;document.body.appendChild(ta);ta.select();document.execCommand('copy');ta.remove()}b.textContent='Kopyalandı ✓';b.classList.add('ok');setTimeout(()=>{b.textContent='Kopyala';b.classList.remove('ok')},1500)}))</script></main></body></html>
+<div class="f"><div class="t"><span>Small promo tile (440×280) – file</span><button data-copy>Copy</button></div><pre>/Users/kursad/ClaudeYoutube/streammask/store/out/promo-440x280.png</pre></div>
+<div class="f"><div class="t"><span>Marquee promo tile (1400×560) – file</span><button data-copy>Copy</button></div><pre>/Users/kursad/ClaudeYoutube/streammask/store/out/marquee-1400x560.png</pre></div>
+<div class="f"><div class="t"><span>Homepage URL</span><button data-copy>Copy</button></div><pre>https://kursaderen.github.io/streammask/</pre></div>
+<div class="f"><div class="t"><span>Support URL</span><button data-copy>Copy</button></div><pre>https://github.com/KursadEren/streammask/issues</pre></div>
+<h2>PRIVACY tab</h2>
+<div class="f"><div class="t"><span>Single purpose</span><button data-copy>Copy</button></div><pre>Prevent the personal information of users who stream or share their screen (phone, e-mail, ID, bank and IP details, user-added words) from appearing on web pages and in the browser&#x27;s address-bar suggestions.</pre></div>
+<div class="f"><div class="t"><span>Permission justification: activeTab</span><button data-copy>Copy</button></div><pre>interact with the current tab when the popup opens.</pre></div>
+<div class="f"><div class="t"><span>Permission justification: history</span><button data-copy>Copy</button></div><pre>the core of Stream Mode: read and back up history, remove it from suggestions, and re-add it when the mode is turned off. The user explicitly starts this with the toggle in the popup. History is never sent anywhere.</pre></div>
+<div class="f"><div class="t"><span>Permission justification: privacy</span><button data-copy>Copy</button></div><pre>while Stream Mode is on, temporarily turn off search suggestions and address/card autofill (so personal data does not appear in dropdowns); previous values are restored when the mode is turned off.</pre></div>
+<div class="f"><div class="t"><span>Permission justification: storage</span><button data-copy>Copy</button></div><pre>user settings (category choices, custom words, excluded sites) and Stream Mode&#x27;s temporary history backup are stored only on the device (chrome.storage.local).</pre></div>
+<div class="f"><div class="t"><span>Permission justification: tabs</span><button data-copy>Copy</button></div><pre>update the badge counter per tab and show the active tab&#x27;s hostname in the popup (&quot;exclude this site&quot;).</pre></div>
+<div class="f"><div class="t"><span>Permission justification: unlimitedStorage</span><button data-copy>Copy</button></div><pre>Stream Mode temporarily backs up the user&#x27;s entire browsing history; the default storage quota is not enough for large histories.</pre></div>
+<div class="f"><div class="t"><span>Host permissions justification</span><button data-copy>Copy</button></div><pre>personal information can appear on any site, so masking must run on every page. The script only replaces page text in place with *****; no content is read out, stored or transmitted.</pre></div>
+<div class="f"><div class="t"><span>Remote code</span><button data-copy>Copy</button></div><pre>No, I am not using remote code.</pre></div>
+<div class="f"><div class="t"><span>Data usage</span><span class="note">info</span></div><pre>Tick NO data types (nothing is collected).
+Tick all three certifications: (1) not sold/transferred outside approved use cases, (2) not used for unrelated purposes, (3) not used for creditworthiness/lending.</pre></div>
+<div class="f"><div class="t"><span>Privacy policy URL (Account page)</span><button data-copy>Copy</button></div><pre>https://kursaderen.github.io/streammask/privacy.html</pre></div>
+<h2>DISTRIBUTION tab</h2>
+<div class="f"><div class="t"><span>Visibility / Regions / Payment</span><span class="note">info</span></div><pre>Public · All regions · Free</pre></div>
+<h2>PACKAGE tab</h2>
+<div class="f"><div class="t"><span>New package (v1.0.1, English UI) – file</span><button data-copy>Copy</button></div><pre>/Users/kursad/ClaudeYoutube/streammask/store/streammask-1.0.1.zip</pre></div>
+<script>document.querySelectorAll('[data-copy]').forEach(b=>b.addEventListener('click',async()=>{const t=b.closest('.f').querySelector('pre').textContent;try{await navigator.clipboard.writeText(t)}catch(e){const ta=document.createElement('textarea');ta.value=t;document.body.appendChild(ta);ta.select();document.execCommand('copy');ta.remove()}b.textContent='Copied ✓';b.classList.add('ok');setTimeout(()=>{b.textContent='Copy';b.classList.remove('ok')},1500)}))</script></main></body></html>

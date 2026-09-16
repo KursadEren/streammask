@@ -1,77 +1,78 @@
-# Chrome Web Store – Mağaza Girişi (StreamMask)
+# Chrome Web Store – Listing (StreamMask)
 
-## Ad
+## Name
 StreamMask – Hide Personal Info While Streaming
 
-## Kısa özet (132 karakter sınırı)
-Yayında kişisel bilgin ekrana düşmesin: telefon, e-posta, TC, IBAN, kart ve IP anında ***** olur. Yayın Modu geçmiş önerilerini gizler.
+## Summary (from manifest, max 132 chars)
+For streamers: auto-masks phone numbers, e-mails, IDs, IBANs, cards and IPs with *****. Stream Mode hides history suggestions.
 
-## Kategori
-Üretkenlik (Productivity) — alternatif: Gizlilik ve Güvenlik
+## Category
+Productivity (alternative: Privacy & Security)
 
-## Dil
-Türkçe
+## Language
+English
 
-## Ayrıntılı açıklama
-StreamMask, canlı yayın yapan ve ekranını paylaşan herkes için hazırlanmış bir gizlilik kalkanıdır. Açık olan sayfada kişisel bilgi sayılan her şeyi bulur ve ***** ile perdeler; sen yayına odaklanırsın.
+## Detailed description
+StreamMask is a privacy shield for anyone who streams or shares their screen. It finds everything on the open page that counts as personal information and covers it with *****, so you can focus on the stream.
 
-NE PERDELER?
-• Telefon numaraları (Türk ve uluslararası formatlar)
-• E-posta adresleri
-• TC Kimlik numaraları (sağlama doğrulamalı, yanlış alarm vermez)
-• IBAN'lar
-• Kredi/banka kartı numaraları (Luhn doğrulamalı)
-• IP adresleri
-• Senin eklediğin özel kelimeler: adın, soyadın, adresin, kullanıcı adın…
+WHAT IT MASKS
+• Phone numbers (local and international formats)
+• E-mail addresses
+• Turkish national ID numbers (checksum-validated, no false alarms)
+• IBANs
+• Credit/debit card numbers (Luhn-validated)
+• IP addresses
+• Your own custom words: name, street, username…
 
-NASIL ÇALIŞIR?
-• Sayfa açılır açılmaz tarama yapılır; bilgiler ekrana yansımadan perdelenir.
-• Sohbet, bildirim, sonsuz kaydırma gibi sonradan gelen içerikler de anında perdelenir.
-• Form alanlarında (telefon, e-posta ya da içinde özel bilgi olan kutular) metin nokta nokta görünür, yazmaya devam edebilirsin.
-• Rozet, sayfada kaç maske uygulandığını gösterir.
-• Kapatınca orijinal metin sayfa yenilemeden geri gelir.
-• Kısayollar: Alt+Shift+M maskeleme, Alt+Shift+Y Yayın Modu.
-• İstediğin siteyi tek tıkla hariç tutabilirsin.
+HOW IT WORKS
+• The page is scanned the moment it opens, so nothing flashes on screen.
+• Chat, notifications, infinite scroll and other dynamic content are masked as they appear.
+• Phone/e-mail inputs and any field containing personal info are shown as dots while you keep typing normally.
+• The badge shows how many items are masked on the page.
+• Turn it off and the original text comes back without reloading.
+• Shortcuts: Alt+Shift+M masking, Alt+Shift+Y Stream Mode.
+• Exclude any site with one click.
 
-YAYIN MODU
-Adres çubuğuna bir şey yazarken daha önce girdiğin siteler ve bağlantılar öneri olarak çıkmaz. Geçmişin silinmez: Yayın Modu açılınca geçmiş eklentinin kendi deposuna yedeklenir ve Chrome'un öneri listesinden kaldırılır; arama önerileri ile adres/kart otomatik doldurma da kapanır. Yayın bitip modu kapattığında tüm adresler geçmişe geri yüklenir, yayın sırasında gezdiğin siteler de korunur.
+STREAM MODE
+While you type in the address bar, sites and links you visited before don't appear as suggestions. Your history is not deleted: when Stream Mode turns on, the history is backed up inside the extension and removed from Chrome's suggestion list; search suggestions and address/card autofill are switched off too. When the stream ends and you turn the mode off, every URL is restored to history and the sites you visited during the stream are kept.
 
-GİZLİLİK
-StreamMask hiçbir veriyi dışarı göndermez, hesap istemez, analitik kullanmaz. Tüm işlem tarayıcının içinde olur; ayarların yalnızca bu cihazda saklanır, Google ile bile eşitlenmez.
+PRIVACY
+StreamMask sends nothing anywhere, needs no account and uses no analytics. Everything happens inside the browser; settings are stored only on this device and are not even synced with Google.
 
-BİLİNEN SINIRLAR
-• Geri yüklenen geçmişte ziyaret tarihleri "şimdi" olarak görünür (Chrome API kısıtı).
-• Yer imleri adres çubuğunda önerilmeye devam eder.
-• Adres çubuğundaki URL'nin kendisi ve tarayıcı arayüzü perdelenemez.
+KNOWN LIMITS
+• Restored history entries show "now" as their visit time (Chrome API limitation).
+• Bookmarks are still suggested in the address bar.
+• The URL in the address bar and the browser UI itself cannot be masked.
 
-## Tek amaç (Single purpose) açıklaması
-Ekran paylaşan/yayın yapan kullanıcıların kişisel bilgilerinin (telefon, e-posta, kimlik, banka ve IP bilgileri, özel kelimeler) web sayfalarında ve tarayıcı önerilerinde görünmesini engellemek.
+## Single purpose
+Prevent the personal information of users who stream or share their screen (phone, e-mail, ID, bank and IP details, user-added words) from appearing on web pages and in the browser's address-bar suggestions.
 
-## İzin gerekçeleri (Permission justifications)
-- **Host permissions (<all_urls>) / content script:** Kişisel bilgiler herhangi bir sitede görünebileceği için maskeleme tüm sayfalarda çalışmalıdır. Betik yalnızca sayfa metnini yerinde değiştirir; hiçbir veri okunup dışarı gönderilmez.
-- **storage:** Kullanıcı ayarları (kategori seçimleri, ek kelimeler, hariç tutulan siteler) ve Yayın Modu'nun geçmiş yedeği yalnızca cihaz üzerinde (chrome.storage.local) saklanır.
-- **unlimitedStorage:** Yayın Modu, kullanıcının tüm tarama geçmişini geçici olarak yedekler; büyük geçmişlerde 5 MB varsayılan sınır yetmez.
-- **history:** Yayın Modu'nun temel işlevi: geçmişi okuyup yedeklemek, öneri listesinden kaldırmak ve mod kapanınca geri eklemek. Kullanıcı bu işlemi popup'taki anahtarla açıkça başlatır.
-- **privacy:** Yayın Modu açıkken arama önerileri ile adres/kart otomatik doldurmayı geçici olarak kapatır (kişisel bilgilerin açılır listelerde görünmesini önlemek için); mod kapanınca önceki değerler geri yüklenir.
-- **tabs:** Popup'ın aktif sekmenin alan adını göstermesi ("bu siteyi hariç tut") ve rozet sayacını sekme bazında güncellemek için.
-- **activeTab:** Popup açıldığında geçerli sekmeyle etkileşim için.
-- **Uzak kod kullanımı:** Yok. Tüm kod paket içindedir.
+## Permission justifications
+- **Host permissions (<all_urls>) / content script:** personal information can appear on any site, so masking must run on every page. The script only replaces page text in place with *****; no content is read out, stored or transmitted.
+- **storage:** user settings (category choices, custom words, excluded sites) and Stream Mode's temporary history backup are stored only on the device (chrome.storage.local).
+- **unlimitedStorage:** Stream Mode temporarily backs up the user's entire browsing history; the default storage quota is not enough for large histories.
+- **history:** the core of Stream Mode: read and back up history, remove it from suggestions, and re-add it when the mode is turned off. The user explicitly starts this with the toggle in the popup. History is never sent anywhere.
+- **privacy:** while Stream Mode is on, temporarily turn off search suggestions and address/card autofill (so personal data does not appear in dropdowns); previous values are restored when the mode is turned off.
+- **tabs:** update the badge counter per tab and show the active tab's hostname in the popup ("exclude this site").
+- **activeTab:** interact with the current tab when the popup opens.
+- **Remote code:** none. All code is in the package.
 
-## Veri kullanımı beyanı (Privacy practices)
-- Kişisel veri toplanmaz, iletilmez, satılmaz.
-- Web sitesi içeriği yalnızca cihaz üzerinde, yerinde değiştirmek için işlenir; saklanmaz.
-- Tarama geçmişi yalnızca kullanıcı Yayın Modu'nu açtığında, cihaz üzerinde, geri yüklemek amacıyla saklanır.
-- Kullanıcı ayarları chrome.storage.local'da, yalnızca cihaz üzerinde tutulur.
-- Ek kelime kutusu telefon/kart/IBAN/e-posta benzeri girdiyi reddeder; bu bilgiler hiçbir zaman eklentiye kaydedilmez.
+## Data usage
+- No personal data is collected, transmitted or sold.
+- Website content is processed only on the device to replace text in place; it is not stored.
+- Browsing history is stored only on the device, only while Stream Mode is on, solely to restore it.
+- Settings are kept in chrome.storage.local on the device only.
+- The custom word box rejects phone/card/IBAN/e-mail-like input; such data is never saved by the extension.
+- Certifications: (1) not sold or transferred outside approved use cases, (2) not used for purposes unrelated to the single purpose, (3) not used for creditworthiness or lending.
 
-## Gizlilik politikası
+## Privacy policy URL
 https://kursaderen.github.io/streammask/privacy.html (GitHub Pages, repo: https://github.com/KursadEren/streammask)
 
-## Ana sayfa / destek URL
+## Homepage / support URL
 - Homepage: https://kursaderen.github.io/streammask/
 - Support: https://github.com/KursadEren/streammask/issues
 
-## Görseller (store/out)
+## Images (store/out)
 - icon128.png → Store icon (128×128)
 - screenshot-1.png, screenshot-2.png, screenshot-3.png → Screenshots (1280×800)
 - promo-440x280.png → Small promo tile

@@ -6,8 +6,8 @@ const DEFAULTS = {
   whitelist: []
 };
 const CATS = [
-  ['phone', '📵', 'Telefon'], ['email', '✉️', 'E-posta'], ['tckn', '🪪', 'TC Kimlik'],
-  ['iban', '🏦', 'IBAN'], ['card', '💳', 'Kart'], ['ip', '🌐', 'IP'], ['custom', '✏️', 'Ek kelime']
+  ['phone', '📵', 'Phone'], ['email', '✉️', 'E-mail'], ['tckn', '🪪', 'Turkish ID'],
+  ['iban', '🏦', 'IBAN'], ['card', '💳', 'Card'], ['ip', '🌐', 'IP'], ['custom', '✏️', 'Custom']
 ];
 let settings = structuredClone(DEFAULTS);
 let tab = null, host = '';
@@ -29,7 +29,7 @@ function isExcluded() { return !!host && settings.whitelist.some(w => host === w
 function render() {
   $('enabled').checked = settings.enabled;
   $('hero').classList.toggle('off', !settings.enabled);
-  $('stateText').textContent = settings.enabled ? (isExcluded() ? 'Bu sitede kapalı' : 'Koruma açık') : 'Koruma kapalı';
+  $('stateText').textContent = settings.enabled ? (isExcluded() ? 'Off on this site' : 'Protection on') : 'Protection off';
   document.querySelectorAll('#cats input').forEach(cb => { cb.checked = !!settings.categories[cb.dataset.cat]; });
   // ek kelimeler
   const box = $('wordbox'), input = $('wordInput');
@@ -38,14 +38,14 @@ function render() {
     const el = document.createElement('span');
     el.className = 'word';
     el.textContent = w;
-    const x = document.createElement('button'); x.textContent = '×'; x.title = 'Kaldır';
+    const x = document.createElement('button'); x.textContent = '×'; x.title = 'Remove';
     x.addEventListener('click', e => { e.stopPropagation(); settings.customWords.splice(i, 1); save(); render(); });
     el.appendChild(x);
     box.insertBefore(el, input);
   });
   $('siteRow').hidden = !host;
   $('host').textContent = host;
-  $('exclude').textContent = isExcluded() ? 'Tekrar dahil et' : 'Hariç tut';
+  $('exclude').textContent = isExcluded() ? 'Include again' : 'Exclude';
 }
 
 function renderChips(by, total) {
@@ -60,9 +60,9 @@ function renderChips(by, total) {
     if (!settings.categories[key]) el.style.opacity = '.4';
     c.appendChild(el);
   }
-  $('stateSub').textContent = !settings.enabled ? 'Sayfa olduğu gibi görünüyor'
-    : isExcluded() ? 'Bu site istisna listesinde'
-    : total ? `Bu sayfada ${total} bilgi maskelendi` : 'Bu sayfada kişisel bilgi bulunmadı';
+  $('stateSub').textContent = !settings.enabled ? 'Page is shown as-is'
+    : isExcluded() ? 'This site is excluded'
+    : total ? `${total} item${total === 1 ? '' : 's'} masked on this page` : 'No personal info found on this page';
 }
 
 async function refreshCount() {
@@ -73,7 +73,7 @@ async function refreshCount() {
 
 function fmtSince(ts) {
   const m = Math.max(0, Math.round((Date.now() - ts) / 60000));
-  return m < 60 ? m + ' dk' : Math.floor(m / 60) + ' sa ' + (m % 60) + ' dk';
+  return m < 60 ? m + ' min' : Math.floor(m / 60) + ' h ' + (m % 60) + ' min';
 }
 async function refreshStream() {
   const st = await chrome.runtime.sendMessage({ type: 'getStreamState' }).catch(() => ({ on: false }));
@@ -81,8 +81,8 @@ async function refreshStream() {
   const card = $('streamCard');
   card.classList.toggle('on', !!st.on);
   card.innerHTML = st.on
-    ? `<span class="live"><i></i>YAYINDA</span> · <b>${st.count}</b> geçmiş kaydı güvende, ${fmtSince(st.since)} önce açıldı.<br>Arama önerileri ve otomatik doldurma da kapalı.`
-    : 'Kapalı. Açınca geçmişin eklentiye yedeklenir ve önerilerden kalkar; kapatınca geri gelir. Silinmez.';
+    ? `<span class="live"><i></i>LIVE</span> · <b>${st.count}</b> history entries kept safe, turned on ${fmtSince(st.since)} ago.<br>Search suggestions and autofill are off too.`
+    : 'Off. When on, your history is backed up inside the extension and removed from suggestions; it comes back when you turn it off. Nothing is deleted.';
   $('streamActions').hidden = !st.on;
 }
 async function setStream(on) {
@@ -91,8 +91,8 @@ async function setStream(on) {
   const r = await chrome.runtime.sendMessage({ type: 'setStreamMode', on }).catch(e => ({ ok: false, error: String(e) }));
   document.body.classList.remove('busy');
   const m = $('msg');
-  if (!r || !r.ok) { m.className = 'msg'; m.textContent = 'Hata: ' + (r && r.error || 'bilinmiyor'); m.hidden = false; }
-  else if (!on && typeof r.restored === 'number') { m.className = 'msg ok'; m.textContent = `${r.restored} adres geçmişe geri yüklendi${r.failed ? ', ' + r.failed + ' başarısız' : ''}.`; m.hidden = false; }
+  if (!r || !r.ok) { m.className = 'msg'; m.textContent = 'Error: ' + (r && r.error || 'unknown'); m.hidden = false; }
+  else if (!on && typeof r.restored === 'number') { m.className = 'msg ok'; m.textContent = `${r.restored} URLs restored to history${r.failed ? ', ' + r.failed + ' failed' : ''}.`; m.hidden = false; }
   await refreshStream();
 }
 
@@ -110,7 +110,7 @@ function addWord(raw) {
   if (w.length < 2) return;
   if (LOOKS_SENSITIVE.some(re => re.test(w))) {
     $('wordInput').value = '';
-    warn('Numara, kart, IBAN veya e-posta yazma: bunlar zaten otomatik yakalanır ve buraya kaydedilmez.');
+    warn('Don\'t type numbers, cards, IBANs or e-mails: they are caught automatically and never saved here.');
     return;
   }
   if (!settings.customWords.some(x => x.toLowerCase() === w.toLowerCase())) {
@@ -150,7 +150,7 @@ async function init() {
     const r = await chrome.runtime.sendMessage({ type: 'getBackup' });
     const a = document.createElement('a');
     a.href = URL.createObjectURL(new Blob([JSON.stringify(r.items || [], null, 1)], { type: 'application/json' }));
-    a.download = 'streammask-gecmis-yedek.json'; a.click();
+    a.download = 'streammask-history-backup.json'; a.click();
     setTimeout(() => URL.revokeObjectURL(a.href), 5000);
   });
   chrome.storage.onChanged.addListener((ch, area) => {

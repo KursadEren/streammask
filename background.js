@@ -47,7 +47,7 @@ async function refreshBadgeColor() {
   const st = await chrome.storage.local.get(STREAM_KEY);
   const on = !!(st[STREAM_KEY] && st[STREAM_KEY].on);
   await chrome.action.setBadgeBackgroundColor({ color: on ? '#E53935' : '#6C63FF' });
-  await chrome.action.setTitle({ title: on ? 'StreamMask – YAYIN MODU AÇIK' : 'StreamMask' });
+  await chrome.action.setTitle({ title: on ? 'StreamMask – STREAM MODE ON' : 'StreamMask' });
 }
 chrome.tabs.onRemoved.addListener(tabId => tabCounts.delete(tabId));
 chrome.tabs.onUpdated.addListener((tabId, info) => { if (info.status === 'loading') { tabCounts.delete(tabId); setBadge(tabId); } });
@@ -132,7 +132,7 @@ async function enableStreamMode() {
   await chrome.storage.local.set({ [HISTORY_KEY]: backup });
   const check = await chrome.storage.local.get(HISTORY_KEY);
   if (!Array.isArray(check[HISTORY_KEY]) || check[HISTORY_KEY].length !== backup.length) {
-    throw new Error('Geçmiş yedeği doğrulanamadı, hiçbir şey silinmedi.');
+    throw new Error('History backup could not be verified; nothing was deleted.');
   }
   await chrome.storage.local.set({ [STREAM_KEY]: { on: true, since: Date.now(), count: backup.length, privacyPrev } });
 

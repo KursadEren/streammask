@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="tr">
+<html lang="en">
 <head>
 <meta charset="utf-8">
 <title>StreamMask</title>
@@ -97,52 +97,52 @@
 <div class="hero" id="hero">
   <div class="top">
     <img src="icons/icon48.png" alt="">
-    <div><h1>StreamMask</h1><div class="tag">Yayıncı gizlilik kalkanı</div></div>
+    <div><h1>StreamMask</h1><div class="tag">Privacy shield for streamers</div></div>
   </div>
   <div class="status">
-    <div class="big"><span class="dot"></span><span id="stateText">Koruma açık</span><small id="stateSub">Bu sayfada 0 bilgi perdelendi</small></div>
+    <div class="big"><span class="dot"></span><span id="stateText">Protection on</span><small id="stateSub">0 items masked on this page</small></div>
     <label class="switch"><input type="checkbox" id="enabled"><span></span></label>
   </div>
 </div>
 
 <section>
-  <div class="h"><div><div class="t">Otomatik algılama</div><div class="s">Ayar gerekmez: kişisel bilgiye benzeyen her şey ***** olur</div></div></div>
+  <div class="h"><div><div class="t">Auto-detection</div><div class="s">No setup needed: anything that looks like personal info becomes *****</div></div></div>
   <div class="chips" id="chips"></div>
 </section>
 
 <section>
-  <div class="h"><div><div class="t">Ek olarak maskele</div><div class="s">Adın, adresin, kullanıcı adın… yaz, Enter'a bas</div></div></div>
-  <div class="wordbox" id="wordbox"><input id="wordInput" placeholder="örn. ad soyad, sokak adı, kullanıcı adı"></div>
-  <div class="hint">🔒 Numara, kart, IBAN, e-posta yazma: bunlar otomatik yakalanır. Liste yalnızca bu cihazda tutulur, hiçbir yere gönderilmez.</div>
+  <div class="h"><div><div class="t">Also mask</div><div class="s">Your name, street, username… type and press Enter</div></div></div>
+  <div class="wordbox" id="wordbox"><input id="wordInput" placeholder="e.g. full name, street, username"></div>
+  <div class="hint">🔒 Don't type numbers, cards, IBANs or e-mails: they are caught automatically. This list stays on this device only and is never sent anywhere.</div>
   <div class="msg" id="wordMsg" hidden></div>
 </section>
 
 <section>
   <div class="h">
-    <div><div class="t">Yayın Modu</div><div class="s">Adres çubuğunda geçmiş önerilerini gizler</div></div>
+    <div><div class="t">Stream Mode</div><div class="s">Hides history suggestions in the address bar</div></div>
     <label class="switch red"><input type="checkbox" id="stream"><span></span></label>
   </div>
-  <div class="card" id="streamCard">Kapalı. Açınca geçmişin eklentiye yedeklenir ve önerilerden kalkar; kapatınca geri gelir. Silinmez.</div>
-  <div class="actions" id="streamActions" hidden><button class="btn" id="download">Yedeği indir (JSON)</button></div>
+  <div class="card" id="streamCard">Off. When on, your history is backed up inside the extension and removed from suggestions; it comes back when you turn it off. Nothing is deleted.</div>
+  <div class="actions" id="streamActions" hidden><button class="btn" id="download">Download backup (JSON)</button></div>
   <div class="msg" id="msg" hidden></div>
 </section>
 
 <details>
-  <summary>Gelişmiş: kategoriler ve site istisnası</summary>
+  <summary>Advanced: categories &amp; site exceptions</summary>
   <div class="adv">
     <div class="grid" id="cats">
-      <label><input type="checkbox" data-cat="phone"> Telefon</label>
-      <label><input type="checkbox" data-cat="email"> E-posta</label>
-      <label><input type="checkbox" data-cat="tckn"> TC Kimlik No</label>
+      <label><input type="checkbox" data-cat="phone"> Phone</label>
+      <label><input type="checkbox" data-cat="email"> E-mail</label>
+      <label><input type="checkbox" data-cat="tckn"> Turkish ID (TCKN)</label>
       <label><input type="checkbox" data-cat="iban"> IBAN</label>
-      <label><input type="checkbox" data-cat="card"> Kart numarası</label>
-      <label><input type="checkbox" data-cat="ip"> IP adresi</label>
+      <label><input type="checkbox" data-cat="card"> Card number</label>
+      <label><input type="checkbox" data-cat="ip"> IP address</label>
     </div>
-    <div class="site" id="siteRow" hidden><span>Bu site: <code id="host"></code></span><button class="btn ghost" id="exclude">Hariç tut</button></div>
+    <div class="site" id="siteRow" hidden><span>This site: <code id="host"></code></span><button class="btn ghost" id="exclude">Exclude</button></div>
   </div>
 </details>
 
-<footer><span><span class="kbd">Alt+Shift+M</span> koruma</span><span><span class="kbd">Alt+Shift+Y</span> yayın modu</span></footer>
+<footer><span><span class="kbd">Alt+Shift+M</span> protection</span><span><span class="kbd">Alt+Shift+Y</span> stream mode</span></footer>
 <script src="popup.js"></script>
 </body>
 </html>

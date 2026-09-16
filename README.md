@@ -1,30 +1,25 @@
 # StreamMask – Hide Personal Info While Streaming
 
-Yayıncılar için Chrome eklentisi (Manifest V3).
+Chrome extension (Manifest V3) for streamers and anyone who shares their screen.
 
-## Ne yapar?
-1. **Maskeleme:** Açık sayfadaki telefon, e-posta, TC kimlik no, IBAN, kart numarası, IP adresi
-   ve senin girdiğin özel kelimeleri (ad, adres, kullanıcı adı…) `*****` ile değiştirir.
-   Sohbet, sonsuz kaydırma gibi dinamik içerikler de anında maskelenir. Form alanlarında
-   (tel/e-posta ya da içinde özel bilgi olan input) metin nokta nokta görünür, yazmaya devam edebilirsin.
-2. **Yayın Modu:** Adres çubuğuna yazarken geçmişten site/bağlantı önerisi çıkmaz.
-   Chrome'un "geçmişi gizle" diye bir API'si yok; bu yüzden mod açılınca geçmiş eklentinin
-   kendi deposuna yedeklenir, Chrome geçmişinden kaldırılır ve arama önerisi + adres/kart
-   otomatik doldurma kapatılır. Mod kapanınca yedekteki tüm adresler geçmişe geri eklenir.
-   Yayın sırasında gezdiğin siteler silinmez.
+## What it does
+1. **Masking:** phone numbers, e-mail addresses, Turkish national IDs (checksum-validated), IBANs, card numbers (Luhn-validated), IP addresses and your own custom words (name, street, username…) are replaced with `*****` on the open page. Chat, notifications and infinite-scroll content are masked as they appear. Phone/e-mail inputs and any field containing personal info are shown as dots while you keep typing.
+2. **Stream Mode:** no history suggestions while you type in the address bar. Chrome has no "hide history" API, so the extension backs up your history into its own local storage, removes it from Chrome, and turns off search suggestions and address/card autofill. When you turn the mode off, every URL is restored. Sites visited during the stream are kept.
 
-## Kurulum
-1. Chrome'da `chrome://extensions` aç, sağ üstten **Geliştirici modu**'nu aç.
-2. **Paketlenmemiş öğe yükle** → bu klasörü (`streammask`) seç.
-3. Araç çubuğundan eklentiyi sabitle. Rozet, sayfada kaç maske uygulandığını gösterir.
+## Install (unpacked)
+1. Open `chrome://extensions`, enable **Developer mode**.
+2. **Load unpacked** → select this folder (`streammask`).
+3. Pin the extension. The badge shows how many items are masked on the page.
 
-Kısayollar: `Alt+Shift+M` maskeleme, `Alt+Shift+Y` Yayın Modu (chrome://extensions/shortcuts'tan değiştirilebilir).
+Shortcuts: `Alt+Shift+M` masking, `Alt+Shift+Y` Stream Mode.
 
-## Sınırlar
-- Geri yüklemede adresler ve başlıklar geri gelir ama ziyaret tarihleri "şimdi" olur (Chrome API kısıtı).
-- Yer imleri adres çubuğunda önerilmeye devam eder (eklenti yer imlerine dokunmaz).
-- Yayın Modu açıkken eklentiyi kaldırırsan yedek de gider; önce modu kapat. Popup'tan JSON yedek indirebilirsin.
-- Adres çubuğundaki URL'nin kendisi ve tarayıcı arayüzü maskelenemez; Shadow DOM içindeki metinler taranmaz.
+## Privacy
+No data leaves the browser. Settings are stored only on the device (not synced). The custom word box rejects numbers, cards, IBANs and e-mails. Policy: https://kursaderen.github.io/streammask/privacy.html
 
-## Test
-`test.html` sayfası eklenti olmadan da `content.js`'i yükleyip maskelemeyi gösterir.
+## Limits
+- Restored history entries show "now" as their visit time (Chrome API limitation).
+- Bookmarks are still suggested in the address bar.
+- The URL in the address bar and the browser UI itself cannot be masked; text inside Shadow DOM is not scanned.
+
+## Store assets
+`store/` holds the listing text (`LISTING.md`), the privacy policy and the rendered images in `store/out/`.
