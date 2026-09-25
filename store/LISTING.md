@@ -3,6 +3,9 @@
 ## Name
 StreamMask – Hide Personal Info While Streaming
 
+## Languages
+English (default) + es, ko, tr, pt_BR, de, fr, ja via _locales. Store texts for es/ko: LISTING_es_ko.md
+
 ## Summary (from manifest, max 132 chars)
 For streamers: auto-masks phone numbers, e-mails, IDs, IBANs, cards and IPs with *****. Stream Mode hides history suggestions.
 
@@ -18,7 +21,7 @@ StreamMask is a privacy shield for anyone who streams or shares their screen. It
 WHAT IT MASKS
 • Phone numbers (local and international formats)
 • E-mail addresses
-• Turkish national ID numbers (checksum-validated, no false alarms)
+• ID numbers: Turkish TCKN, Korean resident registration number, Argentine CUIT/CUIL (checksum-validated)
 • IBANs
 • Credit/debit card numbers (Luhn-validated)
 • IP addresses
@@ -34,7 +37,7 @@ HOW IT WORKS
 • Exclude any site with one click.
 
 STREAM MODE
-While you type in the address bar, sites and links you visited before don't appear as suggestions. Your history is not deleted: when Stream Mode turns on, the history is backed up inside the extension and removed from Chrome's suggestion list; search suggestions and address/card autofill are switched off too. When the stream ends and you turn the mode off, every URL is restored to history and the sites you visited during the stream are kept.
+While you type in the address bar, sites and links you visited before don't appear as suggestions. Your history is not deleted: when Stream Mode turns on, the history is backed up inside the extension and removed from Chrome's suggestion list; search suggestions and address/card autofill are switched off too. When the stream ends and you turn the mode off, every URL is restored to history and the sites you visited during the stream are kept. Sites on your block list (bank, e-mail…) have their tabs closed automatically while you are live.
 
 PRIVACY
 StreamMask sends nothing anywhere, needs no account and uses no analytics. Everything happens inside the browser; settings are stored only on this device and are not even synced with Google.

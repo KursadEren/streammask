@@ -1,0 +1,208 @@
+{
+ "appName": {
+  "message": "StreamMask – 配信中に個人情報を隠す"
+ },
+ "appDesc": {
+  "message": "配信者向け：電話番号・メール・ID・IBAN・カード・IPを自動で*****に。配信モードはアドレスバーの履歴候補を隠します。"
+ },
+ "tagline": {
+  "message": "配信者のためのプライバシーシールド"
+ },
+ "protectionOn": {
+  "message": "保護オン"
+ },
+ "protectionOff": {
+  "message": "保護オフ"
+ },
+ "offOnThisSite": {
+  "message": "このサイトではオフ"
+ },
+ "maskedCount": {
+  "message": "このページで$COUNT$件を隠しました",
+  "placeholders": {
+   "COUNT": {
+    "content": "$1"
+   }
+  }
+ },
+ "maskedOne": {
+  "message": "このページで1件を隠しました"
+ },
+ "maskedNone": {
+  "message": "このページに個人情報は見つかりませんでした"
+ },
+ "pageAsIs": {
+  "message": "ページはそのまま表示されています"
+ },
+ "siteExcluded": {
+  "message": "このサイトは除外されています"
+ },
+ "autoTitle": {
+  "message": "自動検出"
+ },
+ "autoSub": {
+  "message": "設定不要：個人情報らしきものはすべて*****になります"
+ },
+ "alsoTitle": {
+  "message": "追加で隠す"
+ },
+ "alsoSub": {
+  "message": "名前、住所、ユーザー名など…入力してEnter"
+ },
+ "wordPlaceholder": {
+  "message": "例：氏名、町名、ユーザー名"
+ },
+ "wordHint": {
+  "message": "🔒 電話番号・カード・IBAN・メールは入力しないでください。自動で検出されます。このリストはこの端末にのみ保存され、送信されません。"
+ },
+ "wordWarn": {
+  "message": "電話番号・カード・IBAN・メールは入力しないでください。自動で検出され、ここには保存されません。"
+ },
+ "streamTitle": {
+  "message": "配信モード"
+ },
+ "streamSub": {
+  "message": "アドレスバーの履歴候補を隠します"
+ },
+ "streamOff": {
+  "message": "オフ。オンにすると履歴が拡張機能内にバックアップされ、候補から消えます。オフにすると戻ります。何も削除されません。"
+ },
+ "streamOn": {
+  "message": "履歴$COUNT$件を保護中、$AGO$前にオン。",
+  "placeholders": {
+   "COUNT": {
+    "content": "$1"
+   },
+   "AGO": {
+    "content": "$2"
+   }
+  }
+ },
+ "streamOn2": {
+  "message": "検索候補と自動入力もオフです。"
+ },
+ "live": {
+  "message": "配信中"
+ },
+ "download": {
+  "message": "バックアップをダウンロード (JSON)"
+ },
+ "advanced": {
+  "message": "詳細：カテゴリとサイトの除外"
+ },
+ "catPhone": {
+  "message": "電話"
+ },
+ "catEmail": {
+  "message": "メール"
+ },
+ "catId": {
+  "message": "ID番号"
+ },
+ "catIban": {
+  "message": "IBAN"
+ },
+ "catCard": {
+  "message": "カード"
+ },
+ "catIp": {
+  "message": "IP"
+ },
+ "catCustom": {
+  "message": "カスタム"
+ },
+ "thisSite": {
+  "message": "このサイト："
+ },
+ "exclude": {
+  "message": "除外"
+ },
+ "includeAgain": {
+  "message": "再び含める"
+ },
+ "remove": {
+  "message": "削除"
+ },
+ "footerProtection": {
+  "message": "保護"
+ },
+ "footerStream": {
+  "message": "配信モード"
+ },
+ "minutes": {
+  "message": "$N$分",
+  "placeholders": {
+   "N": {
+    "content": "$1"
+   }
+  }
+ },
+ "hours": {
+  "message": "$H$時間$M$分",
+  "placeholders": {
+   "H": {
+    "content": "$1"
+   },
+   "M": {
+    "content": "$2"
+   }
+  }
+ },
+ "errorPrefix": {
+  "message": "エラー："
+ },
+ "restored": {
+  "message": "URL $COUNT$件を履歴に復元しました",
+  "placeholders": {
+   "COUNT": {
+    "content": "$1"
+   }
+  }
+ },
+ "restoredFailed": {
+  "message": "$COUNT$件失敗",
+  "placeholders": {
+   "COUNT": {
+    "content": "$1"
+   }
+  }
+ },
+ "unknown": {
+  "message": "不明"
+ },
+ "badgeTitle": {
+  "message": "StreamMask"
+ },
+ "badgeTitleLive": {
+  "message": "StreamMask – 配信モードオン"
+ },
+ "cmdToggleMask": {
+  "message": "マスクの切替"
+ },
+ "cmdToggleStream": {
+  "message": "配信モードの切替"
+ },
+ "blockTitle": {
+  "message": "配信中に閉じるサイト"
+ },
+ "blockSub": {
+  "message": "配信モードをオンにするとこれらのサイトのタブは即座に閉じられ、配信中に開かれても再び閉じられます"
+ },
+ "blockPlaceholder": {
+  "message": "例：mybank.jp, mail.google.com"
+ },
+ "blockClosed": {
+  "message": "タブ$COUNT$件を閉じました",
+  "placeholders": {
+   "COUNT": {
+    "content": "$1"
+   }
+  }
+ },
+ "blockedPageTitle": {
+  "message": "StreamMaskが閉じました"
+ },
+ "blockedPageText": {
+  "message": "このサイトは配信モードのブロックリストにあります。開くには配信モードをオフにしてください。"
+ }
+}

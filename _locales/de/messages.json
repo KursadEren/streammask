@@ -1,0 +1,208 @@
+{
+ "appName": {
+  "message": "StreamMask – Persönliche Daten beim Streamen verbergen"
+ },
+ "appDesc": {
+  "message": "Für Streamer: Telefonnummern, E-Mails, Ausweisnummern, IBAN, Karten und IPs werden zu *****. Stream-Modus versteckt den Verlauf."
+ },
+ "tagline": {
+  "message": "Privatsphäre-Schutz für Streamer"
+ },
+ "protectionOn": {
+  "message": "Schutz aktiv"
+ },
+ "protectionOff": {
+  "message": "Schutz aus"
+ },
+ "offOnThisSite": {
+  "message": "Auf dieser Seite aus"
+ },
+ "maskedCount": {
+  "message": "$COUNT$ Angaben auf dieser Seite maskiert",
+  "placeholders": {
+   "COUNT": {
+    "content": "$1"
+   }
+  }
+ },
+ "maskedOne": {
+  "message": "1 Angabe auf dieser Seite maskiert"
+ },
+ "maskedNone": {
+  "message": "Keine persönlichen Daten auf dieser Seite gefunden"
+ },
+ "pageAsIs": {
+  "message": "Seite wird unverändert angezeigt"
+ },
+ "siteExcluded": {
+  "message": "Diese Seite ist ausgenommen"
+ },
+ "autoTitle": {
+  "message": "Automatische Erkennung"
+ },
+ "autoSub": {
+  "message": "Keine Einrichtung nötig: alles, was nach persönlichen Daten aussieht, wird zu *****"
+ },
+ "alsoTitle": {
+  "message": "Zusätzlich maskieren"
+ },
+ "alsoSub": {
+  "message": "Dein Name, deine Straße, dein Nutzername… eingeben und Enter drücken"
+ },
+ "wordPlaceholder": {
+  "message": "z. B. vollständiger Name, Straße, Nutzername"
+ },
+ "wordHint": {
+  "message": "🔒 Keine Nummern, Karten, IBAN oder E-Mails eingeben: die werden automatisch erkannt. Diese Liste bleibt nur auf diesem Gerät und wird nie gesendet."
+ },
+ "wordWarn": {
+  "message": "Keine Nummern, Karten, IBAN oder E-Mails eingeben: die werden automatisch erkannt und hier nie gespeichert."
+ },
+ "streamTitle": {
+  "message": "Stream-Modus"
+ },
+ "streamSub": {
+  "message": "Versteckt Verlaufsvorschläge in der Adressleiste"
+ },
+ "streamOff": {
+  "message": "Aus. Beim Einschalten wird dein Verlauf in der Erweiterung gesichert und aus den Vorschlägen entfernt; beim Ausschalten kommt er zurück. Nichts wird gelöscht."
+ },
+ "streamOn": {
+  "message": "$COUNT$ Verlaufseinträge gesichert, vor $AGO$ eingeschaltet.",
+  "placeholders": {
+   "COUNT": {
+    "content": "$1"
+   },
+   "AGO": {
+    "content": "$2"
+   }
+  }
+ },
+ "streamOn2": {
+  "message": "Suchvorschläge und AutoFill sind ebenfalls aus."
+ },
+ "live": {
+  "message": "LIVE"
+ },
+ "download": {
+  "message": "Sicherung herunterladen (JSON)"
+ },
+ "advanced": {
+  "message": "Erweitert: Kategorien & Seiten-Ausnahmen"
+ },
+ "catPhone": {
+  "message": "Telefon"
+ },
+ "catEmail": {
+  "message": "E-Mail"
+ },
+ "catId": {
+  "message": "Ausweisnummer"
+ },
+ "catIban": {
+  "message": "IBAN"
+ },
+ "catCard": {
+  "message": "Karte"
+ },
+ "catIp": {
+  "message": "IP"
+ },
+ "catCustom": {
+  "message": "Eigene"
+ },
+ "thisSite": {
+  "message": "Diese Seite:"
+ },
+ "exclude": {
+  "message": "Ausnehmen"
+ },
+ "includeAgain": {
+  "message": "Wieder einbeziehen"
+ },
+ "remove": {
+  "message": "Entfernen"
+ },
+ "footerProtection": {
+  "message": "Schutz"
+ },
+ "footerStream": {
+  "message": "Stream-Modus"
+ },
+ "minutes": {
+  "message": "$N$ Min.",
+  "placeholders": {
+   "N": {
+    "content": "$1"
+   }
+  }
+ },
+ "hours": {
+  "message": "$H$ Std. $M$ Min.",
+  "placeholders": {
+   "H": {
+    "content": "$1"
+   },
+   "M": {
+    "content": "$2"
+   }
+  }
+ },
+ "errorPrefix": {
+  "message": "Fehler:"
+ },
+ "restored": {
+  "message": "$COUNT$ URLs in den Verlauf zurückgeschrieben",
+  "placeholders": {
+   "COUNT": {
+    "content": "$1"
+   }
+  }
+ },
+ "restoredFailed": {
+  "message": "$COUNT$ fehlgeschlagen",
+  "placeholders": {
+   "COUNT": {
+    "content": "$1"
+   }
+  }
+ },
+ "unknown": {
+  "message": "unbekannt"
+ },
+ "badgeTitle": {
+  "message": "StreamMask"
+ },
+ "badgeTitleLive": {
+  "message": "StreamMask – STREAM-MODUS AN"
+ },
+ "cmdToggleMask": {
+  "message": "Maskierung ein/aus"
+ },
+ "cmdToggleStream": {
+  "message": "Stream-Modus ein/aus"
+ },
+ "blockTitle": {
+  "message": "Diese Seiten im Stream schließen"
+ },
+ "blockSub": {
+  "message": "Tabs mit diesen Seiten werden beim Einschalten des Stream-Modus sofort geschlossen, und erneut, falls sie während des Streams geöffnet werden"
+ },
+ "blockPlaceholder": {
+  "message": "z. B. meinebank.de, mail.google.com"
+ },
+ "blockClosed": {
+  "message": "$COUNT$ Tabs geschlossen",
+  "placeholders": {
+   "COUNT": {
+    "content": "$1"
+   }
+  }
+ },
+ "blockedPageTitle": {
+  "message": "Von StreamMask geschlossen"
+ },
+ "blockedPageText": {
+  "message": "Diese Seite steht auf deiner Stream-Modus-Sperrliste. Schalte den Stream-Modus aus, um sie zu öffnen."
+ }
+}

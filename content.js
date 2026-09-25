@@ -11,7 +11,7 @@
   const MASK = '*****';
   const DEFAULTS = {
     enabled: true,
-    categories: { phone: true, email: true, tckn: true, iban: true, card: true, ip: true, custom: true },
+    categories: { phone: true, email: true, id: true, iban: true, card: true, ip: true, custom: true },
     customWords: [],
     whitelist: []
   };
@@ -46,9 +46,26 @@
   }
   function phoneDigits(s) {
     const d = s.replace(/\D/g, '');
-    if (d.length < 10 || d.length > 13) return false;
-    // 4 haneli yıl + 6 hane gibi tarih/sipariş kombinasyonlarını ele: TR numaraları 0/5/+90 ile başlar
-    return /^(90|0|5|\+)/.test(s.replace(/[\s().-]/g, '')) || s.startsWith('+') || d.length >= 11;
+    const seps = (s.match(/[ .\-()]/g) || []).length;
+    if (d.length < 9 || d.length > 13) return false;
+    if (/^(?:19|20)\d{2}[-./]\d{1,2}[-./]\d{1,2}/.test(s)) return false;   // tarih (+saat): 2026-09-25 08:57
+    if (/^\d{1,2}[-./]\d{1,2}[-./](?:19|20)\d{2}/.test(s)) return false;   // 25.09.2026 14:30
+    if (/^\d+(?:\.\d+){2,}$/.test(s)) return false;                        // sürüm no: 2.1.0.4567
+    if (d.length === 9) return seps >= 2;                       // ES/AR kısa yazımlar: 612 345 678, 11 2345-6789
+    // TR/KR/AR: 0/5/+ ile başlar, ya da ayraçlı yazılmış, ya da 11+ hane
+    return /^(90|0|5|\+)/.test(s.replace(/[\s().-]/g, '')) || s.startsWith('+') || seps >= 2 || d.length >= 11;
+  }
+  function krRrn(s) {                       // 주민등록번호: YYMMDD-GNNNNNN, tarih kısmı geçerli olmalı
+    const mm = +s.slice(2, 4), dd = +s.slice(4, 6);
+    return mm >= 1 && mm <= 12 && dd >= 1 && dd <= 31;
+  }
+  function arCuit(s) {                      // CUIT/CUIL: XX-XXXXXXXX-X, mod 11
+    const d = s.replace(/\D/g, '');
+    if (d.length !== 11) return false;
+    const w = [5, 4, 3, 2, 7, 6, 5, 4, 3, 2];
+    const sum = w.reduce((a, wi, i) => a + wi * +d[i], 0);
+    let c = 11 - (sum % 11); if (c === 11) c = 0; if (c === 10) return false;
+    return c === +d[10];
   }
   function ipv4(s) {
     return s.split('.').every(p => +p <= 255) && s !== '0.0.0.0';
@@ -61,8 +78,12 @@
     if (c.email) p.push({ name: 'email', re: /[\w.+-]+@[\w-]+(?:\.[\w-]+)+/g });
     if (c.iban)  p.push({ name: 'iban',  re: /\b[A-Z]{2}\d{2}(?:[ ]?[A-Z0-9]{4}){3,7}(?:[ ]?[A-Z0-9]{1,4})?\b/g });
     if (c.card)  p.push({ name: 'card',  re: /\b(?:\d{4}[ -]?){3}\d{4}\b/g, check: luhn });
-    if (c.tckn)  p.push({ name: 'tckn',  re: /\b[1-9]\d{10}\b/g, check: tckn });
-    if (c.phone) p.push({ name: 'phone', re: /(?<!\d)(?:\+?\d{1,3}[ .-]?)?\(?0?\d{3}\)?[ .-]?\d{3}[ .-]?\d{2}[ .-]?\d{2}(?!\d)/g, check: phoneDigits });
+    if (c.id) {
+      p.push({ name: 'id', re: /\b[1-9]\d{10}\b/g, check: tckn });                                  // TR kimlik
+      p.push({ name: 'id', re: /\b\d{6}-[1-8]\d{6}\b/g, check: krRrn });                          // KR 주민등록번호
+      p.push({ name: 'id', re: /\b(?:20|23|24|27|30|33|34)-?\d{8}-?\d\b/g, check: arCuit });      // AR CUIT/CUIL
+    }
+    if (c.phone) p.push({ name: 'phone', re: /(?<!\d|\d[.,:])\+?\(?\d{1,4}\)?(?:[ .-]?\(?\d{1,4}\)?){2,6}(?!\d|[.,:]\d)/g, check: phoneDigits });
     if (c.ip)    p.push({ name: 'ip',    re: /\b(?:\d{1,3}\.){3}\d{1,3}\b/g, check: ipv4 });
     const words = (settings.customWords || []).map(w => String(w).trim()).filter(w => w.length >= 2);
     if (c.custom && words.length) {
@@ -253,6 +274,7 @@
     if (stored && typeof stored === 'object') {
       if (typeof stored.enabled === 'boolean') s.enabled = stored.enabled;
       if (stored.categories) Object.assign(s.categories, stored.categories);
+      if (stored.categories && typeof stored.categories.id !== 'boolean' && typeof stored.categories.tckn === 'boolean') s.categories.id = stored.categories.tckn;
       if (Array.isArray(stored.customWords)) s.customWords = stored.customWords;
       if (Array.isArray(stored.whitelist)) s.whitelist = stored.whitelist;
     }

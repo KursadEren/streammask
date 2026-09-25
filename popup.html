@@ -97,7 +97,7 @@
 <div class="hero" id="hero">
   <div class="top">
     <img src="icons/icon48.png" alt="">
-    <div><h1>StreamMask</h1><div class="tag">Privacy shield for streamers</div></div>
+    <div><h1>StreamMask</h1><div class="tag" data-i18n="tagline">Privacy shield for streamers</div></div>
   </div>
   <div class="status">
     <div class="big"><span class="dot"></span><span id="stateText">Protection on</span><small id="stateSub">0 items masked on this page</small></div>
@@ -106,43 +106,45 @@
 </div>
 
 <section>
-  <div class="h"><div><div class="t">Auto-detection</div><div class="s">No setup needed: anything that looks like personal info becomes *****</div></div></div>
+  <div class="h"><div><div class="t" data-i18n="autoTitle">Auto-detection</div><div class="s" data-i18n="autoSub">No setup needed: anything that looks like personal info becomes *****</div></div></div>
   <div class="chips" id="chips"></div>
 </section>
 
 <section>
-  <div class="h"><div><div class="t">Also mask</div><div class="s">Your name, street, username… type and press Enter</div></div></div>
-  <div class="wordbox" id="wordbox"><input id="wordInput" placeholder="e.g. full name, street, username"></div>
-  <div class="hint">🔒 Don't type numbers, cards, IBANs or e-mails: they are caught automatically. This list stays on this device only and is never sent anywhere.</div>
+  <div class="h"><div><div class="t" data-i18n="alsoTitle">Also mask</div><div class="s" data-i18n="alsoSub">Your name, street, username… type and press Enter</div></div></div>
+  <div class="wordbox" id="wordbox"><input id="wordInput" data-i18n-placeholder="wordPlaceholder" placeholder="e.g. full name, street, username"></div>
+  <div class="hint" data-i18n="wordHint">🔒 Don't type numbers, cards, IBANs or e-mails: they are caught automatically. This list stays on this device only and is never sent anywhere.</div>
   <div class="msg" id="wordMsg" hidden></div>
 </section>
 
 <section>
   <div class="h">
-    <div><div class="t">Stream Mode</div><div class="s">Hides history suggestions in the address bar</div></div>
+    <div><div class="t" data-i18n="streamTitle">Stream Mode</div><div class="s" data-i18n="streamSub">Hides history suggestions in the address bar</div></div>
     <label class="switch red"><input type="checkbox" id="stream"><span></span></label>
   </div>
   <div class="card" id="streamCard">Off. When on, your history is backed up inside the extension and removed from suggestions; it comes back when you turn it off. Nothing is deleted.</div>
-  <div class="actions" id="streamActions" hidden><button class="btn" id="download">Download backup (JSON)</button></div>
+  <div class="actions" id="streamActions" hidden><button class="btn" id="download" data-i18n="download">Download backup (JSON)</button></div>
+  <div class="h" style="margin-top:12px"><div><div class="t" data-i18n="blockTitle">Close these sites while live</div><div class="s" data-i18n="blockSub">Tabs with these sites are closed the moment Stream Mode turns on, and again if they open during the stream</div></div></div>
+  <div class="wordbox" id="blockbox"><input id="blockInput" data-i18n-placeholder="blockPlaceholder" placeholder="e.g. mybank.com, mail.google.com"></div>
   <div class="msg" id="msg" hidden></div>
 </section>
 
 <details>
-  <summary>Advanced: categories &amp; site exceptions</summary>
+  <summary data-i18n="advanced">Advanced: categories &amp; site exceptions</summary>
   <div class="adv">
     <div class="grid" id="cats">
-      <label><input type="checkbox" data-cat="phone"> Phone</label>
-      <label><input type="checkbox" data-cat="email"> E-mail</label>
-      <label><input type="checkbox" data-cat="tckn"> Turkish ID (TCKN)</label>
-      <label><input type="checkbox" data-cat="iban"> IBAN</label>
-      <label><input type="checkbox" data-cat="card"> Card number</label>
-      <label><input type="checkbox" data-cat="ip"> IP address</label>
+      <label><input type="checkbox" data-cat="phone"> <span data-i18n="catPhone">Phone</span></label>
+      <label><input type="checkbox" data-cat="email"> <span data-i18n="catEmail">E-mail</span></label>
+      <label><input type="checkbox" data-cat="id"> <span data-i18n="catId">ID number</span></label>
+      <label><input type="checkbox" data-cat="iban"> <span data-i18n="catIban">IBAN</span></label>
+      <label><input type="checkbox" data-cat="card"> <span data-i18n="catCard">Card</span></label>
+      <label><input type="checkbox" data-cat="ip"> <span data-i18n="catIp">IP</span></label>
     </div>
-    <div class="site" id="siteRow" hidden><span>This site: <code id="host"></code></span><button class="btn ghost" id="exclude">Exclude</button></div>
+    <div class="site" id="siteRow" hidden><span><span data-i18n="thisSite">This site:</span> <code id="host"></code></span><button class="btn ghost" id="exclude">Exclude</button></div>
   </div>
 </details>
 
-<footer><span><span class="kbd">Alt+Shift+M</span> protection</span><span><span class="kbd">Alt+Shift+Y</span> stream mode</span></footer>
+<footer><span><span class="kbd">Alt+Shift+M</span> <span data-i18n="footerProtection">protection</span></span><span><span class="kbd">Alt+Shift+Y</span> <span data-i18n="footerStream">stream mode</span></span></footer>
 <script src="popup.js"></script>
 </body>
 </html>

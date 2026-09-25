@@ -1,0 +1,208 @@
+{
+ "appName": {
+  "message": "StreamMask – 방송 중 개인정보 가리기"
+ },
+ "appDesc": {
+  "message": "스트리머용: 전화번호, 이메일, 주민번호, IBAN, 카드, IP를 자동으로 *****로 가립니다. 방송 모드는 주소창 기록 추천을 숨깁니다."
+ },
+ "tagline": {
+  "message": "스트리머를 위한 개인정보 보호막"
+ },
+ "protectionOn": {
+  "message": "보호 켜짐"
+ },
+ "protectionOff": {
+  "message": "보호 꺼짐"
+ },
+ "offOnThisSite": {
+  "message": "이 사이트에서는 꺼짐"
+ },
+ "maskedCount": {
+  "message": "이 페이지에서 $COUNT$개 가려짐",
+  "placeholders": {
+   "COUNT": {
+    "content": "$1"
+   }
+  }
+ },
+ "maskedOne": {
+  "message": "이 페이지에서 1개 가려짐"
+ },
+ "maskedNone": {
+  "message": "이 페이지에서 개인정보를 찾지 못했습니다"
+ },
+ "pageAsIs": {
+  "message": "페이지가 원래대로 표시됩니다"
+ },
+ "siteExcluded": {
+  "message": "이 사이트는 제외되어 있습니다"
+ },
+ "autoTitle": {
+  "message": "자동 감지"
+ },
+ "autoSub": {
+  "message": "설정 불필요: 개인정보처럼 보이는 모든 것이 *****로 바뀝니다"
+ },
+ "alsoTitle": {
+  "message": "추가로 가리기"
+ },
+ "alsoSub": {
+  "message": "이름, 주소, 아이디… 입력 후 Enter"
+ },
+ "wordPlaceholder": {
+  "message": "예: 이름, 도로명, 아이디"
+ },
+ "wordHint": {
+  "message": "🔒 전화번호·카드·IBAN·이메일은 입력하지 마세요. 자동으로 감지됩니다. 이 목록은 이 기기에만 저장되며 어디에도 전송되지 않습니다."
+ },
+ "wordWarn": {
+  "message": "전화번호·카드·IBAN·이메일은 입력하지 마세요. 자동으로 감지되며 여기에 저장되지 않습니다."
+ },
+ "streamTitle": {
+  "message": "방송 모드"
+ },
+ "streamSub": {
+  "message": "주소창의 방문 기록 추천을 숨깁니다"
+ },
+ "streamOff": {
+  "message": "꺼짐. 켜면 방문 기록이 확장 프로그램 안에 백업되고 추천에서 사라집니다. 끄면 다시 돌아옵니다. 아무것도 삭제되지 않습니다."
+ },
+ "streamOn": {
+  "message": "기록 $COUNT$개 안전하게 보관 중, $AGO$ 전에 켜짐.",
+  "placeholders": {
+   "COUNT": {
+    "content": "$1"
+   },
+   "AGO": {
+    "content": "$2"
+   }
+  }
+ },
+ "streamOn2": {
+  "message": "검색 추천과 자동 완성도 꺼져 있습니다."
+ },
+ "live": {
+  "message": "방송 중"
+ },
+ "download": {
+  "message": "백업 다운로드 (JSON)"
+ },
+ "advanced": {
+  "message": "고급: 카테고리 및 사이트 예외"
+ },
+ "catPhone": {
+  "message": "전화번호"
+ },
+ "catEmail": {
+  "message": "이메일"
+ },
+ "catId": {
+  "message": "주민번호"
+ },
+ "catIban": {
+  "message": "IBAN"
+ },
+ "catCard": {
+  "message": "카드"
+ },
+ "catIp": {
+  "message": "IP"
+ },
+ "catCustom": {
+  "message": "사용자 지정"
+ },
+ "thisSite": {
+  "message": "이 사이트:"
+ },
+ "exclude": {
+  "message": "제외"
+ },
+ "includeAgain": {
+  "message": "다시 포함"
+ },
+ "remove": {
+  "message": "삭제"
+ },
+ "footerProtection": {
+  "message": "보호"
+ },
+ "footerStream": {
+  "message": "방송 모드"
+ },
+ "minutes": {
+  "message": "$N$분",
+  "placeholders": {
+   "N": {
+    "content": "$1"
+   }
+  }
+ },
+ "hours": {
+  "message": "$H$시간 $M$분",
+  "placeholders": {
+   "H": {
+    "content": "$1"
+   },
+   "M": {
+    "content": "$2"
+   }
+  }
+ },
+ "errorPrefix": {
+  "message": "오류:"
+ },
+ "restored": {
+  "message": "URL $COUNT$개를 기록에 복원했습니다",
+  "placeholders": {
+   "COUNT": {
+    "content": "$1"
+   }
+  }
+ },
+ "restoredFailed": {
+  "message": "$COUNT$개 실패",
+  "placeholders": {
+   "COUNT": {
+    "content": "$1"
+   }
+  }
+ },
+ "unknown": {
+  "message": "알 수 없음"
+ },
+ "badgeTitle": {
+  "message": "StreamMask"
+ },
+ "badgeTitleLive": {
+  "message": "StreamMask – 방송 모드 켜짐"
+ },
+ "cmdToggleMask": {
+  "message": "가리기 켜기/끄기"
+ },
+ "cmdToggleStream": {
+  "message": "방송 모드 켜기/끄기"
+ },
+ "blockTitle": {
+  "message": "방송 중 닫을 사이트"
+ },
+ "blockSub": {
+  "message": "방송 모드를 켜면 이 사이트의 탭이 즉시 닫히고, 방송 중 다시 열려도 닫힙니다"
+ },
+ "blockPlaceholder": {
+  "message": "예: mybank.com, mail.google.com"
+ },
+ "blockClosed": {
+  "message": "탭 $COUNT$개 닫힘",
+  "placeholders": {
+   "COUNT": {
+    "content": "$1"
+   }
+  }
+ },
+ "blockedPageTitle": {
+  "message": "StreamMask가 닫았습니다"
+ },
+ "blockedPageText": {
+  "message": "이 사이트는 방송 모드 차단 목록에 있습니다. 열려면 방송 모드를 끄세요."
+ }
+}

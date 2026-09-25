@@ -1,0 +1,208 @@
+{
+ "appName": {
+  "message": "StreamMask – Hide Personal Info While Streaming"
+ },
+ "appDesc": {
+  "message": "For streamers: auto-masks phone numbers, e-mails, IDs, IBANs, cards and IPs with *****. Stream Mode hides history suggestions."
+ },
+ "tagline": {
+  "message": "Privacy shield for streamers"
+ },
+ "protectionOn": {
+  "message": "Protection on"
+ },
+ "protectionOff": {
+  "message": "Protection off"
+ },
+ "offOnThisSite": {
+  "message": "Off on this site"
+ },
+ "maskedCount": {
+  "message": "$COUNT$ items masked on this page",
+  "placeholders": {
+   "COUNT": {
+    "content": "$1"
+   }
+  }
+ },
+ "maskedOne": {
+  "message": "1 item masked on this page"
+ },
+ "maskedNone": {
+  "message": "No personal info found on this page"
+ },
+ "pageAsIs": {
+  "message": "Page is shown as-is"
+ },
+ "siteExcluded": {
+  "message": "This site is excluded"
+ },
+ "autoTitle": {
+  "message": "Auto-detection"
+ },
+ "autoSub": {
+  "message": "No setup needed: anything that looks like personal info becomes *****"
+ },
+ "alsoTitle": {
+  "message": "Also mask"
+ },
+ "alsoSub": {
+  "message": "Your name, street, username… type and press Enter"
+ },
+ "wordPlaceholder": {
+  "message": "e.g. full name, street, username"
+ },
+ "wordHint": {
+  "message": "🔒 Don't type numbers, cards, IBANs or e-mails: they are caught automatically. This list stays on this device only and is never sent anywhere."
+ },
+ "wordWarn": {
+  "message": "Don't type numbers, cards, IBANs or e-mails: they are caught automatically and never saved here."
+ },
+ "streamTitle": {
+  "message": "Stream Mode"
+ },
+ "streamSub": {
+  "message": "Hides history suggestions in the address bar"
+ },
+ "streamOff": {
+  "message": "Off. When on, your history is backed up inside the extension and removed from suggestions; it comes back when you turn it off. Nothing is deleted."
+ },
+ "streamOn": {
+  "message": "$COUNT$ history entries kept safe, turned on $AGO$ ago.",
+  "placeholders": {
+   "COUNT": {
+    "content": "$1"
+   },
+   "AGO": {
+    "content": "$2"
+   }
+  }
+ },
+ "streamOn2": {
+  "message": "Search suggestions and autofill are off too."
+ },
+ "live": {
+  "message": "LIVE"
+ },
+ "download": {
+  "message": "Download backup (JSON)"
+ },
+ "advanced": {
+  "message": "Advanced: categories & site exceptions"
+ },
+ "catPhone": {
+  "message": "Phone"
+ },
+ "catEmail": {
+  "message": "E-mail"
+ },
+ "catId": {
+  "message": "ID number"
+ },
+ "catIban": {
+  "message": "IBAN"
+ },
+ "catCard": {
+  "message": "Card"
+ },
+ "catIp": {
+  "message": "IP"
+ },
+ "catCustom": {
+  "message": "Custom"
+ },
+ "thisSite": {
+  "message": "This site:"
+ },
+ "exclude": {
+  "message": "Exclude"
+ },
+ "includeAgain": {
+  "message": "Include again"
+ },
+ "remove": {
+  "message": "Remove"
+ },
+ "footerProtection": {
+  "message": "protection"
+ },
+ "footerStream": {
+  "message": "stream mode"
+ },
+ "minutes": {
+  "message": "$N$ min",
+  "placeholders": {
+   "N": {
+    "content": "$1"
+   }
+  }
+ },
+ "hours": {
+  "message": "$H$ h $M$ min",
+  "placeholders": {
+   "H": {
+    "content": "$1"
+   },
+   "M": {
+    "content": "$2"
+   }
+  }
+ },
+ "errorPrefix": {
+  "message": "Error:"
+ },
+ "restored": {
+  "message": "$COUNT$ URLs restored to history",
+  "placeholders": {
+   "COUNT": {
+    "content": "$1"
+   }
+  }
+ },
+ "restoredFailed": {
+  "message": "$COUNT$ failed",
+  "placeholders": {
+   "COUNT": {
+    "content": "$1"
+   }
+  }
+ },
+ "unknown": {
+  "message": "unknown"
+ },
+ "badgeTitle": {
+  "message": "StreamMask"
+ },
+ "badgeTitleLive": {
+  "message": "StreamMask – STREAM MODE ON"
+ },
+ "cmdToggleMask": {
+  "message": "Toggle masking"
+ },
+ "cmdToggleStream": {
+  "message": "Toggle Stream Mode"
+ },
+ "blockTitle": {
+  "message": "Close these sites while live"
+ },
+ "blockSub": {
+  "message": "Tabs with these sites are closed the moment Stream Mode turns on, and again if they open during the stream"
+ },
+ "blockPlaceholder": {
+  "message": "e.g. mybank.com, mail.google.com"
+ },
+ "blockClosed": {
+  "message": "$COUNT$ tabs closed",
+  "placeholders": {
+   "COUNT": {
+    "content": "$1"
+   }
+  }
+ },
+ "blockedPageTitle": {
+  "message": "Closed by StreamMask"
+ },
+ "blockedPageText": {
+  "message": "This site is on your Stream Mode block list. Turn Stream Mode off to open it."
+ }
+}

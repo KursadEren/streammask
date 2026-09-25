@@ -6,10 +6,12 @@
  */
 const DEFAULT_SETTINGS = {
   enabled: true,
-  categories: { phone: true, email: true, tckn: true, iban: true, card: true, ip: true, custom: true },
+  categories: { phone: true, email: true, id: true, iban: true, card: true, ip: true, custom: true },
   customWords: [],
-  whitelist: []
+  whitelist: [],
+  blockedSites: []
 };
+const t = (k, ...subs) => chrome.i18n.getMessage(k, subs.map(String)) || k;
 const HISTORY_KEY = 'yk_history_backup';
 const STREAM_KEY = 'yk_stream';
 const PRIVACY_KEYS = ['searchSuggestEnabled', 'autofillAddressEnabled', 'autofillCreditCardEnabled'];
@@ -47,7 +49,7 @@ async function refreshBadgeColor() {
   const st = await chrome.storage.local.get(STREAM_KEY);
   const on = !!(st[STREAM_KEY] && st[STREAM_KEY].on);
   await chrome.action.setBadgeBackgroundColor({ color: on ? '#E53935' : '#6C63FF' });
-  await chrome.action.setTitle({ title: on ? 'StreamMask – STREAM MODE ON' : 'StreamMask' });
+  await chrome.action.setTitle({ title: on ? t('badgeTitleLive') : t('badgeTitle') });
 }
 chrome.tabs.onRemoved.addListener(tabId => tabCounts.delete(tabId));
 chrome.tabs.onUpdated.addListener((tabId, info) => { if (info.status === 'loading') { tabCounts.delete(tabId); setBadge(tabId); } });
@@ -94,8 +96,48 @@ chrome.commands.onCommand.addListener(async cmd => {
 async function getStreamState() {
   const st = await chrome.storage.local.get(STREAM_KEY);
   const s = st[STREAM_KEY];
-  return s && s.on ? { on: true, since: s.since, count: s.count } : { on: false };
+  return s && s.on ? { on: true, since: s.since, count: s.count, closed: s.closed || 0 } : { on: false };
 }
+
+/* ---------- engelli siteler: yayında sekmeleri kapat ---------- */
+async function blockedHosts() {
+  const st = await chrome.storage.local.get('settings');
+  return (st.settings && Array.isArray(st.settings.blockedSites)) ? st.settings.blockedSites : [];
+}
+function hostMatches(url, hosts) {
+  let h = '';
+  try { h = new URL(url).hostname.toLowerCase().replace(/^www\./, ''); } catch (e) { return false; }
+  return hosts.some(b => h === b || h.endsWith('.' + b));
+}
+async function closeBlockedTab(tab) {
+  const inWindow = await chrome.tabs.query({ windowId: tab.windowId });
+  if (inWindow.length <= 1) {
+    // pencerenin son sekmesi: kapatmak pencereyi kapatır, onun yerine engel sayfasına yönlendir
+    await chrome.tabs.update(tab.id, { url: chrome.runtime.getURL('blocked.html') }).catch(() => {});
+  } else {
+    await chrome.tabs.remove(tab.id).catch(() => {});
+  }
+}
+async function closeBlockedTabsNow() {
+  const hosts = await blockedHosts();
+  if (!hosts.length) return 0;
+  const tabs = await chrome.tabs.query({});
+  let n = 0;
+  for (const tab of tabs) if (tab.url && hostMatches(tab.url, hosts)) { await closeBlockedTab(tab); n++; }
+  return n;
+}
+chrome.tabs.onUpdated.addListener(async (tabId, info, tab) => {
+  const url = info.url || (info.status === 'loading' ? tab.url : null);
+  if (!url) return;
+  const st = await chrome.storage.local.get(STREAM_KEY);
+  if (!(st[STREAM_KEY] && st[STREAM_KEY].on)) return;
+  const hosts = await blockedHosts();
+  if (hostMatches(url, hosts)) {
+    await closeBlockedTab(tab);
+    const s = st[STREAM_KEY]; s.closed = (s.closed || 0) + 1;
+    await chrome.storage.local.set({ [STREAM_KEY]: s });
+  }
+});
 
 async function snapshotPrivacy() {
   const prev = {};
@@ -134,7 +176,8 @@ async function enableStreamMode() {
   if (!Array.isArray(check[HISTORY_KEY]) || check[HISTORY_KEY].length !== backup.length) {
     throw new Error('History backup could not be verified; nothing was deleted.');
   }
-  await chrome.storage.local.set({ [STREAM_KEY]: { on: true, since: Date.now(), count: backup.length, privacyPrev } });
+  const closed = await closeBlockedTabsNow();
+  await chrome.storage.local.set({ [STREAM_KEY]: { on: true, since: Date.now(), count: backup.length, privacyPrev, closed } });
 
   await chrome.history.deleteAll();
   await setPrivacy(privacyPrev, true);

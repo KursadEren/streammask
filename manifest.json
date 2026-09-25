@@ -1,8 +1,8 @@
 {
   "manifest_version": 3,
-  "name": "StreamMask – Hide Personal Info While Streaming",
-  "description": "For streamers: auto-masks phone numbers, e-mails, IDs, IBANs, cards and IPs with *****. Stream Mode hides history suggestions.",
-  "version": "1.0.1",
+  "name": "__MSG_appName__",
+  "description": "__MSG_appDesc__",
+  "version": "1.1.0",
   "icons": {
     "16": "icons/icon16.png",
     "32": "icons/icon32.png",
@@ -21,7 +21,7 @@
     "service_worker": "background.js"
   },
   "action": {
-    "default_title": "StreamMask",
+    "default_title": "__MSG_badgeTitle__",
     "default_popup": "popup.html",
     "default_icon": {
       "16": "icons/icon16.png",
@@ -47,14 +47,25 @@
       "suggested_key": {
         "default": "Alt+Shift+M"
       },
-      "description": "Toggle masking"
+      "description": "__MSG_cmdToggleMask__"
     },
     "toggle-stream": {
       "suggested_key": {
         "default": "Alt+Shift+Y"
       },
-      "description": "Toggle Stream Mode"
+      "description": "__MSG_cmdToggleStream__"
     }
   },
-  "short_name": "StreamMask"
+  "short_name": "StreamMask",
+  "default_locale": "en",
+  "web_accessible_resources": [
+    {
+      "resources": [
+        "blocked.html"
+      ],
+      "matches": [
+        "<all_urls>"
+      ]
+    }
+  ]
 }

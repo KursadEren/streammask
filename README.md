@@ -3,7 +3,7 @@
 Chrome extension (Manifest V3) for streamers and anyone who shares their screen.
 
 ## What it does
-1. **Masking:** phone numbers, e-mail addresses, Turkish national IDs (checksum-validated), IBANs, card numbers (Luhn-validated), IP addresses and your own custom words (name, street, username…) are replaced with `*****` on the open page. Chat, notifications and infinite-scroll content are masked as they appear. Phone/e-mail inputs and any field containing personal info are shown as dots while you keep typing.
+1. **Masking:** phone numbers, e-mail addresses, ID numbers (Turkish TCKN, Korean RRN, Argentine CUIT/CUIL, checksum-validated), IBANs, card numbers (Luhn-validated), IP addresses and your own custom words (name, street, username…) are replaced with `*****` on the open page. Chat, notifications and infinite-scroll content are masked as they appear. Phone/e-mail inputs and any field containing personal info are shown as dots while you keep typing.
 2. **Stream Mode:** no history suggestions while you type in the address bar. Chrome has no "hide history" API, so the extension backs up your history into its own local storage, removes it from Chrome, and turns off search suggestions and address/card autofill. When you turn the mode off, every URL is restored. Sites visited during the stream are kept.
 
 ## Install (unpacked)
@@ -12,6 +12,12 @@ Chrome extension (Manifest V3) for streamers and anyone who shares their screen.
 3. Pin the extension. The badge shows how many items are masked on the page.
 
 Shortcuts: `Alt+Shift+M` masking, `Alt+Shift+Y` Stream Mode.
+
+## Languages
+English (default), Turkish, Spanish, Korean, Portuguese (BR), German, French, Japanese. The UI follows Chrome's language.
+
+## Block list (Stream Mode)
+Add sites (bank, e-mail, DMs…) under "Close these sites while live". Their tabs are closed the moment Stream Mode turns on, and again if one opens during the stream. If it is the last tab of a window it is redirected to a blocked page instead of closing the window.
 
 ## Privacy
 No data leaves the browser. Settings are stored only on the device (not synced). The custom word box rejects numbers, cards, IBANs and e-mails. Policy: https://kursaderen.github.io/streammask/privacy.html

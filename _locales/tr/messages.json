@@ -1,0 +1,208 @@
+{
+ "appName": {
+  "message": "StreamMask – Yayında Kişisel Bilgileri Gizle"
+ },
+ "appDesc": {
+  "message": "Yayıncılar için: telefon, e-posta, kimlik, IBAN, kart ve IP bilgilerini otomatik ***** yapar. Yayın Modu geçmiş önerilerini gizler."
+ },
+ "tagline": {
+  "message": "Yayıncılar için gizlilik kalkanı"
+ },
+ "protectionOn": {
+  "message": "Koruma açık"
+ },
+ "protectionOff": {
+  "message": "Koruma kapalı"
+ },
+ "offOnThisSite": {
+  "message": "Bu sitede kapalı"
+ },
+ "maskedCount": {
+  "message": "Bu sayfada $COUNT$ bilgi maskelendi",
+  "placeholders": {
+   "COUNT": {
+    "content": "$1"
+   }
+  }
+ },
+ "maskedOne": {
+  "message": "Bu sayfada 1 bilgi maskelendi"
+ },
+ "maskedNone": {
+  "message": "Bu sayfada kişisel bilgi bulunmadı"
+ },
+ "pageAsIs": {
+  "message": "Sayfa olduğu gibi görünüyor"
+ },
+ "siteExcluded": {
+  "message": "Bu site istisna listesinde"
+ },
+ "autoTitle": {
+  "message": "Otomatik algılama"
+ },
+ "autoSub": {
+  "message": "Ayar gerekmez: kişisel bilgiye benzeyen her şey ***** olur"
+ },
+ "alsoTitle": {
+  "message": "Ek olarak maskele"
+ },
+ "alsoSub": {
+  "message": "Adın, adresin, kullanıcı adın… yaz, Enter'a bas"
+ },
+ "wordPlaceholder": {
+  "message": "örn. ad soyad, sokak adı, kullanıcı adı"
+ },
+ "wordHint": {
+  "message": "🔒 Numara, kart, IBAN, e-posta yazma: bunlar otomatik yakalanır. Liste yalnızca bu cihazda tutulur, hiçbir yere gönderilmez."
+ },
+ "wordWarn": {
+  "message": "Numara, kart, IBAN veya e-posta yazma: bunlar zaten otomatik yakalanır ve buraya kaydedilmez."
+ },
+ "streamTitle": {
+  "message": "Yayın Modu"
+ },
+ "streamSub": {
+  "message": "Adres çubuğunda geçmiş önerilerini gizler"
+ },
+ "streamOff": {
+  "message": "Kapalı. Açınca geçmişin eklentiye yedeklenir ve önerilerden kalkar; kapatınca geri gelir. Hiçbir şey silinmez."
+ },
+ "streamOn": {
+  "message": "$COUNT$ geçmiş kaydı güvende, $AGO$ önce açıldı.",
+  "placeholders": {
+   "COUNT": {
+    "content": "$1"
+   },
+   "AGO": {
+    "content": "$2"
+   }
+  }
+ },
+ "streamOn2": {
+  "message": "Arama önerileri ve otomatik doldurma da kapalı."
+ },
+ "live": {
+  "message": "YAYINDA"
+ },
+ "download": {
+  "message": "Yedeği indir (JSON)"
+ },
+ "advanced": {
+  "message": "Gelişmiş: kategoriler ve site istisnaları"
+ },
+ "catPhone": {
+  "message": "Telefon"
+ },
+ "catEmail": {
+  "message": "E-posta"
+ },
+ "catId": {
+  "message": "Kimlik no"
+ },
+ "catIban": {
+  "message": "IBAN"
+ },
+ "catCard": {
+  "message": "Kart"
+ },
+ "catIp": {
+  "message": "IP"
+ },
+ "catCustom": {
+  "message": "Özel"
+ },
+ "thisSite": {
+  "message": "Bu site:"
+ },
+ "exclude": {
+  "message": "Hariç tut"
+ },
+ "includeAgain": {
+  "message": "Tekrar dahil et"
+ },
+ "remove": {
+  "message": "Kaldır"
+ },
+ "footerProtection": {
+  "message": "koruma"
+ },
+ "footerStream": {
+  "message": "yayın modu"
+ },
+ "minutes": {
+  "message": "$N$ dk",
+  "placeholders": {
+   "N": {
+    "content": "$1"
+   }
+  }
+ },
+ "hours": {
+  "message": "$H$ sa $M$ dk",
+  "placeholders": {
+   "H": {
+    "content": "$1"
+   },
+   "M": {
+    "content": "$2"
+   }
+  }
+ },
+ "errorPrefix": {
+  "message": "Hata:"
+ },
+ "restored": {
+  "message": "$COUNT$ adres geçmişe geri yüklendi",
+  "placeholders": {
+   "COUNT": {
+    "content": "$1"
+   }
+  }
+ },
+ "restoredFailed": {
+  "message": "$COUNT$ başarısız",
+  "placeholders": {
+   "COUNT": {
+    "content": "$1"
+   }
+  }
+ },
+ "unknown": {
+  "message": "bilinmiyor"
+ },
+ "badgeTitle": {
+  "message": "StreamMask"
+ },
+ "badgeTitleLive": {
+  "message": "StreamMask – YAYIN MODU AÇIK"
+ },
+ "cmdToggleMask": {
+  "message": "Maskelemeyi aç/kapat"
+ },
+ "cmdToggleStream": {
+  "message": "Yayın Modu'nu aç/kapat"
+ },
+ "blockTitle": {
+  "message": "Yayındayken bu siteleri kapat"
+ },
+ "blockSub": {
+  "message": "Bu sitelerin sekmeleri Yayın Modu açılınca anında kapatılır, yayın sırasında açılırsa yine kapatılır"
+ },
+ "blockPlaceholder": {
+  "message": "örn. bankam.com, mail.google.com"
+ },
+ "blockClosed": {
+  "message": "$COUNT$ sekme kapatıldı",
+  "placeholders": {
+   "COUNT": {
+    "content": "$1"
+   }
+  }
+ },
+ "blockedPageTitle": {
+  "message": "StreamMask kapattı"
+ },
+ "blockedPageText": {
+  "message": "Bu site Yayın Modu engel listende. Açmak için Yayın Modu'nu kapat."
+ }
+}

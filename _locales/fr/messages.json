@@ -1,0 +1,208 @@
+{
+ "appName": {
+  "message": "StreamMask – Masquer ses infos personnelles en stream"
+ },
+ "appDesc": {
+  "message": "Pour streamers : masque avec ***** téléphones, e-mails, n° d'identité, IBAN, cartes et IP. Le mode Stream cache l'historique."
+ },
+ "tagline": {
+  "message": "Bouclier de confidentialité pour streamers"
+ },
+ "protectionOn": {
+  "message": "Protection activée"
+ },
+ "protectionOff": {
+  "message": "Protection désactivée"
+ },
+ "offOnThisSite": {
+  "message": "Désactivée sur ce site"
+ },
+ "maskedCount": {
+  "message": "$COUNT$ infos masquées sur cette page",
+  "placeholders": {
+   "COUNT": {
+    "content": "$1"
+   }
+  }
+ },
+ "maskedOne": {
+  "message": "1 info masquée sur cette page"
+ },
+ "maskedNone": {
+  "message": "Aucune info personnelle trouvée sur cette page"
+ },
+ "pageAsIs": {
+  "message": "La page s'affiche telle quelle"
+ },
+ "siteExcluded": {
+  "message": "Ce site est exclu"
+ },
+ "autoTitle": {
+  "message": "Détection automatique"
+ },
+ "autoSub": {
+  "message": "Aucun réglage : tout ce qui ressemble à une info personnelle devient *****"
+ },
+ "alsoTitle": {
+  "message": "Masquer aussi"
+ },
+ "alsoSub": {
+  "message": "Votre nom, votre rue, votre pseudo… tapez puis Entrée"
+ },
+ "wordPlaceholder": {
+  "message": "ex. nom complet, rue, pseudo"
+ },
+ "wordHint": {
+  "message": "🔒 Ne saisissez pas de numéros, cartes, IBAN ni e-mails : ils sont détectés automatiquement. Cette liste reste sur cet appareil et n'est jamais envoyée."
+ },
+ "wordWarn": {
+  "message": "Ne saisissez pas de numéros, cartes, IBAN ni e-mails : ils sont détectés automatiquement et jamais enregistrés ici."
+ },
+ "streamTitle": {
+  "message": "Mode Stream"
+ },
+ "streamSub": {
+  "message": "Cache les suggestions d'historique dans la barre d'adresse"
+ },
+ "streamOff": {
+  "message": "Désactivé. Une fois activé, votre historique est sauvegardé dans l'extension et retiré des suggestions ; il revient à la désactivation. Rien n'est supprimé."
+ },
+ "streamOn": {
+  "message": "$COUNT$ entrées d'historique protégées, activé il y a $AGO$.",
+  "placeholders": {
+   "COUNT": {
+    "content": "$1"
+   },
+   "AGO": {
+    "content": "$2"
+   }
+  }
+ },
+ "streamOn2": {
+  "message": "Les suggestions de recherche et la saisie automatique sont aussi désactivées."
+ },
+ "live": {
+  "message": "EN DIRECT"
+ },
+ "download": {
+  "message": "Télécharger la sauvegarde (JSON)"
+ },
+ "advanced": {
+  "message": "Avancé : catégories et sites exclus"
+ },
+ "catPhone": {
+  "message": "Téléphone"
+ },
+ "catEmail": {
+  "message": "E-mail"
+ },
+ "catId": {
+  "message": "N° d'identité"
+ },
+ "catIban": {
+  "message": "IBAN"
+ },
+ "catCard": {
+  "message": "Carte"
+ },
+ "catIp": {
+  "message": "IP"
+ },
+ "catCustom": {
+  "message": "Personnalisé"
+ },
+ "thisSite": {
+  "message": "Ce site :"
+ },
+ "exclude": {
+  "message": "Exclure"
+ },
+ "includeAgain": {
+  "message": "Réinclure"
+ },
+ "remove": {
+  "message": "Retirer"
+ },
+ "footerProtection": {
+  "message": "protection"
+ },
+ "footerStream": {
+  "message": "mode stream"
+ },
+ "minutes": {
+  "message": "$N$ min",
+  "placeholders": {
+   "N": {
+    "content": "$1"
+   }
+  }
+ },
+ "hours": {
+  "message": "$H$ h $M$ min",
+  "placeholders": {
+   "H": {
+    "content": "$1"
+   },
+   "M": {
+    "content": "$2"
+   }
+  }
+ },
+ "errorPrefix": {
+  "message": "Erreur :"
+ },
+ "restored": {
+  "message": "$COUNT$ URL restaurées dans l'historique",
+  "placeholders": {
+   "COUNT": {
+    "content": "$1"
+   }
+  }
+ },
+ "restoredFailed": {
+  "message": "$COUNT$ en échec",
+  "placeholders": {
+   "COUNT": {
+    "content": "$1"
+   }
+  }
+ },
+ "unknown": {
+  "message": "inconnue"
+ },
+ "badgeTitle": {
+  "message": "StreamMask"
+ },
+ "badgeTitleLive": {
+  "message": "StreamMask – MODE STREAM ACTIVÉ"
+ },
+ "cmdToggleMask": {
+  "message": "Activer/désactiver le masquage"
+ },
+ "cmdToggleStream": {
+  "message": "Activer/désactiver le mode Stream"
+ },
+ "blockTitle": {
+  "message": "Fermer ces sites en direct"
+ },
+ "blockSub": {
+  "message": "Les onglets de ces sites sont fermés dès l'activation du mode Stream, et à nouveau s'ils s'ouvrent pendant le stream"
+ },
+ "blockPlaceholder": {
+  "message": "ex. mabanque.fr, mail.google.com"
+ },
+ "blockClosed": {
+  "message": "$COUNT$ onglets fermés",
+  "placeholders": {
+   "COUNT": {
+    "content": "$1"
+   }
+  }
+ },
+ "blockedPageTitle": {
+  "message": "Fermé par StreamMask"
+ },
+ "blockedPageText": {
+  "message": "Ce site est dans votre liste de blocage du mode Stream. Désactivez le mode Stream pour l'ouvrir."
+ }
+}
