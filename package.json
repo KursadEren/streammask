@@ -1,0 +1,17 @@
+{
+  "name": "streammask",
+  "version": "1.2.0",
+  "private": true,
+  "description": "Chrome extension that masks personal info while streaming",
+  "license": "MIT",
+  "author": "KursadEren",
+  "repository": "https://github.com/KursadEren/streammask",
+  "scripts": {
+    "test": "node test/detect.test.js",
+    "obs": "node test/obs-auth.test.js",
+    "locales": "node test/locales.test.js",
+    "manifest": "node test/manifest.test.js",
+    "sync": "node test/sync-test-ext.js",
+    "check": "npm test && npm run obs && npm run locales && npm run manifest && npm run sync"
+  }
+}

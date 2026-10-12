@@ -2,7 +2,7 @@
   "manifest_version": 3,
   "name": "__MSG_appName__",
   "description": "__MSG_appDesc__",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "icons": {
     "16": "icons/icon16.png",
     "32": "icons/icon32.png",
@@ -15,7 +15,8 @@
     "history",
     "privacy",
     "tabs",
-    "activeTab"
+    "activeTab",
+    "alarms"
   ],
   "background": {
     "service_worker": "background.js"
@@ -35,6 +36,19 @@
         "<all_urls>"
       ],
       "js": [
+        "shadow-hook.js"
+      ],
+      "run_at": "document_start",
+      "all_frames": true,
+      "match_about_blank": true,
+      "world": "MAIN"
+    },
+    {
+      "matches": [
+        "<all_urls>"
+      ],
+      "js": [
+        "detect.js",
         "content.js"
       ],
       "run_at": "document_start",

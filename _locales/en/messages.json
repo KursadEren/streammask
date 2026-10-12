@@ -3,7 +3,7 @@
   "message": "StreamMask – Hide Personal Info While Streaming"
  },
  "appDesc": {
-  "message": "For streamers: auto-masks phone numbers, e-mails, IDs, IBANs, cards and IPs with *****. Stream Mode hides history suggestions."
+  "message": "For streamers: masks phone numbers, e-mails, IDs, IBANs, cards, IPs and API keys with *****. Stream Mode hides history suggestions."
  },
  "tagline": {
   "message": "Privacy shield for streamers"
@@ -204,5 +204,119 @@
  },
  "blockedPageText": {
   "message": "This site is on your Stream Mode block list. Turn Stream Mode off to open it."
+ },
+ "badgeTitleError": {
+  "message": "StreamMask – history backup missing"
+ },
+ "streamErrorBackup": {
+  "message": "Backup missing: Stream Mode is on, but the saved history could not be found. Turning it off restores suggestions and autofill, but the earlier history cannot be brought back."
+ },
+ "backupReminder": {
+  "message": "Tip: download the JSON backup now. If the extension is removed while Stream Mode is on, the history cannot be restored."
+ },
+ "maskLabel": {
+  "message": "[HIDDEN]"
+ },
+ "catSecret": {
+  "message": "API key"
+ },
+ "maskStyleTitle": {
+  "message": "Mask style"
+ },
+ "maskStyleStars": {
+  "message": "Stars"
+ },
+ "maskStyleSame": {
+  "message": "Same length"
+ },
+ "maskStylePartial": {
+  "message": "Last 4"
+ },
+ "maskStyleLabel": {
+  "message": "Label"
+ },
+ "maskStyleHint": {
+  "message": "Same length keeps the page layout from shifting. Last 4 never applies to API keys or your custom words."
+ },
+ "idRegionTitle": {
+  "message": "ID numbers by country"
+ },
+ "idRegionSub": {
+  "message": "Only the selected countries’ ID formats are checked. Fewer countries means fewer false positives."
+ },
+ "obsTitle": {
+  "message": "OBS integration"
+ },
+ "obsSub": {
+  "message": "Protection turns on by itself when you go live"
+ },
+ "obsHelp": {
+  "message": "In OBS: Tools → WebSocket Server Settings → enable the server, then copy the port and password from there. Nothing leaves your computer."
+ },
+ "obsPort": {
+  "message": "Port"
+ },
+ "obsPasswordPlaceholder": {
+  "message": "WebSocket password"
+ },
+ "obsStatusOn": {
+  "message": "Connected to OBS"
+ },
+ "obsStatusOff": {
+  "message": "Not connected"
+ },
+ "obsStatusAuth": {
+  "message": "Password wrong or missing"
+ },
+ "obsStatusFail": {
+  "message": "OBS not reachable — is the WebSocket server on?"
+ },
+ "obsStreaming": {
+  "message": "OBS is live"
+ },
+ "obsTriggerStream": {
+  "message": "When streaming starts"
+ },
+ "obsTriggerRecord": {
+  "message": "When recording starts"
+ },
+ "obsApplyMask": {
+  "message": "Turn masking on"
+ },
+ "obsApplyStream": {
+  "message": "Turn Stream Mode on"
+ },
+ "obsRevert": {
+  "message": "Restore the old state when it ends"
+ },
+ "obsReconnect": {
+  "message": "Reconnect"
+ },
+ "bridgeTitle": {
+  "message": "StreamMask Desktop"
+ },
+ "bridgeSub": {
+  "message": "One switch for the app and the browser"
+ },
+ "bridgeTokenPlaceholder": {
+  "message": "Pairing code from the app"
+ },
+ "bridgeStatusOn": {
+  "message": "Connected to the app"
+ },
+ "bridgeStatusOff": {
+  "message": "Not connected"
+ },
+ "bridgeStatusBad": {
+  "message": "Pairing code rejected"
+ },
+ "bridgeStatusLive": {
+  "message": "The app is live"
+ },
+ "bridgePush": {
+  "message": "Send Stream Mode to the app too"
+ },
+ "bridgeHelp": {
+  "message": "In StreamMask Desktop: Browser extension bridge → copy the pairing code. The connection stays on this computer."
  }
 }

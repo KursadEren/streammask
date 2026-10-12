@@ -3,7 +3,7 @@
   "message": "StreamMask – 配信中に個人情報を隠す"
  },
  "appDesc": {
-  "message": "配信者向け：電話番号・メール・ID・IBAN・カード・IPを自動で*****に。配信モードはアドレスバーの履歴候補を隠します。"
+  "message": "配信者向け: 電話番号・メール・個人番号・IBAN・カード・IP・APIキーを ***** で隠します。配信モードは履歴候補を非表示にします。"
  },
  "tagline": {
   "message": "配信者のためのプライバシーシールド"
@@ -204,5 +204,119 @@
  },
  "blockedPageText": {
   "message": "このサイトは配信モードのブロックリストにあります。開くには配信モードをオフにしてください。"
+ },
+ "badgeTitleError": {
+  "message": "StreamMask – 履歴のバックアップが見つかりません"
+ },
+ "streamErrorBackup": {
+  "message": "バックアップが見つかりません: 配信モードはオンですが、保存された履歴が見つかりません。オフにすると候補表示と自動入力は戻りますが、以前の履歴は復元できません。"
+ },
+ "backupReminder": {
+  "message": "ヒント: 今すぐ JSON バックアップを保存してください。配信モード中に拡張機能を削除すると履歴は復元できません。"
+ },
+ "maskLabel": {
+  "message": "[非表示]"
+ },
+ "catSecret": {
+  "message": "APIキー"
+ },
+ "maskStyleTitle": {
+  "message": "マスクの形式"
+ },
+ "maskStyleStars": {
+  "message": "アスタリスク"
+ },
+ "maskStyleSame": {
+  "message": "同じ長さ"
+ },
+ "maskStylePartial": {
+  "message": "下4桁"
+ },
+ "maskStyleLabel": {
+  "message": "ラベル"
+ },
+ "maskStyleHint": {
+  "message": "「同じ長さ」ならページの表示崩れが起きません。「下4桁」は APIキーと自分で追加した語には適用されません。"
+ },
+ "idRegionTitle": {
+  "message": "国別の個人番号"
+ },
+ "idRegionSub": {
+  "message": "選択した国の形式のみを確認します。国を減らすと誤検出も減ります。"
+ },
+ "obsTitle": {
+  "message": "OBS 連携"
+ },
+ "obsSub": {
+  "message": "配信を始めると保護が自動で入ります"
+ },
+ "obsHelp": {
+  "message": "OBS で: ツール → WebSocket サーバー設定 → サーバーを有効にし、ポートとパスワードをコピーしてください。データが端末外に出ることはありません。"
+ },
+ "obsPort": {
+  "message": "ポート"
+ },
+ "obsPasswordPlaceholder": {
+  "message": "WebSocket パスワード"
+ },
+ "obsStatusOn": {
+  "message": "OBS に接続済み"
+ },
+ "obsStatusOff": {
+  "message": "未接続"
+ },
+ "obsStatusAuth": {
+  "message": "パスワードが違うか未設定です"
+ },
+ "obsStatusFail": {
+  "message": "OBS に接続できません — WebSocket サーバーは有効ですか?"
+ },
+ "obsStreaming": {
+  "message": "OBS は配信中"
+ },
+ "obsTriggerStream": {
+  "message": "配信の開始時"
+ },
+ "obsTriggerRecord": {
+  "message": "録画の開始時"
+ },
+ "obsApplyMask": {
+  "message": "マスクを有効にする"
+ },
+ "obsApplyStream": {
+  "message": "配信モードを有効にする"
+ },
+ "obsRevert": {
+  "message": "終了したら元の状態に戻す"
+ },
+ "obsReconnect": {
+  "message": "再接続"
+ },
+ "bridgeTitle": {
+  "message": "StreamMask Desktop"
+ },
+ "bridgeSub": {
+  "message": "アプリとブラウザをひとつのスイッチで"
+ },
+ "bridgeTokenPlaceholder": {
+  "message": "アプリのペアリングコード"
+ },
+ "bridgeStatusOn": {
+  "message": "アプリに接続済み"
+ },
+ "bridgeStatusOff": {
+  "message": "未接続"
+ },
+ "bridgeStatusBad": {
+  "message": "ペアリングコードが拒否されました"
+ },
+ "bridgeStatusLive": {
+  "message": "アプリは配信中"
+ },
+ "bridgePush": {
+  "message": "配信モードをアプリにも送る"
+ },
+ "bridgeHelp": {
+  "message": "StreamMask Desktop で: Browser extension bridge からペアリングコードをコピーしてください。接続はこの端末内で完結します。"
  }
 }

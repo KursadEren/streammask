@@ -3,7 +3,7 @@
   "message": "StreamMask – Oculte dados pessoais durante a live"
  },
  "appDesc": {
-  "message": "Para streamers: oculta com ***** telefones, e-mails, documentos, IBAN, cartões e IPs. O Modo Stream esconde o histórico."
+  "message": "Para streamers: mascara telefones, e-mails, documentos, IBANs, cartões, IPs e chaves de API. O Modo Live oculta o histórico."
  },
  "tagline": {
   "message": "Escudo de privacidade para streamers"
@@ -204,5 +204,119 @@
  },
  "blockedPageText": {
   "message": "Este site está na sua lista de bloqueio do Modo Stream. Desative o Modo Stream para abri-lo."
+ },
+ "badgeTitleError": {
+  "message": "StreamMask – backup do histórico não encontrado"
+ },
+ "streamErrorBackup": {
+  "message": "Backup não encontrado: o Modo Live está ativo, mas o histórico salvo não foi localizado. Ao desativá-lo, as sugestões e o preenchimento automático voltam, mas o histórico anterior não pode ser recuperado."
+ },
+ "backupReminder": {
+  "message": "Dica: baixe o backup JSON agora. Se a extensão for removida com o Modo Live ativo, o histórico não poderá ser restaurado."
+ },
+ "maskLabel": {
+  "message": "[OCULTO]"
+ },
+ "catSecret": {
+  "message": "Chave de API"
+ },
+ "maskStyleTitle": {
+  "message": "Estilo da máscara"
+ },
+ "maskStyleStars": {
+  "message": "Asteriscos"
+ },
+ "maskStyleSame": {
+  "message": "Mesmo tamanho"
+ },
+ "maskStylePartial": {
+  "message": "Últimos 4"
+ },
+ "maskStyleLabel": {
+  "message": "Etiqueta"
+ },
+ "maskStyleHint": {
+  "message": "Mesmo tamanho evita que o layout da página se desloque. Últimos 4 nunca se aplica a chaves de API nem às suas palavras."
+ },
+ "idRegionTitle": {
+  "message": "Documentos por país"
+ },
+ "idRegionSub": {
+  "message": "Apenas os formatos dos países selecionados são verificados. Menos países, menos falsos positivos."
+ },
+ "obsTitle": {
+  "message": "Integração com o OBS"
+ },
+ "obsSub": {
+  "message": "A proteção liga sozinha quando você entra ao vivo"
+ },
+ "obsHelp": {
+  "message": "No OBS: Ferramentas → Configurações do servidor WebSocket → ative o servidor e copie a porta e a senha de lá. Nada sai do seu computador."
+ },
+ "obsPort": {
+  "message": "Porta"
+ },
+ "obsPasswordPlaceholder": {
+  "message": "Senha do WebSocket"
+ },
+ "obsStatusOn": {
+  "message": "Conectado ao OBS"
+ },
+ "obsStatusOff": {
+  "message": "Sem conexão"
+ },
+ "obsStatusAuth": {
+  "message": "Senha incorreta ou ausente"
+ },
+ "obsStatusFail": {
+  "message": "Não foi possível conectar ao OBS — o servidor WebSocket está ativo?"
+ },
+ "obsStreaming": {
+  "message": "OBS ao vivo"
+ },
+ "obsTriggerStream": {
+  "message": "Quando a transmissão começar"
+ },
+ "obsTriggerRecord": {
+  "message": "Quando a gravação começar"
+ },
+ "obsApplyMask": {
+  "message": "Ligar o mascaramento"
+ },
+ "obsApplyStream": {
+  "message": "Ligar o Modo Live"
+ },
+ "obsRevert": {
+  "message": "Restaurar o estado anterior ao terminar"
+ },
+ "obsReconnect": {
+  "message": "Reconectar"
+ },
+ "bridgeTitle": {
+  "message": "StreamMask Desktop"
+ },
+ "bridgeSub": {
+  "message": "Um único botão para o app e o navegador"
+ },
+ "bridgeTokenPlaceholder": {
+  "message": "Código de pareamento do app"
+ },
+ "bridgeStatusOn": {
+  "message": "Conectado ao app"
+ },
+ "bridgeStatusOff": {
+  "message": "Sem conexão"
+ },
+ "bridgeStatusBad": {
+  "message": "Código de pareamento recusado"
+ },
+ "bridgeStatusLive": {
+  "message": "O app está ao vivo"
+ },
+ "bridgePush": {
+  "message": "Enviar o Modo Live para o app também"
+ },
+ "bridgeHelp": {
+  "message": "No StreamMask Desktop: Browser extension bridge → copie o código. A conexão não sai deste computador."
  }
 }

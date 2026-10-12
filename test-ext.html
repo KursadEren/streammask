@@ -1,21 +1,141 @@
 <!doctype html>
-<html lang="tr"><head><meta charset="utf-8"><title>Yayın Kalkanı test</title>
-<style>body{font-family:sans-serif;max-width:720px;margin:30px auto;line-height:1.7}code{background:#eee;padding:2px 5px}</style>
+<html lang="tr"><head><meta charset="utf-8"><title>StreamMask test</title>
+<style>
+  body{font-family:system-ui,sans-serif;max-width:860px;margin:24px auto;line-height:1.7;padding:0 16px}
+  h2{margin:0 0 4px}
+  h3{margin:22px 0 6px;font-size:14px;text-transform:uppercase;letter-spacing:.05em;color:#666}
+  code{background:#eee;padding:2px 5px;border-radius:4px}
+  .ok{border-left:3px solid #4CAF50;padding-left:10px}
+  .no{border-left:3px solid #F44336;padding-left:10px}
+  .bar{position:sticky;top:0;background:#fff;padding:10px 0;border-bottom:1px solid #ddd;display:flex;gap:6px;flex-wrap:wrap;align-items:center;z-index:9}
+  .bar button{padding:5px 10px;border:1px solid #ccc;background:#f7f7f7;border-radius:7px;cursor:pointer;font:inherit;font-size:12px}
+  .bar button.on{background:#6C63FF;color:#fff;border-color:#6C63FF}
+  #count{margin-left:auto;font-weight:700;font-variant-numeric:tabular-nums}
+  table{border-collapse:collapse;font-size:13px}
+  td,th{border:1px solid #ddd;padding:4px 8px;text-align:left}
+</style>
 </head><body>
-<h2>Yayın Kalkanı test sayfası</h2>
-<p id="p1">Bana ulaşmak için 0532 123 45 67 numarasını ara veya +90 (212) 555 12 34 sabit hattı dene.</p>
-<p id="p2">E-posta: ahmet.yilmaz@example.com — iş: destek@sirket.com.tr</p>
-<p id="p3">TC Kimlik: 10000000146 (geçerli), 12345678901 (geçersiz TC ama 11 hane, telefon gibi maskelenir)</p>
-<p id="p4">IBAN: TR33 0006 1005 1978 6457 8413 26</p>
-<p id="p5">Kart: 4111 1111 1111 1111 (geçerli Luhn), 1234 5678 9012 3456 (geçersiz)</p>
-<p id="p6">Sunucu IP: 192.168.1.42 · Sürüm 2.1.0 (dokunulmamalı) · Sipariş no 2024-10 (dokunulmamalı)</p>
-<p id="p8">KR: 주민번호 900101-1234567, 전화 010-1234-5678 · AR: CUIT 20-12345678-6, tel 11 2345-6789, +54 9 11 2345 6789 · ES: 612 345 678</p>
-<p id="p7">Adı Ahmet Yılmaz, Bağdat Caddesi'nde oturuyor.</p>
-<p><input id="in1" type="tel" value="05321234567"> <input id="in2" type="text" value="mail: ali@x.com"> <input id="in3" type="text" value="normal metin"></p>
-<textarea id="ta" rows="2" cols="40">İletişim 0555 111 22 33</textarea>
+
+<h2>StreamMask test sayfası <small style="font-weight:400;font-size:13px">(uzantı modu)</small></h2>
+<p><b>Bu dosya üretilir — düzenleme test.html üzerinde yapılır (npm run sync).</b> Uzantıyı <code>chrome://extensions</code> üzerinden yükleyip bu sayfayı açın; özel kelime testi için açılır pencereye <code>Ahmet Yılmaz</code> ve <code>Bağdat Caddesi</code> ekleyin.</p>
+<p><span class="ok">Yeşil</span> bloklar maskelenmeli, <span class="no">kırmızı</span> bloklar <b>maskelenmemeli</b>.</p>
+
+<div class="bar">
+  <button data-style="stars" class="on">stars</button>
+  <button data-style="same">same</button>
+  <button data-style="partial">partial</button>
+  <button data-style="label">label</button>
+  <button id="toggle">Maskelemeyi kapat</button>
+  <button id="add">Dinamik içerik ekle</button>
+  <button id="addShadow">Gölge kök ekle</button>
+  <button id="detach">Düğüm kopar/geri ekle</button>
+  <span id="count">0</span>
+</div>
+
+<h3>Maskelenmeli</h3>
+<div class="ok">
+  <p id="p1">Bana ulaşmak için 0532 123 45 67 numarasını ara veya +90 (212) 555 12 34 sabit hattı dene.</p>
+  <p id="p2">E-posta: ahmet.yilmaz@example.com — iş: destek@sirket.com.tr</p>
+  <p id="p3">TC Kimlik: 10000000078</p>
+  <p id="p4">IBAN: TR33 0006 1005 1978 6457 8413 26</p>
+  <p id="p5">Kart: 4111 1111 1111 1111</p>
+  <p id="p6">Sunucu IP: 88.241.12.34 · ev 192.168.1.42</p>
+  <p id="p7">Adı Ahmet Yılmaz, Bağdat Caddesi'nde oturuyor.</p>
+  <p id="p8">KR 주민번호 900101-1234567 · AR CUIT 20-12345678-6 · tel 11 2345-6789 · ES 612 345 678</p>
+  <p id="p9">API anahtarları: ghp_abcdefghijklmnopqrstuvwxyz0123456789 · AKIAIOSFODNN7EXAMPLE ·
+    sk-proj-abcdefghijklmnopqrstuvwx · API_KEY=A1b2C3d4E5f6G7h8 · Bearer A1b2C3d4E5f6G7h8I9j0K1</p>
+  <p id="p10">Cüzdan 0x742d35Cc6634C0532925a3b844Bc454e4438f44e</p>
+</div>
+
+<h3>Maskelenmemeli (yanlış pozitif tuzakları)</h3>
+<div class="no">
+  <p id="n1">Fiyat: 1.299,90 TL · toplam 2.500 TL · 19,99 €</p>
+  <p id="n2">Sürüm 2.1.0 · v4.2.1.0 · Chrome/120.0.6099.109 · Electron 44.4.1</p>
+  <p id="n3">Tarih 2026-09-25 08:57 · 25.09.2026 14:30 · yayın 19:00-20:00 arası</p>
+  <p id="n4">Skor 3-1 · seri 4-2 · oda 12-34</p>
+  <p id="n5">Sunucu 127.0.0.1:8080 · DNS 8.8.8.8 · router 192.168.1.1</p>
+  <p id="n6">password = your_password_here · token: ${GITHUB_TOKEN} · secret: undefined</p>
+  <p id="n7">Ürün kodu 1234 5678 9012 3456 (Luhn geçmez)</p>
+</div>
+
+<h3>Form alanları (nokta gösterimine geçmeli)</h3>
+<p>
+  <input id="in1" type="tel" value="05321234567">
+  <input id="in2" type="text" value="mail: ali@example.com">
+  <input id="in3" type="text" value="normal metin (dokunulmamalı)" size="30">
+</p>
+<textarea id="ta" rows="2" cols="46">İletişim 0555 111 22 33</textarea>
+
+<h3>contenteditable (yazarken bozulmamalı, maskelenmez)</h3>
+<div id="ce" contenteditable="true" style="border:1px solid #ccc;padding:8px;border-radius:7px">
+  Buraya yazarken 0532 123 45 67 bozulmamalı.</div>
+
+<h3>Shadow DOM (açık kök)</h3>
+<div id="shadowHost"></div>
+<div id="nestedHost"></div>
+<div id="dynShadow"></div>
+
+<h3>Dinamik</h3>
 <div id="dyn"></div>
-<button id="add">Dinamik ekle</button>
+
 <script>
-document.getElementById('add').onclick=()=>{const d=document.createElement('p');d.id='dynp';d.textContent='Yeni mesaj: beni 0544 987 65 43 ara, mail: yeni@ornek.com';document.getElementById('dyn').appendChild(d);};
+  /* Önizleme modunda content.js window.__yayinKalkani'yi açar. Gerçek uzantı
+   * yüklüyken betik izole dünyada çalıştığı için bu nesne yoktur; o zaman maske
+   * biçimi ve açma/kapama düğmeleri uzantının açılır penceresinden kullanılır. */
+  const SM = window.__yayinKalkani || null;
+  if (!SM) {
+    document.querySelectorAll('.bar button[data-style], #toggle').forEach(b => b.disabled = true);
+    document.getElementById('count').textContent = 'uzantı modu';
+  }
+
+  /* Gölge kökler: içerik betiği TreeWalker ile sınırı geçemediği için ayrı taranır */
+  function fillShadow(host, label) {
+    const sr = host.attachShadow({ mode: 'open' });
+    sr.innerHTML = `<p style="font:inherit">${label}: telefon 0532 765 43 21, mail golge@example.com,
+      TC 10000000078, anahtar ghp_zyxwvutsrqponmlkjihgfedcba9876543210</p>
+      <input type="tel" value="05327654321">
+      <p class="safe" style="font:inherit">Sürüm 1.0.0.4 ve fiyat 1.299,90 TL burada da dokunulmamalı</p>`;
+    return sr;
+  }
+  fillShadow(document.getElementById('shadowHost'), 'Gölge kök');
+
+  const outer = document.getElementById('nestedHost').attachShadow({ mode: 'open' });
+  const inner = document.createElement('div');
+  outer.appendChild(inner);
+  fillShadow(inner, 'İç içe gölge kök');
+
+  document.getElementById('addShadow').onclick = () => {
+    const h = document.createElement('div');
+    document.getElementById('dynShadow').appendChild(h);
+    fillShadow(h, 'Sonradan eklenen gölge kök');
+  };
+
+  document.getElementById('add').onclick = () => {
+    const d = document.createElement('p');
+    d.textContent = 'Yeni mesaj: beni 0544 987 65 43 ara, mail: yeni@example.com, sürüm 3.2.1.0 kalsın';
+    document.getElementById('dyn').appendChild(d);
+  };
+
+  /* Süpürme testi: kopmuş düğüm defterden düşerken orijinaline dönmeli */
+  let detached = null;
+  document.getElementById('detach').onclick = () => {
+    const dyn = document.getElementById('dyn');
+    if (detached) { dyn.appendChild(detached); detached = null; return; }
+    const p = dyn.lastElementChild;
+    if (p) { detached = p; p.remove(); }
+  };
+
+  if (SM) document.getElementById('toggle').onclick = (e) => {
+    if (e.target.dataset.off) { SM.start(); e.target.textContent = 'Maskelemeyi kapat'; delete e.target.dataset.off; }
+    else { SM.stop(); e.target.textContent = 'Maskelemeyi aç'; e.target.dataset.off = '1'; }
+  };
+
+  if (SM) document.querySelectorAll('.bar button[data-style]').forEach(b => b.onclick = () => {
+    document.querySelectorAll('.bar button[data-style]').forEach(x => x.classList.remove('on'));
+    b.classList.add('on');
+    SM.setSettings({ customWords: ['Ahmet Yılmaz', 'Bağdat Caddesi'], maskStyle: b.dataset.style });
+  });
+
+  if (SM) setInterval(() => { document.getElementById('count').textContent = SM.count() + ' maskelendi'; }, 300);
 </script>
 </body></html>

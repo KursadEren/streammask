@@ -82,12 +82,33 @@
   .grid{display:grid;grid-template-columns:1fr 1fr;gap:6px 10px}
   .grid label{display:flex;align-items:center;gap:7px;cursor:pointer;font-size:12px}
   .grid input{accent-color:var(--pri)}
+  .advh{font-size:11px;color:var(--mut);margin:14px 0 6px;font-weight:700;letter-spacing:.02em}
+  .seg{display:flex;gap:4px;flex-wrap:wrap}
+  .seg button{flex:1;min-width:66px;padding:6px 4px;border-radius:9px;border:1px solid var(--line);background:var(--panel2);color:var(--mut);font:inherit;font-size:11px;cursor:pointer}
+  .seg button:hover{color:var(--txt)}
+  .seg button.on{background:linear-gradient(135deg,var(--pri),var(--pri2));color:#fff;border-color:transparent;font-weight:700}
+  .regions{display:flex;flex-wrap:wrap;gap:5px}
+  .regions button{padding:4px 9px;border-radius:999px;border:1px solid var(--line);background:var(--panel2);color:var(--mut);font:inherit;font-size:11px;font-weight:700;cursor:pointer}
+  .regions button.on{background:rgba(108,99,255,.22);border-color:var(--pri);color:#fff}
+  .advhint{font-size:10px;line-height:1.45;color:var(--mut);opacity:.8;margin:5px 0 0}
+  .obsrow{display:flex;gap:6px;align-items:center;margin-top:8px}
+  .obsrow input[type=number]{width:72px}
+  .obsrow input[type=text],.obsrow input[type=number]{background:var(--panel2);border:1px solid var(--line);border-radius:9px;color:var(--txt);font:inherit;font-size:12px;padding:6px 8px;outline:0;min-width:0;flex:1}
+  .obsrow input:focus{border-color:var(--pri)}
+  .obsstat{display:flex;align-items:center;gap:6px;font-size:11px;margin-top:8px;color:var(--mut)}
+  .obsstat i{width:7px;height:7px;border-radius:50%;background:#6d6b8a;flex:none}
+  .obsstat.on i{background:#4CAF50}
+  .obsstat.err i{background:#F44336}
+  .obsstat.live i{background:#E53935;box-shadow:0 0 0 3px rgba(229,57,53,.25)}
   .site{display:flex;align-items:center;justify-content:space-between;gap:8px;margin-top:10px;font-size:11.5px;color:var(--mut)}
   .site code{font-family:ui-monospace,Menlo,monospace;font-size:11px;color:#c8c5ff}
 
   footer{padding:8px 18px 10px;font-size:10.5px;color:var(--mut);display:flex;justify-content:space-between;gap:8px}
   .kbd{font-family:ui-monospace,Menlo,monospace;font-size:10px;background:#26253a;padding:1px 5px;border-radius:4px;color:#c8c5ff}
   .busy{opacity:.55;pointer-events:none}
+  .card.warn{border-color:#ff9800;background:rgba(255,152,0,.10)}
+  .cardWarn{font-size:11px;line-height:1.45;color:#ffcf8a;margin-bottom:6px}
+  .cardTip{font-size:10px;line-height:1.4;opacity:.65;margin-top:6px}
   .msg{font-size:11px;margin-top:6px;color:#ff9c9c}
   .msg.ok{color:#a7f3c0}
 </style>
@@ -129,6 +150,50 @@
   <div class="msg" id="msg" hidden></div>
 </section>
 
+<section>
+  <div class="h">
+    <div><div class="t" data-i18n="obsTitle">OBS integration</div><div class="s" data-i18n="obsSub">Protection turns on by itself when you go live</div></div>
+    <label class="switch"><input type="checkbox" id="obsEnabled"><span></span></label>
+  </div>
+  <div id="obsBody" hidden>
+    <div class="obsrow">
+      <span style="font-size:11px;color:var(--mut)" data-i18n="obsPort">Port</span>
+      <input type="number" id="obsPort" min="1" max="65535" value="4455">
+      <input type="text" id="obsPassword" data-i18n-placeholder="obsPasswordPlaceholder" placeholder="WebSocket password" autocomplete="off">
+    </div>
+    <div class="obsstat" id="obsStat"><i></i><span data-i18n="obsStatusOff">Not connected</span>
+      <button class="btn ghost" id="obsReconnect" data-i18n="obsReconnect" style="margin-left:auto">Reconnect</button>
+    </div>
+    <div class="grid" style="margin-top:10px">
+      <label><input type="checkbox" id="obsTrigStream"> <span data-i18n="obsTriggerStream">When streaming starts</span></label>
+      <label><input type="checkbox" id="obsTrigRecord"> <span data-i18n="obsTriggerRecord">When recording starts</span></label>
+      <label><input type="checkbox" id="obsApplyMask"> <span data-i18n="obsApplyMask">Turn masking on</span></label>
+      <label><input type="checkbox" id="obsApplyStream"> <span data-i18n="obsApplyStream">Turn Stream Mode on</span></label>
+      <label><input type="checkbox" id="obsRevert"> <span data-i18n="obsRevert">Restore the old state when it ends</span></label>
+    </div>
+    <p class="advhint" data-i18n="obsHelp"></p>
+  </div>
+</section>
+
+<section>
+  <div class="h">
+    <div><div class="t" data-i18n="bridgeTitle">StreamMask Desktop</div><div class="s" data-i18n="bridgeSub">One switch for the app and the browser</div></div>
+    <label class="switch"><input type="checkbox" id="brEnabled"><span></span></label>
+  </div>
+  <div id="brBody" hidden>
+    <div class="obsrow">
+      <input type="text" id="brToken" data-i18n-placeholder="bridgeTokenPlaceholder" placeholder="Pairing code from the app" autocomplete="off">
+    </div>
+    <div class="obsstat" id="brStat"><i></i><span data-i18n="bridgeStatusOff">Not connected</span></div>
+    <div class="grid" style="margin-top:10px">
+      <label><input type="checkbox" id="brApplyMask"> <span data-i18n="obsApplyMask">Turn masking on</span></label>
+      <label><input type="checkbox" id="brApplyStream"> <span data-i18n="obsApplyStream">Turn Stream Mode on</span></label>
+      <label><input type="checkbox" id="brPush"> <span data-i18n="bridgePush">Send Stream Mode to the app too</span></label>
+    </div>
+    <p class="advhint" data-i18n="bridgeHelp"></p>
+  </div>
+</section>
+
 <details>
   <summary data-i18n="advanced">Advanced: categories &amp; site exceptions</summary>
   <div class="adv">
@@ -139,12 +204,25 @@
       <label><input type="checkbox" data-cat="iban"> <span data-i18n="catIban">IBAN</span></label>
       <label><input type="checkbox" data-cat="card"> <span data-i18n="catCard">Card</span></label>
       <label><input type="checkbox" data-cat="ip"> <span data-i18n="catIp">IP</span></label>
+      <label><input type="checkbox" data-cat="secret"> <span data-i18n="catSecret">API key</span></label>
     </div>
+    <div class="advh" data-i18n="maskStyleTitle">Mask style</div>
+    <div class="seg" id="maskStyle">
+      <button data-style="stars" data-i18n="maskStyleStars">Stars</button>
+      <button data-style="same" data-i18n="maskStyleSame">Same length</button>
+      <button data-style="partial" data-i18n="maskStylePartial">Last 4</button>
+      <button data-style="label" data-i18n="maskStyleLabel">Label</button>
+    </div>
+    <p class="advhint" data-i18n="maskStyleHint"></p>
+    <div class="advh" data-i18n="idRegionTitle">ID numbers by country</div>
+    <div class="regions" id="regions"></div>
+    <p class="advhint" data-i18n="idRegionSub"></p>
     <div class="site" id="siteRow" hidden><span><span data-i18n="thisSite">This site:</span> <code id="host"></code></span><button class="btn ghost" id="exclude">Exclude</button></div>
   </div>
 </details>
 
 <footer><span><span class="kbd">Alt+Shift+M</span> <span data-i18n="footerProtection">protection</span></span><span><span class="kbd">Alt+Shift+Y</span> <span data-i18n="footerStream">stream mode</span></span></footer>
+<script src="detect.js"></script>
 <script src="popup.js"></script>
 </body>
 </html>

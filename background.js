@@ -4,12 +4,18 @@
  *   kaldırır (adres çubuğu önerilerinde görünmesin), arama önerisi ve otomatik
  *   doldurmayı kapatır. Mod kapanınca yedekteki tüm adresler geçmişe geri eklenir.
  */
+importScripts('obs.js', 'bridge.js');
+
 const DEFAULT_SETTINGS = {
   enabled: true,
   categories: { phone: true, email: true, id: true, iban: true, card: true, ip: true, custom: true },
   customWords: [],
   whitelist: [],
-  blockedSites: []
+  blockedSites: [],
+  idRegions: null,
+  maskStyle: 'stars',
+  obs: DEFAULT_OBS,
+  bridge: DEFAULT_BRIDGE
 };
 const t = (k, ...subs) => chrome.i18n.getMessage(k, subs.map(String)) || k;
 const HISTORY_KEY = 'yk_history_backup';
@@ -20,9 +26,64 @@ const PRIVACY_KEYS = ['searchSuggestEnabled', 'autofillAddressEnabled', 'autofil
 chrome.runtime.onInstalled.addListener(async () => {
   const cur = await chrome.storage.local.get('settings');
   if (!cur.settings) await chrome.storage.local.set({ settings: DEFAULT_SETTINGS });
+  await verifyStreamIntegrity();
   await refreshBadgeColor();
+  await obsInit();
+  await bridgeInit();
 });
-chrome.runtime.onStartup.addListener(refreshBadgeColor);
+chrome.runtime.onStartup.addListener(async () => {
+  await verifyStreamIntegrity();
+  await refreshBadgeColor();
+  await obsInit();
+  await bridgeInit();
+});
+
+/* Servis çalışanı her uyanışta OBS bağlantısını tazeler; alarm da kopmuş soketi
+ * fark etmek ve çalışanı uyandırmak için. */
+obsInit();
+bridgeInit();
+chrome.alarms.onAlarm.addListener(async alarm => {
+  if (alarm.name === OBS_ALARM) {
+    const cfg = await obsConfig();
+    if (cfg.enabled) await obsConnect();
+    else { await obsDisconnect(); try { await chrome.alarms.clear(OBS_ALARM); } catch (e) {} }
+  } else if (alarm.name === BRIDGE_ALARM) {
+    const cfg = await bridgeConfig();
+    if (cfg.enabled) await bridgeConnect();
+    else { await bridgeDisconnect(); try { await chrome.alarms.clear(BRIDGE_ALARM); } catch (e) {} }
+  }
+});
+chrome.storage.onChanged.addListener((changes, area) => {
+  if (area !== 'local' || !changes.settings) return;
+  const before = JSON.stringify((changes.settings.oldValue || {}).obs || {});
+  const after = JSON.stringify((changes.settings.newValue || {}).obs || {});
+  if (before !== after) obsInit();
+  const bBefore = JSON.stringify((changes.settings.oldValue || {}).bridge || {});
+  const bAfter = JSON.stringify((changes.settings.newValue || {}).bridge || {});
+  if (bBefore !== bAfter) bridgeInit();
+});
+
+/* ---------- yayın modu bütünlüğü ----------
+ * Tarayıcı çöktüğünde / uzantı güncellendiğinde yayın modu açık kalabilir. O sırada
+ * geçmiş yedeği hâlâ yerinde mi diye bakıyoruz: yedek kaybolmuşsa sessiz kalmak en
+ * kötüsü, rozete "!" koyup açılır pencerede uyarıyoruz. Gizlilik tercihleri de
+ * yeniden uygulanıyor (yeniden başlatmada kontrol uzantıdan düşebiliyor). */
+async function verifyStreamIntegrity() {
+  const st = await chrome.storage.local.get([STREAM_KEY, HISTORY_KEY]);
+  const stream = st[STREAM_KEY];
+  if (!(stream && stream.on)) return;
+  const backup = st[HISTORY_KEY];
+  const ok = Array.isArray(backup) && backup.length >= (stream.count || 0);
+  if (!ok) {
+    stream.error = 'backupMissing';
+    stream.backupCount = Array.isArray(backup) ? backup.length : 0;
+    await chrome.storage.local.set({ [STREAM_KEY]: stream });
+  } else if (stream.error) {
+    delete stream.error;
+    await chrome.storage.local.set({ [STREAM_KEY]: stream });
+  }
+  await setPrivacy(stream.privacyPrev, true);
+}
 
 /* ---------- rozet: sekme -> çerçeve -> sayı ---------- */
 const tabCounts = new Map();
@@ -39,7 +100,12 @@ function tabBy(tabId) {
   if (frames) for (const c of frames.values()) for (const k in c.by) by[k] = (by[k] || 0) + c.by[k];
   return by;
 }
+let streamError = false;          // rozet için bellekte tutulur; her sayımda storage okumayalım
 async function setBadge(tabId) {
+  if (streamError) {
+    try { await chrome.action.setBadgeText({ tabId, text: '!' }); } catch (e) {}
+    return;
+  }
   const n = tabTotal(tabId);
   try {
     await chrome.action.setBadgeText({ tabId, text: n ? String(n) : '' });
@@ -47,9 +113,12 @@ async function setBadge(tabId) {
 }
 async function refreshBadgeColor() {
   const st = await chrome.storage.local.get(STREAM_KEY);
-  const on = !!(st[STREAM_KEY] && st[STREAM_KEY].on);
-  await chrome.action.setBadgeBackgroundColor({ color: on ? '#E53935' : '#6C63FF' });
-  await chrome.action.setTitle({ title: on ? t('badgeTitleLive') : t('badgeTitle') });
+  const s = st[STREAM_KEY];
+  const on = !!(s && s.on);
+  streamError = !!(s && s.error);
+  await chrome.action.setBadgeBackgroundColor({ color: (s && s.error) ? '#FF9800' : on ? '#E53935' : '#6C63FF' });
+  await chrome.action.setTitle({ title: (s && s.error) ? t('badgeTitleError') : on ? t('badgeTitleLive') : t('badgeTitle') });
+  if (s && s.error) { try { await chrome.action.setBadgeText({ text: '!' }); } catch (e) {} }
 }
 chrome.tabs.onRemoved.addListener(tabId => tabCounts.delete(tabId));
 chrome.tabs.onUpdated.addListener((tabId, info) => { if (info.status === 'loading') { tabCounts.delete(tabId); setBadge(tabId); } });
@@ -73,6 +142,10 @@ chrome.runtime.onMessage.addListener((msg, sender, sendResponse) => {
       .catch(e => sendResponse({ ok: false, error: String(e && e.message || e) }));
     return true;
   }
+  if (msg.type === 'getObsState') { obsGetState().then(sendResponse); return true; }
+  if (msg.type === 'getBridgeState') { bridgeGetState().then(sendResponse); return true; }
+  if (msg.type === 'bridgeReconnect') { bridgeConnect(true).then(() => bridgeGetState()).then(sendResponse); return true; }
+  if (msg.type === 'obsReconnect') { obsConnect(true).then(() => obsGetState()).then(sendResponse); return true; }
   if (msg.type === 'getBackup') {
     chrome.storage.local.get(HISTORY_KEY).then(st => sendResponse({ items: st[HISTORY_KEY] || [] }));
     return true;
@@ -96,7 +169,9 @@ chrome.commands.onCommand.addListener(async cmd => {
 async function getStreamState() {
   const st = await chrome.storage.local.get(STREAM_KEY);
   const s = st[STREAM_KEY];
-  return s && s.on ? { on: true, since: s.since, count: s.count, closed: s.closed || 0 } : { on: false };
+  return s && s.on
+    ? { on: true, since: s.since, count: s.count, closed: s.closed || 0, error: s.error || null, backupCount: s.backupCount }
+    : { on: false };
 }
 
 /* ---------- engelli siteler: yayında sekmeleri kapat ---------- */
@@ -182,6 +257,7 @@ async function enableStreamMode() {
   await chrome.history.deleteAll();
   await setPrivacy(privacyPrev, true);
   await refreshBadgeColor();
+  bridgePushLive(true);
   return { ok: true, on: true, count: backup.length };
 }
 
@@ -202,5 +278,6 @@ async function disableStreamMode() {
   await setPrivacy(stream && stream.privacyPrev, false);
   await chrome.storage.local.remove([HISTORY_KEY, STREAM_KEY]);
   await refreshBadgeColor();
+  bridgePushLive(false);
   return { ok: true, on: false, restored, failed };
 }

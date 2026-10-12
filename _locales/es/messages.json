@@ -3,7 +3,7 @@
   "message": "StreamMask – Oculta tus datos personales al hacer stream"
  },
  "appDesc": {
-  "message": "Para streamers: oculta con ***** teléfonos, e-mails, DNI/CUIT, IBAN, tarjetas e IPs. El Modo Stream oculta el historial."
+  "message": "Para streamers: enmascara teléfonos, correos, documentos, IBAN, tarjetas, IP y claves API. El Modo Directo oculta el historial."
  },
  "tagline": {
   "message": "Escudo de privacidad para streamers"
@@ -204,5 +204,119 @@
  },
  "blockedPageText": {
   "message": "Este sitio está en tu lista de bloqueo del Modo Stream. Desactiva el Modo Stream para abrirlo."
+ },
+ "badgeTitleError": {
+  "message": "StreamMask: no se encuentra la copia del historial"
+ },
+ "streamErrorBackup": {
+  "message": "Copia no encontrada: el Modo Directo está activo, pero no se encuentra el historial guardado. Al desactivarlo se restauran las sugerencias y el autocompletado, pero el historial anterior no se puede recuperar."
+ },
+ "backupReminder": {
+  "message": "Consejo: descarga ahora la copia JSON. Si se elimina la extensión con el Modo Directo activo, el historial no se podrá restaurar."
+ },
+ "maskLabel": {
+  "message": "[OCULTO]"
+ },
+ "catSecret": {
+  "message": "Clave API"
+ },
+ "maskStyleTitle": {
+  "message": "Estilo de máscara"
+ },
+ "maskStyleStars": {
+  "message": "Asteriscos"
+ },
+ "maskStyleSame": {
+  "message": "Misma longitud"
+ },
+ "maskStylePartial": {
+  "message": "Últimos 4"
+ },
+ "maskStyleLabel": {
+  "message": "Etiqueta"
+ },
+ "maskStyleHint": {
+  "message": "Misma longitud evita que se descuadre la página. Últimos 4 nunca se aplica a claves API ni a tus palabras."
+ },
+ "idRegionTitle": {
+  "message": "Documentos por país"
+ },
+ "idRegionSub": {
+  "message": "Solo se comprueban los formatos de los países seleccionados. Menos países, menos falsos positivos."
+ },
+ "obsTitle": {
+  "message": "Integración con OBS"
+ },
+ "obsSub": {
+  "message": "La protección se activa sola al empezar a emitir"
+ },
+ "obsHelp": {
+  "message": "En OBS: Herramientas → Ajustes del servidor WebSocket → activa el servidor y copia el puerto y la contraseña de ahí. Nada sale de tu equipo."
+ },
+ "obsPort": {
+  "message": "Puerto"
+ },
+ "obsPasswordPlaceholder": {
+  "message": "Contraseña de WebSocket"
+ },
+ "obsStatusOn": {
+  "message": "Conectado a OBS"
+ },
+ "obsStatusOff": {
+  "message": "Sin conexión"
+ },
+ "obsStatusAuth": {
+  "message": "Contraseña incorrecta o ausente"
+ },
+ "obsStatusFail": {
+  "message": "No se puede conectar con OBS: ¿está activo el servidor WebSocket?"
+ },
+ "obsStreaming": {
+  "message": "OBS está en directo"
+ },
+ "obsTriggerStream": {
+  "message": "Al iniciar el directo"
+ },
+ "obsTriggerRecord": {
+  "message": "Al iniciar la grabación"
+ },
+ "obsApplyMask": {
+  "message": "Activar el enmascarado"
+ },
+ "obsApplyStream": {
+  "message": "Activar el Modo Directo"
+ },
+ "obsRevert": {
+  "message": "Restaurar el estado anterior al terminar"
+ },
+ "obsReconnect": {
+  "message": "Reconectar"
+ },
+ "bridgeTitle": {
+  "message": "StreamMask Desktop"
+ },
+ "bridgeSub": {
+  "message": "Un único interruptor para la app y el navegador"
+ },
+ "bridgeTokenPlaceholder": {
+  "message": "Código de emparejamiento de la app"
+ },
+ "bridgeStatusOn": {
+  "message": "Conectado a la app"
+ },
+ "bridgeStatusOff": {
+  "message": "Sin conexión"
+ },
+ "bridgeStatusBad": {
+  "message": "Código de emparejamiento rechazado"
+ },
+ "bridgeStatusLive": {
+  "message": "La app está en directo"
+ },
+ "bridgePush": {
+  "message": "Enviar también el Modo Directo a la app"
+ },
+ "bridgeHelp": {
+  "message": "En StreamMask Desktop: Browser extension bridge → copia el código. La conexión no sale de este equipo."
  }
 }

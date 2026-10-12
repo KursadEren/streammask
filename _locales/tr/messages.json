@@ -3,7 +3,7 @@
   "message": "StreamMask – Yayında Kişisel Bilgileri Gizle"
  },
  "appDesc": {
-  "message": "Yayıncılar için: telefon, e-posta, kimlik, IBAN, kart ve IP bilgilerini otomatik ***** yapar. Yayın Modu geçmiş önerilerini gizler."
+  "message": "Yayıncılar için: telefon, e-posta, kimlik, IBAN, kart, IP ve API anahtarını ***** ile gizler. Yayın Modu geçmişi önermez."
  },
  "tagline": {
   "message": "Yayıncılar için gizlilik kalkanı"
@@ -204,5 +204,119 @@
  },
  "blockedPageText": {
   "message": "Bu site Yayın Modu engel listende. Açmak için Yayın Modu'nu kapat."
+ },
+ "badgeTitleError": {
+  "message": "StreamMask – geçmiş yedeği bulunamıyor"
+ },
+ "streamErrorBackup": {
+  "message": "Yedek bulunamadı: Yayın Modu açık ama kaydedilen geçmiş bulunamıyor. Modu kapatmak önerileri ve otomatik doldurmayı geri getirir, ancak eski geçmiş geri gelmez."
+ },
+ "backupReminder": {
+  "message": "İpucu: JSON yedeğini şimdi indir. Yayın Modu açıkken uzantı kaldırılırsa geçmiş geri getirilemez."
+ },
+ "maskLabel": {
+  "message": "[GİZLİ]"
+ },
+ "catSecret": {
+  "message": "API anahtarı"
+ },
+ "maskStyleTitle": {
+  "message": "Maske biçimi"
+ },
+ "maskStyleStars": {
+  "message": "Yıldız"
+ },
+ "maskStyleSame": {
+  "message": "Aynı uzunluk"
+ },
+ "maskStylePartial": {
+  "message": "Son 4 hane"
+ },
+ "maskStyleLabel": {
+  "message": "Etiket"
+ },
+ "maskStyleHint": {
+  "message": "Aynı uzunluk sayfa düzeninin kaymasını önler. Son 4 hane, API anahtarları ve özel kelimelerde hiçbir zaman uygulanmaz."
+ },
+ "idRegionTitle": {
+  "message": "Ülkeye göre kimlik numaraları"
+ },
+ "idRegionSub": {
+  "message": "Yalnızca seçili ülkelerin kimlik biçimleri kontrol edilir. Az ülke, az yanlış maskeleme."
+ },
+ "obsTitle": {
+  "message": "OBS entegrasyonu"
+ },
+ "obsSub": {
+  "message": "Yayına başlayınca koruma kendiliğinden açılır"
+ },
+ "obsHelp": {
+  "message": "OBS'de: Araçlar → WebSocket Sunucu Ayarları → sunucuyu etkinleştir, port ve şifreyi oradan al. Hiçbir veri bilgisayarından çıkmaz."
+ },
+ "obsPort": {
+  "message": "Port"
+ },
+ "obsPasswordPlaceholder": {
+  "message": "WebSocket şifresi"
+ },
+ "obsStatusOn": {
+  "message": "OBS'ye bağlı"
+ },
+ "obsStatusOff": {
+  "message": "Bağlı değil"
+ },
+ "obsStatusAuth": {
+  "message": "Şifre yanlış veya eksik"
+ },
+ "obsStatusFail": {
+  "message": "OBS'ye ulaşılamıyor — WebSocket sunucusu açık mı?"
+ },
+ "obsStreaming": {
+  "message": "OBS yayında"
+ },
+ "obsTriggerStream": {
+  "message": "Yayın başlayınca"
+ },
+ "obsTriggerRecord": {
+  "message": "Kayıt başlayınca"
+ },
+ "obsApplyMask": {
+  "message": "Maskelemeyi aç"
+ },
+ "obsApplyStream": {
+  "message": "Yayın Modu'nu aç"
+ },
+ "obsRevert": {
+  "message": "Bitince eski haline dön"
+ },
+ "obsReconnect": {
+  "message": "Yeniden bağlan"
+ },
+ "bridgeTitle": {
+  "message": "StreamMask Desktop"
+ },
+ "bridgeSub": {
+  "message": "Uygulama ile tarayıcı için tek anahtar"
+ },
+ "bridgeTokenPlaceholder": {
+  "message": "Uygulamadaki eşleştirme kodu"
+ },
+ "bridgeStatusOn": {
+  "message": "Uygulamaya bağlı"
+ },
+ "bridgeStatusOff": {
+  "message": "Bağlı değil"
+ },
+ "bridgeStatusBad": {
+  "message": "Eşleştirme kodu reddedildi"
+ },
+ "bridgeStatusLive": {
+  "message": "Uygulama yayında"
+ },
+ "bridgePush": {
+  "message": "Yayın Modu'nu uygulamaya da ilet"
+ },
+ "bridgeHelp": {
+  "message": "StreamMask Desktop'ta: Browser extension bridge → eşleştirme kodunu kopyala. Bağlantı bu bilgisayardan çıkmaz."
  }
 }

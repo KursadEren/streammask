@@ -1,0 +1,129 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><title>StreamMask popup önizleme</title>
+<style>
+  body{margin:0;background:#2a2a35;font-family:system-ui,sans-serif;display:flex;gap:18px;padding:18px;align-items:flex-start;flex-wrap:wrap}
+  #frame{width:360px;box-shadow:0 10px 40px rgba(0,0,0,.5);border-radius:14px;overflow:hidden;background:#15131f}
+  #panel{color:#ddd;font-size:12px;max-width:260px;line-height:1.6}
+  #panel button{display:block;width:100%;margin:4px 0;padding:6px;border-radius:8px;border:1px solid #555;background:#333;color:#eee;font:inherit;cursor:pointer}
+  #panel pre{background:#111;padding:8px;border-radius:8px;overflow:auto;max-height:280px;font-size:10px}
+</style>
+</head><body>
+
+<div id="frame"></div>
+<div id="panel">
+  <b>Açılır pencere önizlemesi</b>
+  <p>Gerçek <code>chrome.*</code> API'si yok; storage bellekte taklit edilir. Amaç yerleşimi ve
+  arayüz metinlerini görmek — gerçek davranış için uzantıyı yükleyin.</p>
+  <button data-obs="off">OBS: bağlı değil</button>
+  <button data-obs="on">OBS: bağlı</button>
+  <button data-obs="live">OBS: yayında</button>
+  <button data-obs="auth">OBS: şifre hatası</button>
+  <button data-obs="fail">OBS: ulaşılamıyor</button>
+  <button id="dump">Ayarları göster</button>
+  <pre id="out"></pre>
+</div>
+
+<script>
+/* chrome API taklidi: yalnızca açılır pencerenin kullandığı yüzey kadar */
+const store = {
+  settings: {
+    enabled: true,
+    categories: { phone: true, email: true, id: true, iban: true, card: true, ip: true, custom: true, secret: true },
+    customWords: ['Kürşad Eren', 'Bağdat Caddesi'],
+    whitelist: [],
+    blockedSites: ['garanti.com.tr', 'mail.google.com'],
+    maskStyle: 'stars',
+    obs: { enabled: true, port: 4455, password: '', triggers: { stream: true, record: false }, apply: { mask: true, stream: true }, revert: true }
+  }
+};
+let obsState = { connected: false, streaming: false, recording: false, error: null };
+const listeners = [];
+let messages = {};
+
+window.chrome = {
+  i18n: {
+    getUILanguage: () => 'en',
+    getMessage: (k, subs) => {
+      const m = messages[k];
+      if (!m) return '';
+      let s = m.message;
+      const list = subs === undefined ? [] : (Array.isArray(subs) ? subs : [subs]);
+      for (const name in (m.placeholders || {})) {
+        const idx = Number(String(m.placeholders[name].content).replace('$', '')) - 1;
+        s = s.split('$' + name.toUpperCase() + '$').join(list[idx] === undefined ? '' : list[idx]);
+      }
+      return s;
+    }
+  },
+  storage: {
+    local: {
+      get: (keys) => {
+        const out = {};
+        const list = typeof keys === 'string' ? [keys] : Array.isArray(keys) ? keys : Object.keys(keys || {});
+        for (const k of list) if (k in store) out[k] = store[k];
+        return Promise.resolve(out);
+      },
+      set: (obj) => {
+        const changes = {};
+        for (const k in obj) { changes[k] = { oldValue: store[k], newValue: obj[k] }; store[k] = obj[k]; }
+        listeners.forEach(fn => fn(changes, 'local'));
+        return Promise.resolve();
+      }
+    },
+    onChanged: { addListener: fn => listeners.push(fn) }
+  },
+  tabs: {
+    query: () => Promise.resolve([{ id: 1, url: 'https://www.twitch.tv/directory' }]),
+    get: () => Promise.resolve({ id: 1, url: 'https://www.twitch.tv/directory' })
+  },
+  runtime: {
+    sendMessage: (msg) => {
+      if (msg.type === 'getCount') return Promise.resolve({ count: 7, by: { phone: 2, email: 1, secret: 3, custom: 1 } });
+      if (msg.type === 'getStreamState') return Promise.resolve({ on: false });
+      if (msg.type === 'getObsState' || msg.type === 'obsReconnect') return Promise.resolve(obsState);
+      if (msg.type === 'getBackup') return Promise.resolve({ items: [] });
+      return Promise.resolve({});
+    }
+  }
+};
+
+(async () => {
+  messages = await (await fetch('../_locales/en/messages.json')).json();
+  const html = await (await fetch('../popup.html')).text();
+
+  const style = html.match(/<style>([\s\S]*?)<\/style>/)[1];
+  const body = html.match(/<body>([\s\S]*?)<\/body>/)[1]
+    .replace(/<script[\s\S]*?<\/script>/g, '')
+    .replace(/(src|href)="(?!https?:|\/|\.\.\/)/g, '$1="../');   // göreli varlıklar bir üst klasörde
+
+  const frame = document.getElementById('frame');
+  const st = document.createElement('style');
+  // Açılır pencere kurallarını yalnızca çerçeve içine uygula
+  st.textContent = style.replace(/(^|\})\s*body\s*\{/g, '$1 #frame{');
+  document.head.appendChild(st);
+  frame.innerHTML = body;
+
+  for (const src of ['../detect.js', '../popup.js']) {
+    await new Promise(res => {
+      const s = document.createElement('script');
+      s.src = src; s.onload = res; s.onerror = res;
+      document.body.appendChild(s);
+    });
+  }
+
+  document.querySelectorAll('#panel button[data-obs]').forEach(b => b.onclick = () => {
+    const v = b.dataset.obs;
+    obsState = {
+      off: { connected: false, error: null },
+      on: { connected: true, error: null },
+      live: { connected: true, streaming: true, error: null },
+      auth: { connected: false, error: 'authRequired' },
+      fail: { connected: false, error: 'connectFailed' }
+    }[v];
+  });
+  document.getElementById('dump').onclick = () => {
+    document.getElementById('out').textContent = JSON.stringify(store.settings, null, 1);
+  };
+})();
+</script>
+</body></html>

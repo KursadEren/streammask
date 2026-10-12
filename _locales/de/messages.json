@@ -3,7 +3,7 @@
   "message": "StreamMask – Persönliche Daten beim Streamen verbergen"
  },
  "appDesc": {
-  "message": "Für Streamer: Telefonnummern, E-Mails, Ausweisnummern, IBAN, Karten und IPs werden zu *****. Stream-Modus versteckt den Verlauf."
+  "message": "Für Streamer: maskiert Telefonnummern, E-Mails, Ausweise, IBANs, Karten, IPs und API-Schlüssel. Stream-Modus verbirgt den Verlauf."
  },
  "tagline": {
   "message": "Privatsphäre-Schutz für Streamer"
@@ -204,5 +204,119 @@
  },
  "blockedPageText": {
   "message": "Diese Seite steht auf deiner Stream-Modus-Sperrliste. Schalte den Stream-Modus aus, um sie zu öffnen."
+ },
+ "badgeTitleError": {
+  "message": "StreamMask – Verlaufs-Backup fehlt"
+ },
+ "streamErrorBackup": {
+  "message": "Backup fehlt: Der Stream-Modus ist aktiv, aber der gesicherte Verlauf wurde nicht gefunden. Beim Ausschalten kehren Vorschläge und AutoFill zurück, der frühere Verlauf jedoch nicht."
+ },
+ "backupReminder": {
+  "message": "Tipp: Lade jetzt das JSON-Backup herunter. Wird die Erweiterung bei aktivem Stream-Modus entfernt, lässt sich der Verlauf nicht wiederherstellen."
+ },
+ "maskLabel": {
+  "message": "[VERBORGEN]"
+ },
+ "catSecret": {
+  "message": "API-Schlüssel"
+ },
+ "maskStyleTitle": {
+  "message": "Maskenstil"
+ },
+ "maskStyleStars": {
+  "message": "Sterne"
+ },
+ "maskStyleSame": {
+  "message": "Gleiche Länge"
+ },
+ "maskStylePartial": {
+  "message": "Letzte 4"
+ },
+ "maskStyleLabel": {
+  "message": "Label"
+ },
+ "maskStyleHint": {
+  "message": "Gleiche Länge verhindert, dass das Seitenlayout verrutscht. Letzte 4 gilt nie für API-Schlüssel oder eigene Wörter."
+ },
+ "idRegionTitle": {
+  "message": "Ausweisnummern nach Land"
+ },
+ "idRegionSub": {
+  "message": "Es werden nur die Formate der ausgewählten Länder geprüft. Weniger Länder, weniger Fehltreffer."
+ },
+ "obsTitle": {
+  "message": "OBS-Integration"
+ },
+ "obsSub": {
+  "message": "Der Schutz schaltet sich beim Livegang selbst ein"
+ },
+ "obsHelp": {
+  "message": "In OBS: Werkzeuge → WebSocket-Servereinstellungen → Server aktivieren, dann Port und Passwort von dort übernehmen. Nichts verlässt deinen Rechner."
+ },
+ "obsPort": {
+  "message": "Port"
+ },
+ "obsPasswordPlaceholder": {
+  "message": "WebSocket-Passwort"
+ },
+ "obsStatusOn": {
+  "message": "Mit OBS verbunden"
+ },
+ "obsStatusOff": {
+  "message": "Nicht verbunden"
+ },
+ "obsStatusAuth": {
+  "message": "Passwort falsch oder fehlt"
+ },
+ "obsStatusFail": {
+  "message": "OBS nicht erreichbar – läuft der WebSocket-Server?"
+ },
+ "obsStreaming": {
+  "message": "OBS ist live"
+ },
+ "obsTriggerStream": {
+  "message": "Wenn der Stream startet"
+ },
+ "obsTriggerRecord": {
+  "message": "Wenn die Aufnahme startet"
+ },
+ "obsApplyMask": {
+  "message": "Maskierung einschalten"
+ },
+ "obsApplyStream": {
+  "message": "Stream-Modus einschalten"
+ },
+ "obsRevert": {
+  "message": "Am Ende alten Zustand wiederherstellen"
+ },
+ "obsReconnect": {
+  "message": "Neu verbinden"
+ },
+ "bridgeTitle": {
+  "message": "StreamMask Desktop"
+ },
+ "bridgeSub": {
+  "message": "Ein Schalter für App und Browser"
+ },
+ "bridgeTokenPlaceholder": {
+  "message": "Kopplungscode aus der App"
+ },
+ "bridgeStatusOn": {
+  "message": "Mit der App verbunden"
+ },
+ "bridgeStatusOff": {
+  "message": "Nicht verbunden"
+ },
+ "bridgeStatusBad": {
+  "message": "Kopplungscode abgelehnt"
+ },
+ "bridgeStatusLive": {
+  "message": "Die App ist live"
+ },
+ "bridgePush": {
+  "message": "Stream-Modus auch an die App senden"
+ },
+ "bridgeHelp": {
+  "message": "In StreamMask Desktop: Browser extension bridge → Kopplungscode kopieren. Die Verbindung bleibt auf diesem Rechner."
  }
 }

@@ -3,7 +3,7 @@
   "message": "StreamMask – 방송 중 개인정보 가리기"
  },
  "appDesc": {
-  "message": "스트리머용: 전화번호, 이메일, 주민번호, IBAN, 카드, IP를 자동으로 *****로 가립니다. 방송 모드는 주소창 기록 추천을 숨깁니다."
+  "message": "스트리머용: 전화번호, 이메일, 신분증 번호, IBAN, 카드, IP, API 키를 *****로 가립니다. 방송 모드는 기록 추천을 숨깁니다."
  },
  "tagline": {
   "message": "스트리머를 위한 개인정보 보호막"
@@ -204,5 +204,119 @@
  },
  "blockedPageText": {
   "message": "이 사이트는 방송 모드 차단 목록에 있습니다. 열려면 방송 모드를 끄세요."
+ },
+ "badgeTitleError": {
+  "message": "StreamMask – 방문 기록 백업을 찾을 수 없음"
+ },
+ "streamErrorBackup": {
+  "message": "백업을 찾을 수 없습니다: 방송 모드가 켜져 있지만 저장된 방문 기록을 찾을 수 없습니다. 모드를 끄면 제안과 자동 완성은 복구되지만 이전 방문 기록은 되돌릴 수 없습니다."
+ },
+ "backupReminder": {
+  "message": "팁: 지금 JSON 백업을 내려받으세요. 방송 모드가 켜진 상태에서 확장 프로그램을 삭제하면 기록을 복구할 수 없습니다."
+ },
+ "maskLabel": {
+  "message": "[비공개]"
+ },
+ "catSecret": {
+  "message": "API 키"
+ },
+ "maskStyleTitle": {
+  "message": "마스크 형식"
+ },
+ "maskStyleStars": {
+  "message": "별표"
+ },
+ "maskStyleSame": {
+  "message": "같은 길이"
+ },
+ "maskStylePartial": {
+  "message": "마지막 4자리"
+ },
+ "maskStyleLabel": {
+  "message": "라벨"
+ },
+ "maskStyleHint": {
+  "message": "같은 길이는 페이지 레이아웃이 밀리지 않게 합니다. 마지막 4자리는 API 키와 직접 추가한 단어에는 적용되지 않습니다."
+ },
+ "idRegionTitle": {
+  "message": "국가별 신분증 번호"
+ },
+ "idRegionSub": {
+  "message": "선택한 국가의 형식만 검사합니다. 국가가 적을수록 오탐이 줄어듭니다."
+ },
+ "obsTitle": {
+  "message": "OBS 연동"
+ },
+ "obsSub": {
+  "message": "방송을 시작하면 보호가 자동으로 켜집니다"
+ },
+ "obsHelp": {
+  "message": "OBS에서: 도구 → WebSocket 서버 설정 → 서버를 켜고 포트와 비밀번호를 복사하세요. 데이터는 컴퓨터를 벗어나지 않습니다."
+ },
+ "obsPort": {
+  "message": "포트"
+ },
+ "obsPasswordPlaceholder": {
+  "message": "WebSocket 비밀번호"
+ },
+ "obsStatusOn": {
+  "message": "OBS에 연결됨"
+ },
+ "obsStatusOff": {
+  "message": "연결되지 않음"
+ },
+ "obsStatusAuth": {
+  "message": "비밀번호가 틀렸거나 없습니다"
+ },
+ "obsStatusFail": {
+  "message": "OBS에 연결할 수 없습니다 — WebSocket 서버가 켜져 있나요?"
+ },
+ "obsStreaming": {
+  "message": "OBS 방송 중"
+ },
+ "obsTriggerStream": {
+  "message": "방송을 시작할 때"
+ },
+ "obsTriggerRecord": {
+  "message": "녹화를 시작할 때"
+ },
+ "obsApplyMask": {
+  "message": "마스킹 켜기"
+ },
+ "obsApplyStream": {
+  "message": "방송 모드 켜기"
+ },
+ "obsRevert": {
+  "message": "끝나면 이전 상태로 되돌리기"
+ },
+ "obsReconnect": {
+  "message": "다시 연결"
+ },
+ "bridgeTitle": {
+  "message": "StreamMask Desktop"
+ },
+ "bridgeSub": {
+  "message": "앱과 브라우저를 하나의 스위치로"
+ },
+ "bridgeTokenPlaceholder": {
+  "message": "앱의 페어링 코드"
+ },
+ "bridgeStatusOn": {
+  "message": "앱에 연결됨"
+ },
+ "bridgeStatusOff": {
+  "message": "연결되지 않음"
+ },
+ "bridgeStatusBad": {
+  "message": "페어링 코드가 거부됨"
+ },
+ "bridgeStatusLive": {
+  "message": "앱이 방송 중"
+ },
+ "bridgePush": {
+  "message": "방송 모드를 앱에도 전달"
+ },
+ "bridgeHelp": {
+  "message": "StreamMask Desktop에서: Browser extension bridge → 페어링 코드를 복사하세요. 연결은 이 컴퓨터를 벗어나지 않습니다."
  }
 }
