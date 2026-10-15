@@ -209,6 +209,41 @@ test('sayım ve kategori dökümü', () => {
   assert.deepStrictEqual(r.by, { email: 1, phone: 1, ip: 1 });
 });
 
+/* ================= diller ve alfabeler ================= */
+
+/* Maskeleme desen tabanlı, yani dilden bağımsız olmalı. E-posta deseni uzun süre
+ * \w kullandığı için ASCII dışı adreslerde ya hiç tutmuyor ya da adresin başını
+ * açıkta bırakıyordu — sızıntı olarak en kötüsü. */
+test('ASCII dışı e-posta adresleri tamamen maskelenir', () => {
+  for (const mail of ['müller@beispiel.de', 'kürşad@gmail.com', 'ahmet@köyhizmetleri.com',
+                      'иван@mail.ru', '张伟@example.cn', 'ahmet.yilmaz@example.com']) {
+    assert.strictEqual(masked(mail), '*****', mail + ' tamamen maskelenmeli');
+  }
+});
+
+test('diğer kategoriler her alfabede çalışır', () => {
+  changed('اتصل بي على 0532 123 45 67 شكرا');          // Arapça metinde telefon
+  changed('Мой телефон 8 912 345 67 89');             // Rusça
+  changed('私の番号は 090-1234-5678 です');              // Japonca
+  changed('我的卡号 4111 1111 1111 1111');              // Çince, kart
+  changed('Ο λογαριασμός μου GR16 0110 1250 0000 0001 2300 695');   // Yunanca, IBAN
+});
+
+test('özel kelimeler her alfabede çalışır', () => {
+  changed('Это Иван Петров', { customWords: ['Иван Петров'] });
+  changed('こんにちは田中太郎です', { customWords: ['田中太郎'] });
+  changed('مرحبا محمد علي', { customWords: ['محمد علي'] });
+});
+
+/* JS'in "i" bayrağı Türkçe'nin noktalı/noktasız i çiftini bilmez: "İrem" ekleyen
+ * kullanıcının adı "irem" yazıldığında açıkta kalıyordu. */
+test('Türkçe İ/ı büyük-küçük harf eşlemesi', () => {
+  const w = { customWords: ['İstanbul Caddesi'] };
+  for (const text of ['İstanbul Caddesi 5', 'istanbul caddesi 5', 'İSTANBUL CADDESİ 5', 'ıstanbul caddesı 5']) {
+    assert.ok(mask(text, w).n === 1, text + ' eşleşmeliydi');
+  }
+});
+
 /* ================= sırlar ================= */
 
 test('sağlayıcı anahtarları maskelenir', () => {

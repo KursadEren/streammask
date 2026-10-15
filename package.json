@@ -1,6 +1,6 @@
 {
   "name": "streammask",
-  "version": "1.2.0",
+  "version": "1.2.1",
   "private": true,
   "description": "Chrome extension that masks personal info while streaming",
   "license": "MIT",

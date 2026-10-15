@@ -276,12 +276,17 @@
   /* ================= desen listesi ================= */
 
   const escapeRe = s => s.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+  /* JS'in "i" bayrağı Türkçe'nin noktalı/noktasız i çiftini bilmez: "İrem" özel
+   * kelimesi "irem" yazımını yakalamıyordu. Bu dört harfi tek sınıfa indiriyoruz. */
+  const dottedI = s => s.replace(/[iıIİ]/g, '[iıIİ]');
 
   function buildPatterns(settings) {
     const s = settings || {};
     const c = s.categories || {};
     const p = [];
-    if (c.email) p.push({ name: 'email', re: /[\w.+-]+@[\w-]+(?:\.[\w-]+)+/g });
+    // \w yalnızca ASCII eşler: "müller@beispiel.de" adresinin başı açıkta kalıyordu,
+    // "иван@mail.ru" ve "ahmet@köy.com" ise hiç yakalanmıyordu. Unicode harf sınıfı şart.
+    if (c.email) p.push({ name: 'email', re: /[\p{L}\p{N}._%+'-]+@[\p{L}\p{N}-]+(?:\.[\p{L}\p{N}-]+)+/gu });
     if (c.iban) p.push({ name: 'iban', re: /\b[A-Z]{2}\d{2}(?:[ ]?[A-Z0-9]{4}){3,7}(?:[ ]?[A-Z0-9]{1,4})?\b/g });
     if (c.card) p.push({ name: 'card', re: /\b(?:\d{4}[ -]?){3}\d{4}\b/g, check: luhn });
     if (c.id) {
@@ -301,7 +306,7 @@
     const words = (s.customWords || []).map(w => String(w).trim()).filter(w => w.length >= 2);
     if (c.custom && words.length) {
       words.sort((a, b) => b.length - a.length);
-      p.push({ name: 'custom', re: new RegExp(words.map(escapeRe).join('|'), 'gi') });
+      p.push({ name: 'custom', re: new RegExp(words.map(w => dottedI(escapeRe(w))).join('|'), 'gi') });
     }
     return p;
   }

@@ -16,6 +16,18 @@ Productivity (alternative: Privacy & Security)
 English
 
 ## Detailed description
+NEW IN 1.2.1
+• Fix: e-mail addresses containing non-ASCII letters (müller@beispiel.de, kürşad@gmail.com, иван@mail.ru) were only partly masked or missed entirely. They are now masked in full, in every alphabet.
+• Fix: a custom word written with Turkish İ/ı now matches every spelling of it.
+
+NEW IN 1.2.0
+• OBS: masking turns on by itself the moment you start streaming, and goes back to how it was when you stop.
+• Shadow DOM is masked now — the part of modern web apps the old version could not reach.
+• API keys and tokens are masked (OpenAI, GitHub, AWS, Google, Slack, Stripe, JWTs, KEY=value lines…). If you code on stream, this is the one.
+• ID numbers for 10 countries instead of 3, and you choose which ones are checked.
+• Mask style: *****, same length (so the page layout stops shifting), last 4 visible, or a label.
+• Fixes: long streams no longer slow the page down, and version numbers like 4.2.1.0 are no longer mistaken for IP addresses.
+
 StreamMask is a privacy shield for anyone who streams or shares their screen. It finds everything on the open page that counts as personal information and covers it with *****, so you can focus on the stream.
 
 WHAT IT MASKS
@@ -66,13 +78,15 @@ Prevent the personal information of users who stream or share their screen (phon
 - **privacy:** while Stream Mode is on, temporarily turn off search suggestions and address/card autofill (so personal data does not appear in dropdowns); previous values are restored when the mode is turned off.
 - **tabs:** update the badge counter per tab and show the active tab's hostname in the popup ("exclude this site").
 - **activeTab:** interact with the current tab when the popup opens.
-- **Remote code:** none. All code is in the package.
+- **alarms (new in 1.2.0):** the extension connects to OBS Studio's local WebSocket server (127.0.0.1) so that masking turns on automatically when the user starts streaming. An MV3 service worker is terminated when idle, so a periodic alarm wakes it and re-establishes the connection if it dropped. The alarm does no other work.
+- **Main-world content script (shadow-hook.js, new in 1.2.0):** 25 lines that wrap Element.prototype.attachShadow and dispatch a custom event, so the extension can mask personal data inside Shadow DOM. This cannot be done from an isolated world: attachShadow emits no MutationObserver record and an isolated world cannot observe the page's own calls. The file reads no page data, transmits nothing and loads no remote code.
+- **Remote code:** none. All code is in the package. The OBS and desktop-app connections carry JSON state only, to 127.0.0.1, and never fetch or execute code.
 
 ## Data usage
 - No personal data is collected, transmitted or sold.
 - Website content is processed only on the device to replace text in place; it is not stored.
 - Browsing history is stored only on the device, only while Stream Mode is on, solely to restore it.
-- Settings are kept in chrome.storage.local on the device only.
+- Settings are kept in chrome.storage.local on the device only. This includes the optional OBS WebSocket password and the StreamMask Desktop pairing code, which are used solely to open local (127.0.0.1) connections and are never transmitted anywhere else.
 - The custom word box rejects phone/card/IBAN/e-mail-like input; such data is never saved by the extension.
 - Certifications: (1) not sold or transferred outside approved use cases, (2) not used for purposes unrelated to the single purpose, (3) not used for creditworthiness or lending.
 
