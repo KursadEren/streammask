@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" width="128" height="128" role="img" aria-label="StreamMask">
+  <!-- ÜRETİLMİŞ DOSYA — store/src/build-icons.py ile yeniden basılır.
+       16 ve 32 piksel için: düz renk (degrade bu boyutta bantlanır), kollar
+       inceltilmeden sabit kalınlıkta, yoksa uçlar kaybolur. -->
+  <rect width="128" height="128" rx="26" fill="#5B4BF0"/>
+  <g fill="#ffffff">
+    <path d="M 75 64 L 75 33 A 11 11 0 0 0 53 33 L 53 64 A 11 11 0 0 0 75 64 Z"/>
+    <path d="M 69.5 54.474 L 42.653 38.974 A 11 11 0 0 0 31.653 58.026 L 58.5 73.526 A 11 11 0 0 0 69.5 54.474 Z"/>
+    <path d="M 58.5 54.474 L 31.653 69.974 A 11 11 0 0 0 42.653 89.026 L 69.5 73.526 A 11 11 0 0 0 58.5 54.474 Z"/>
+    <path d="M 53 64 L 53 95 A 11 11 0 0 0 75 95 L 75 64 A 11 11 0 0 0 53 64 Z"/>
+    <path d="M 58.5 73.526 L 85.347 89.026 A 11 11 0 0 0 96.347 69.974 L 69.5 54.474 A 11 11 0 0 0 58.5 73.526 Z"/>
+    <path d="M 69.5 73.526 L 96.347 58.026 A 11 11 0 0 0 85.347 38.974 L 58.5 54.474 A 11 11 0 0 0 69.5 73.526 Z"/>
+  </g>
+</svg>

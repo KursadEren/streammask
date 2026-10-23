@@ -187,9 +187,17 @@
   const STYLE_CSS =
     'input.__yk-secure{-webkit-text-security:disc!important}' +
     'textarea.__yk-secure{color:transparent!important;text-shadow:0 0 9px rgba(0,0,0,.55)!important}';
+  let styleRetry = false;
   function injectStyle(root) {
     const host = root === document ? (document.head || document.documentElement) : root;
-    if (!host) return;
+    if (!host) {
+      // Preload'da belge henüz yok; hazır olunca tekrar dene
+      if (root === document && !styleRetry) {
+        styleRetry = true;
+        document.addEventListener('DOMContentLoaded', () => { styleRetry = false; if (active) injectStyle(document); }, { once: true });
+      }
+      return;
+    }
     if (root === document && document.getElementById('__yk_style')) return;
     const st = document.createElement('style');
     st.id = '__yk_style';
@@ -233,10 +241,14 @@
     active = true;
     buildPatterns();
     injectStyle(document);
-    scan(document.documentElement);
+    scan(document);
     drainShadowQueue();
     observer = new MutationObserver(onMutations);
-    observer.observe(document.documentElement, OBSERVE_OPTS);
+    /* documentElement'e değil belgeye bağlanıyoruz: Electron preload'unda betik
+     * belge oluşmadan önce çalışıyor ve o sırada duran documentElement sayfa
+     * ayrıştırılırken değiştiriliyor — gözlemci ölü düğümde kalıp hiçbir şeyi
+     * maskelemiyordu. Belge düğümünün kimliği ise korunuyor. */
+    observer.observe(document, OBSERVE_OPTS);
     document.addEventListener('input', onInput, true);
     reportCount();
   }
@@ -284,6 +296,7 @@
   let hideStyle = null;
   function hidePage() {
     try {
+      if (!document.documentElement) { hideStyle = null; return; }
       hideStyle = document.createElement('style');
       hideStyle.id = '__yk_hide';
       hideStyle.textContent = 'html{visibility:hidden!important}';
@@ -323,7 +336,7 @@
       mergeSettings(changes.settings.newValue); apply();
     });
     chrome.runtime.onMessage.addListener((msg, _sender, sendResponse) => {
-      if (msg && msg.type === 'rescan') { if (active) scan(document.documentElement); sendResponse({ count: totalCount() }); }
+      if (msg && msg.type === 'rescan') { if (active) scan(document); sendResponse({ count: totalCount() }); }
     });
   } else {
     // Test/önizleme modu: chrome API yok, window.__YK_SETTINGS ile ayar verilebilir

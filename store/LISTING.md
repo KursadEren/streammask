@@ -65,7 +65,7 @@ StreamMask sends nothing anywhere, needs no account and uses no analytics. Every
 KNOWN LIMITS
 • Restored history entries show "now" as their visit time (Chrome API limitation).
 • Bookmarks are still suggested in the address bar.
-• The URL in the address bar and the browser UI itself cannot be masked.
+• Chrome's own interface cannot be masked by any extension — there is no API for it. This includes the address bar, the bookmarks bar, settings pages and the profile menu behind the avatar button, which shows your Google account address while it is open. For streaming, use a separate Chrome profile that is signed out or signed in with a stream-only account.
 
 ## Single purpose
 Prevent the personal information of users who stream or share their screen (phone, e-mail, ID, bank and IP details, user-added words) from appearing on web pages and in the browser's address-bar suggestions.

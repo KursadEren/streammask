@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" width="128" height="128" role="img" aria-label="StreamMask">
+  <!-- ÜRETİLMİŞ DOSYA — store/src/build-icons.py ile yeniden basılır, elle düzenlemeyin.
+       48 piksel ve üstü için: degrade, sol üstten ışık, kolları inceltilmiş yıldız. -->
+  <defs>
+    <linearGradient id="bg" x1="0.08" y1="0" x2="0.72" y2="1">
+      <stop offset="0" stop-color="#8A7BFF"/>
+      <stop offset="0.52" stop-color="#6355F2"/>
+      <stop offset="1" stop-color="#422DD2"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="0.30" cy="0.20" r="0.78">
+      <stop offset="0" stop-color="#fff" stop-opacity="0.22"/>
+      <stop offset="1" stop-color="#fff" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="mark" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#ffffff"/>
+      <stop offset="1" stop-color="#EFEBFF"/>
+    </linearGradient>
+  </defs>
+  <rect width="128" height="128" rx="29" fill="url(#bg)"/>
+  <rect width="128" height="128" rx="29" fill="url(#glow)"/>
+  <g fill="url(#mark)">
+    <path d="M 75.169 63.168 L 72.576 28.361 A 8.6 8.6 0 0 0 55.424 28.361 L 52.831 63.168 A 11.2 11.2 0 0 0 75.169 63.168 Z"/>
+    <path d="M 68.864 53.911 L 37.424 38.753 A 8.6 8.6 0 0 0 28.848 53.608 L 57.695 73.257 A 11.2 11.2 0 0 0 68.864 53.911 Z"/>
+    <path d="M 57.695 54.743 L 28.848 74.392 A 8.6 8.6 0 0 0 37.424 89.247 L 68.864 74.089 A 11.2 11.2 0 0 0 57.695 54.743 Z"/>
+    <path d="M 52.831 64.832 L 55.424 99.639 A 8.6 8.6 0 0 0 72.576 99.639 L 75.169 64.832 A 11.2 11.2 0 0 0 52.831 64.832 Z"/>
+    <path d="M 59.136 74.089 L 90.576 89.247 A 8.6 8.6 0 0 0 99.152 74.392 L 70.305 54.743 A 11.2 11.2 0 0 0 59.136 74.089 Z"/>
+    <path d="M 70.305 73.257 L 99.152 53.608 A 8.6 8.6 0 0 0 90.576 38.753 L 59.136 53.911 A 11.2 11.2 0 0 0 70.305 73.257 Z"/>
+  </g>
+</svg>
