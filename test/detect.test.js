@@ -298,6 +298,34 @@ test('bölge seçimi desenleri sınırlar', () => {
   assert.strictEqual(mask('RRN 900101-1234567', only(['KR'])).by.id, 1);
 });
 
+/* ================= form alanları ================= */
+
+/* Alan içeriği desene uyana kadar bekleyince, kullanıcı e-postasını yazarken
+ * adres ekranda açıkta kalıyordu. Alanın ne olduğuna bakmak bunu kapatır. */
+test('alan adından hassaslık anlaşılır', () => {
+  for (const a of ['user_email', 'emailAddress', 'email', 'tel', 'phoneNumber',
+                   'cc-number', 'iban', 'tckn', 'passport', 'eposta']) {
+    assert.ok(D.looksLikeSensitiveField(a), a + ' hassas sayılmalı');
+  }
+});
+
+test('benzer yazılan masum alanlar gizlenmez', () => {
+  // "telegram" içinde "tel" geçiyor: parça eşleşmesi tam olmalı
+  for (const a of ['telegram', 'username', 'kullanici_adi', 'note', 'search', 'title', 'quantity']) {
+    assert.ok(!D.looksLikeSensitiveField(a), a + ' hassas sayılmamalı');
+  }
+});
+
+test('yazılmakta olan içerik yakalanır', () => {
+  assert.ok(D.isTypingSensitive('asdasd@gmail.c'), 'tamamlanmamış e-posta');
+  assert.ok(D.isTypingSensitive('a@b'));
+  assert.ok(D.isTypingSensitive('0532 123'), 'yazılmakta olan telefon');
+  assert.ok(D.isTypingSensitive('4111 1111'), 'yazılmakta olan kart');
+  assert.ok(!D.isTypingSensitive('merhaba dünya'));
+  assert.ok(!D.isTypingSensitive('12345'), '5 hane henüz az');
+  assert.ok(!D.isTypingSensitive('ab'));
+});
+
 /* ================= maske biçimleri ================= */
 
 test('same: uzunluk korunur, düzen kaymaz', () => {
