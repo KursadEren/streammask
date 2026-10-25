@@ -2,7 +2,7 @@ const $ = id => document.getElementById(id);
 const D = self.StreamMaskDetect;
 const DEFAULTS = {
   enabled: true,
-  categories: { phone: true, email: true, id: true, iban: true, card: true, ip: true, custom: true, secret: true },
+  categories: { phone: true, email: true, id: true, iban: true, card: true, ip: true, custom: true, secret: true, label: false },
   customWords: [],
   whitelist: [],
   blockedSites: [],
@@ -29,7 +29,7 @@ const t = (k, ...subs) => chrome.i18n.getMessage(k, subs.map(String)) || k;
 const CATS = [
   ['phone', '📵', 'catPhone'], ['email', '✉️', 'catEmail'], ['id', '🪪', 'catId'],
   ['iban', '🏦', 'catIban'], ['card', '💳', 'catCard'], ['ip', '🌐', 'catIp'],
-  ['secret', '🔑', 'catSecret'], ['custom', '✏️', 'catCustom']
+  ['secret', '🔑', 'catSecret'], ['label', '🏷️', 'catLabel'], ['custom', '✏️', 'catCustom']
 ];
 function applyI18n() {
   document.documentElement.lang = chrome.i18n.getUILanguage();

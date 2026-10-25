@@ -318,5 +318,11 @@
  },
  "bridgeHelp": {
   "message": "StreamMask Desktop で: Browser extension bridge からペアリングコードをコピーしてください。接続はこの端末内で完結します。"
+ },
+ "catLabel": {
+  "message": "ラベル付き項目"
+ },
+ "labelHint": {
+  "message": "パターンに一致しなくても、ラベルの隣の値を隠します（「住所: …」「生年月日: …」）。想定より多く隠れることがあるため既定ではオフです。"
  }
 }

@@ -298,6 +298,58 @@ test('bölge seçimi desenleri sınırlar', () => {
   assert.strictEqual(mask('RRN 900101-1234567', only(['KR'])).by.id, 1);
 });
 
+/* ================= etiketli alanlar ================= */
+
+/* Adres, ad soyad, doğum tarihi gibi bilgilerin checksum'ı yok; hiçbir desene
+ * uymuyorlar. Sayfa yanlarına ne olduklarını yazdığında oradan yakalanıyorlar. */
+const withLabel = { categories: { label: true } };
+
+test('etiketin yanındaki değer maskelenir', () => {
+  assert.strictEqual(masked('Adres: Bağdat Caddesi No:12', withLabel), 'Adres: *****');
+  assert.strictEqual(masked('Ad Soyad: Ahmet Yılmaz', withLabel), 'Ad Soyad: *****');
+  assert.strictEqual(masked('Doğum tarihi: 12.03.1990', withLabel), 'Doğum tarihi: *****');
+  assert.strictEqual(masked('Address: 221B Baker Street', withLabel), 'Address: *****');
+  assert.strictEqual(masked('住所: 東京都渋谷区', withLabel), '住所: *****');
+  assert.strictEqual(masked('주소: 서울시 강남구', withLabel), '주소: *****');
+});
+
+test('etiket kategorisi varsayılan kapalı', () => {
+  // Açıkça açılmadıkça sayfaya dokunmamalı: aşırı maskeleme en büyük risk
+  const s = Object.assign({}, SETTINGS);
+  s.categories = Object.assign({}, SETTINGS.categories);
+  delete s.categories.label;
+  assert.strictEqual(D.maskText('Adres: Bağdat Caddesi 12', D.buildPatterns(s), {}).n, 0);
+});
+
+test('düz yazı ve masum etiketler maskelenmez', () => {
+  unchanged('Not: Bu bir paragraf. İkinci cümle burada duruyor.', withLabel);
+  unchanged('Durum: yok', withLabel);
+  unchanged('Fiyat: 1.299,90 TL', withLabel);
+  unchanged('Ürün: Kablosuz kulaklık', withLabel);
+});
+
+test('çok uzun değer maskelenmez', () => {
+  unchanged('Adres: ' + 'kelime '.repeat(12), withLabel);
+  unchanged('Adres: ' + 'x'.repeat(90), withLabel);
+});
+
+test('etiket metni tek başına tanınır (tablo ve tanım listeleri için)', () => {
+  for (const l of ['Adres', 'Adres:', 'Doğum tarihi', 'Ad Soyad', 'Address', '住所', '주소']) {
+    assert.ok(D.looksLikeLabelText(l), l + ' etiket sayılmalı');
+  }
+  for (const l of ['Notlar', 'Ürün açıklaması', 'Fiyat', 'Toplam', '']) {
+    assert.ok(!D.looksLikeLabelText(l), l + ' etiket sayılmamalı');
+  }
+});
+
+test('alan değeri ayırt edilir', () => {
+  assert.ok(D.isFieldValue('Ahmet Yılmaz'));
+  assert.ok(D.isFieldValue('12.03.1990'));
+  assert.ok(!D.isFieldValue('yok'));
+  assert.ok(!D.isFieldValue('Uzun bir metin. İkinci cümle var.'));
+  assert.ok(!D.isFieldValue(''));
+});
+
 /* ================= form alanları ================= */
 
 /* Alan içeriği desene uyana kadar bekleyince, kullanıcı e-postasını yazarken

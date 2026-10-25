@@ -318,5 +318,11 @@
  },
  "bridgeHelp": {
   "message": "In StreamMask Desktop: Browser extension bridge → copy the pairing code. The connection stays on this computer."
+ },
+ "catLabel": {
+  "message": "Labelled fields"
+ },
+ "labelHint": {
+  "message": "Masks the value next to a label, even when it matches no pattern: \"Address: …\", \"Date of birth: …\", \"Order no: …\". Off by default, because it can hide more of a page than you expect."
  }
 }

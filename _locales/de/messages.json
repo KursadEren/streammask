@@ -318,5 +318,11 @@
  },
  "bridgeHelp": {
   "message": "In StreamMask Desktop: Browser extension bridge → Kopplungscode kopieren. Die Verbindung bleibt auf diesem Rechner."
+ },
+ "catLabel": {
+  "message": "Beschriftete Felder"
+ },
+ "labelHint": {
+  "message": "Maskiert den Wert neben einer Beschriftung, auch ohne passendes Muster: „Adresse: …“, „Geburtsdatum: …“. Standardmäßig aus, da mehr verborgen werden kann als erwartet."
  }
 }

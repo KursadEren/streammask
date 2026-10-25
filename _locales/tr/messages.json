@@ -318,5 +318,11 @@
  },
  "bridgeHelp": {
   "message": "StreamMask Desktop'ta: Browser extension bridge → eşleştirme kodunu kopyala. Bağlantı bu bilgisayardan çıkmaz."
+ },
+ "catLabel": {
+  "message": "Etiketli alanlar"
+ },
+ "labelHint": {
+  "message": "Etiketin yanındaki değeri, hiçbir desene uymasa bile maskeler: \"Adres: …\", \"Doğum tarihi: …\", \"Sipariş no: …\". Varsayılan kapalı, çünkü sayfadan beklediğinden fazlasını gizleyebilir."
  }
 }

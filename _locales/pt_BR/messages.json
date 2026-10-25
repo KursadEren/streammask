@@ -318,5 +318,11 @@
  },
  "bridgeHelp": {
   "message": "No StreamMask Desktop: Browser extension bridge → copie o código. A conexão não sai deste computador."
+ },
+ "catLabel": {
+  "message": "Campos rotulados"
+ },
+ "labelHint": {
+  "message": "Mascara o valor ao lado de um rótulo mesmo sem corresponder a um padrão: \"Endereço: …\", \"Data de nascimento: …\". Desativado por padrão: pode ocultar mais do que você espera."
  }
 }

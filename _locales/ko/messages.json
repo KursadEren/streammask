@@ -318,5 +318,11 @@
  },
  "bridgeHelp": {
   "message": "StreamMask Desktop에서: Browser extension bridge → 페어링 코드를 복사하세요. 연결은 이 컴퓨터를 벗어나지 않습니다."
+ },
+ "catLabel": {
+  "message": "라벨이 붙은 항목"
+ },
+ "labelHint": {
+  "message": "패턴에 맞지 않아도 라벨 옆의 값을 가립니다: \"주소: …\", \"생년월일: …\". 예상보다 많이 가려질 수 있어 기본적으로 꺼져 있습니다."
  }
 }

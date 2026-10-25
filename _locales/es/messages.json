@@ -318,5 +318,11 @@
  },
  "bridgeHelp": {
   "message": "En StreamMask Desktop: Browser extension bridge → copia el código. La conexión no sale de este equipo."
+ },
+ "catLabel": {
+  "message": "Campos con etiqueta"
+ },
+ "labelHint": {
+  "message": "Enmascara el valor junto a una etiqueta aunque no coincida con ningún patrón: «Dirección: …», «Fecha de nacimiento: …». Desactivado por defecto: puede ocultar más de lo esperado."
  }
 }

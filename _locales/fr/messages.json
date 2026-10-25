@@ -318,5 +318,11 @@
  },
  "bridgeHelp": {
   "message": "Dans StreamMask Desktop : Browser extension bridge → copiez le code. La connexion reste sur cet ordinateur."
+ },
+ "catLabel": {
+  "message": "Champs étiquetés"
+ },
+ "labelHint": {
+  "message": "Masque la valeur à côté d'une étiquette même sans correspondance de motif : « Adresse : … », « Date de naissance : … ». Désactivé par défaut : peut masquer plus que prévu."
  }
 }
