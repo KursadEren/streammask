@@ -16,17 +16,12 @@ Productivity (alternative: Privacy & Security)
 English
 
 ## Detailed description
-NEW IN 1.2.1
-• Fix: e-mail addresses containing non-ASCII letters (müller@beispiel.de, kürşad@gmail.com, иван@mail.ru) were only partly masked or missed entirely. They are now masked in full, in every alphabet.
-• Fix: a custom word written with Turkish İ/ı now matches every spelling of it.
-
-NEW IN 1.2.0
-• OBS: masking turns on by itself the moment you start streaming, and goes back to how it was when you stop.
-• Shadow DOM is masked now — the part of modern web apps the old version could not reach.
-• API keys and tokens are masked (OpenAI, GitHub, AWS, Google, Slack, Stripe, JWTs, KEY=value lines…). If you code on stream, this is the one.
-• ID numbers for 10 countries instead of 3, and you choose which ones are checked.
-• Mask style: *****, same length (so the page layout stops shifting), last 4 visible, or a label.
-• Fixes: long streams no longer slow the page down, and version numbers like 4.2.1.0 are no longer mistaken for IP addresses.
+NEW IN 1.3.0
+• Labelled fields: an address, a full name, a date of birth or an order number has no pattern to match, but the page says what it is right next to it. Turn this on and the value beside such a label is masked too. Off by default, because it can hide more of a page than you expect.
+• Fields hide from the first keystroke. Typing an e-mail address, the field used to stay readable until the address was complete; now a field whose purpose is an e-mail, phone, card, IBAN or ID is covered before you type at all.
+• A new icon that is still legible at the size it actually appears in the toolbar.
+• Fix: e-mail addresses containing non-ASCII letters (müller@beispiel.de, kürşad@gmail.com, иван@mail.ru) were only partly masked or missed entirely. They are masked in full now, in every alphabet.
+• Fix: a custom word written with Turkish İ or ı now matches every spelling of it.
 
 StreamMask is a privacy shield for anyone who streams or shares their screen. It finds everything on the open page that counts as personal information and covers it with *****, so you can focus on the stream.
 
