@@ -12,6 +12,8 @@
     "locales": "node test/locales.test.js",
     "manifest": "node test/manifest.test.js",
     "sync": "node test/sync-test-ext.js",
-    "check": "npm test && npm run obs && npm run locales && npm run manifest && npm run sync"
+    "check": "npm test && npm run obs && npm run obs:live && npm run bridge:live && npm run locales && npm run manifest && npm run sync",
+    "obs:live": "node --experimental-websocket test/obs-integration.test.js",
+    "bridge:live": "node --experimental-websocket test/bridge-client.test.js"
   }
 }

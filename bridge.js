@@ -140,7 +140,9 @@ async function bridgePushLive(on) {
   if (!cfg.enabled || !cfg.push) return;
   if (bridgeLive === on) return;
   bridgeSuppress = true;
-  bridgeSend({ type: 'live', on });
+  /* Yerel durumu beklemeden güncelliyoruz: karşı taraftan yankı gelmezse ya da
+   * gecikirse bir sonraki komut "zaten o durumdayız" diye yutuluyordu. */
+  if (bridgeSend({ type: 'live', on })) bridgeLive = on;
   setTimeout(() => { bridgeSuppress = false; }, 1500);
 }
 
