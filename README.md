@@ -1,6 +1,12 @@
 # StreamMask – Hide Personal Info While Streaming
 
-Chrome extension (Manifest V3) for streamers and anyone who shares their screen.
+Phone numbers, e-mails, ID numbers, IBANs, cards, API keys — covered with `*****`
+the moment a page opens, so they never reach your stream. Open source, nothing
+leaves the browser, no account.
+
+**[Install from the Chrome Web Store](https://chromewebstore.google.com/detail/hadeikbmhdfmiipfhikoomagjfckkgfh)** · Manifest V3 · MIT · [desktop companion](https://github.com/KursadEren/streammask-desktop)
+
+![StreamMask masking a profile page](docs/hero.png)
 
 ## What it does
 
@@ -9,7 +15,11 @@ Chrome extension (Manifest V3) for streamers and anyone who shares their screen.
 3. **OBS integration:** masking and Stream Mode turn on by themselves the moment you hit "Start Streaming" in OBS, and go back to how they were when the stream ends.
 4. **StreamMask Desktop bridge:** one switch for the browser and the [desktop app](https://github.com/KursadEren/streammask-desktop) — going live in either one protects both.
 
-## Install (unpacked)
+## Install
+
+[**From the Chrome Web Store**](https://chromewebstore.google.com/detail/hadeikbmhdfmiipfhikoomagjfckkgfh) — one click, auto-updates.
+
+From source, to read it first or to change it:
 
 1. Open `chrome://extensions`, enable **Developer mode**.
 2. **Load unpacked** → select this folder (`streammask`).
