@@ -324,5 +324,8 @@
  },
  "labelHint": {
   "message": "Masque la valeur à côté d'une étiquette même sans correspondance de motif : « Adresse : … », « Date de naissance : … ». Désactivé par défaut : peut masquer plus que prévu."
+ },
+ "obsStatusAuthSkipped": {
+  "message": "Pas OBS : aucun mot de passe demandé"
  }
 }

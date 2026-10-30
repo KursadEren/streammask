@@ -324,5 +324,8 @@
  },
  "labelHint": {
   "message": "Etiketin yanındaki değeri, hiçbir desene uymasa bile maskeler: \"Adres: …\", \"Doğum tarihi: …\", \"Sipariş no: …\". Varsayılan kapalı, çünkü sayfadan beklediğinden fazlasını gizleyebilir."
+ },
+ "obsStatusAuthSkipped": {
+  "message": "OBS değil: şifre sorulmadı"
  }
 }

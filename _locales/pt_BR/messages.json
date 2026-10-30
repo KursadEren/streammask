@@ -324,5 +324,8 @@
  },
  "labelHint": {
   "message": "Mascara o valor ao lado de um rótulo mesmo sem corresponder a um padrão: \"Endereço: …\", \"Data de nascimento: …\". Desativado por padrão: pode ocultar mais do que você espera."
+ },
+ "obsStatusAuthSkipped": {
+  "message": "Não é o OBS: nenhuma senha foi solicitada"
  }
 }

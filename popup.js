@@ -161,6 +161,7 @@ async function refreshObsState() {
   el.className = 'obsstat';
   if (!st || !st.connected) {
     if (st && st.error === 'authRequired') { el.classList.add('err'); label.textContent = t('obsStatusAuth'); }
+    else if (st && st.error === 'authSkipped') { el.classList.add('err'); label.textContent = t('obsStatusAuthSkipped'); }
     else if (st && st.error === 'connectFailed') { el.classList.add('err'); label.textContent = t('obsStatusFail'); }
     else label.textContent = t('obsStatusOff');
     return;

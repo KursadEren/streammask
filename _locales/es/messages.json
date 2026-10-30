@@ -324,5 +324,8 @@
  },
  "labelHint": {
   "message": "Enmascara el valor junto a una etiqueta aunque no coincida con ningún patrón: «Dirección: …», «Fecha de nacimiento: …». Desactivado por defecto: puede ocultar más de lo esperado."
+ },
+ "obsStatusAuthSkipped": {
+  "message": "No es OBS: no pidió contraseña"
  }
 }

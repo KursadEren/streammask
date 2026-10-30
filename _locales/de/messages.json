@@ -324,5 +324,8 @@
  },
  "labelHint": {
   "message": "Maskiert den Wert neben einer Beschriftung, auch ohne passendes Muster: „Adresse: …“, „Geburtsdatum: …“. Standardmäßig aus, da mehr verborgen werden kann als erwartet."
+ },
+ "obsStatusAuthSkipped": {
+  "message": "Kein OBS: es wurde kein Passwort verlangt"
  }
 }

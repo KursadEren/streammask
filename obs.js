@@ -111,6 +111,13 @@ async function obsConnect(force) {
           return;
         }
         identify.authentication = await obsAuth(cfg.password, d.authentication.salt, d.authentication.challenge);
+      } else if (cfg.password) {
+        /* Şifre ayarlanmışsa karşı taraf da sormak zorunda. Sormuyorsa bu OBS
+         * değil: 4455 portunu önce kapan herhangi bir yerel süreç kendini OBS
+         * gibi tanıtıp "yayın bitti" diyerek korumayı kapattırabilirdi. */
+        await obsSetState({ connected: false, error: 'authSkipped' });
+        try { ws.close(); } catch (e) {}
+        return;
       }
       obsSend({ op: 1, d: identify });
       return;

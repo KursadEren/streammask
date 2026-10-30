@@ -159,7 +159,7 @@ const baseSettings = (obs) => ({
 
   /* 2. Kullanıcının zaten açık bıraktığı ayar, yayın bitince kapatılmamalı */
   {
-    const obs = fakeObs({ requireAuth: false });
+    const obs = fakeObs({ requireAuth: true });
     await obs.ready;
     const s = baseSettings();
     s.enabled = true;                                   // maskelemeyi kendi açmış
@@ -199,11 +199,33 @@ const baseSettings = (obs) => ({
     (await obs.ready).stop();
   }
 
+  /* 3b. Şifre ayarlıyken şifre sormayan sunucuya bağlanılmamalı.
+   *     4455 portunu kapan yerel bir süreç kendini OBS gibi tanıtıp korumayı
+   *     kapattırabilirdi; şifre karşılıklı bir beklenti olmalı. */
+  {
+    const obs = fakeObs({ requireAuth: false });        // şifre sormuyor
+    await obs.ready;
+    const ext = loadExtension(baseSettings());          // ama kullanıcı şifre girmiş
+    await ext.sandbox.obsInit();
+    await wait(700);
+    const st = await ext.sandbox.obsGetState();
+    ok('şifre sormayan sahte sunucuya bağlanmadı', st.connected !== true, JSON.stringify(st));
+    ok('sahte sunucu korumayı açtıramadı', ext.store.settings.enabled === false);
+
+    obs.emit('StreamStateChanged', true);
+    await wait(250);
+    ok('sahte sunucunun olayları yok sayıldı', ext.store.settings.enabled === false);
+
+    await ext.sandbox.obsDisconnect();
+    (await obs.ready).stop();
+  }
+
   /* 4. Kayıt tetikleyicisi (yayına girmeden test etmenin yolu) */
   {
     const obs = fakeObs({ requireAuth: false });
     await obs.ready;
     const s = baseSettings({ triggers: { stream: false, record: true } });
+    s.obs.password = '';                                // şifresiz OBS kurulumu
     const ext = loadExtension(s);
     await ext.sandbox.obsInit();
     await until(async () => (await ext.sandbox.obsGetState()).connected === true);
